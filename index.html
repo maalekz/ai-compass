@@ -826,6 +826,52 @@ footer.credit {
 .hands-ctr { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; }
 .ans.static { flex-wrap: wrap; }
 
+/* ---------- Engagement ---------- */
+.net-pill { position: fixed; top: calc(10px + env(safe-area-inset-top, 0px)); right: 12px; z-index: 30; font-size: 12px; font-weight: 800; padding: 6px 12px 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm); background: var(--surface); color: var(--ink); }
+.net-pill::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.net-pill.live { color: var(--good-ink); background: var(--good-soft); }
+.net-pill.sending { color: var(--warn-ink); background: var(--warn-soft); }
+.net-pill.offline { color: var(--bad-on); background: var(--bad); animation: pulse 1.4s infinite; }
+.net-pill[hidden] { display: none; }
+.nick-box { width: 100%; display: flex; flex-direction: column; gap: 8px; align-items: center; border-top: 1px solid var(--border); padding-top: 14px; margin-top: 4px; }
+.nick-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.nick-cur { font-family: "Bricolage Grotesque", sans-serif; font-size: 22px; font-weight: 800; }
+.nick-note { font-size: 12.5px; color: var(--muted); }
+.rank-pill { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 20px; padding: 8px 18px; border-radius: 999px; background: var(--sun-soft); color: var(--sun-ink); }
+.podium { display: flex; align-items: flex-end; justify-content: center; gap: 14px; padding-top: 10px; }
+.pod { flex: 0 1 220px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.pod-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 19px; line-height: 1.15; }
+.pod-score { font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 600; color: var(--muted); }
+.pod-step { width: 100%; border-radius: 16px 16px 6px 6px; display: grid; place-items: center; color: #fff; }
+.pod-step b { font-family: "Bricolage Grotesque", sans-serif; font-size: 40px; font-weight: 800; }
+.pod-1 .pod-step { height: 150px; background: var(--brand); }
+.pod-2 .pod-step { height: 108px; background: var(--role); }
+.pod-3 .pod-step { height: 78px; background: var(--context); }
+:root[data-theme="dark"] .pod-step { color: #0a1030; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pod-step { color: #0a1030; } }
+.round-b { --rc: var(--format); --rcs: var(--format-soft); --rci: var(--format-ink); cursor: default; }
+.round-w { --rc: var(--constraints); --rcs: var(--constraints-soft); --rci: var(--constraints-ink); }
+.battle-pick { display: flex; flex-wrap: wrap; gap: 8px; }
+.battle-input, .wall-input { width: 100%; border: 2px solid var(--border); border-radius: 14px; padding: 12px 14px; font: inherit; font-size: 15px; background: var(--surface); color: var(--ink); resize: vertical; }
+.battle-input:focus, .wall-input:focus { border-color: var(--brand); outline: none; }
+.wall-input { min-height: 50px; }
+.ing.off { background: var(--surface-2); color: var(--muted); opacity: 0.75; }
+.warn-ing { background: var(--warn-soft); color: var(--warn-ink); }
+.battle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.battle-card { text-align: left; background: var(--surface); border: 2px solid var(--border); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px; cursor: pointer; font: inherit; color: var(--ink); }
+.battle-card:hover, .battle-card.is-spot { border-color: var(--brand); }
+.battle-hd { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; }
+.battle-hd span { font-family: "JetBrains Mono", monospace; font-weight: 600; color: var(--brand-ink); }
+.battle-text { font-family: "JetBrains Mono", monospace; font-size: 12.5px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+.spotlight { padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; border: 3px solid var(--brand); animation: rise 0.25s ease; }
+.spot-by { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 20px; color: var(--brand-ink); }
+.spot-text { font-family: "JetBrains Mono", monospace; font-size: 18px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.spotlight .tool-btn { align-self: flex-start; }
+.cloud-card { padding: 28px 22px; min-height: 260px; display: flex; align-items: center; justify-content: center; }
+.cloud { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 6px 18px; max-width: 1000px; }
+.cloud-w { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; animation: pop 0.4s ease; }
+.net-pill.inline { position: static; box-shadow: none; align-self: center; }
+
 #share-note, #join-card { display: none !important; }
 html, body { margin: 0; }
 .lock { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 24px; }
@@ -835,6 +881,7 @@ html, body { margin: 0; }
 </style>
 </head>
 <body>
+<div class="net-pill" id="net-pill" hidden role="status" aria-live="polite"></div>
 <div class="app pending">
   <header class="masthead">
     <div class="brand">
@@ -859,6 +906,7 @@ html, body { margin: 0; }
     <div class="host-tools" id="host-tools" hidden>
       <button class="tool-btn" id="theme-btn" type="button">Dark</button>
       <button class="tool-btn" id="fs-btn" type="button" hidden>Full screen</button>
+      <button class="tool-btn" id="reload-btn" type="button" hidden>Reload</button>
       <button class="tool-btn" id="mode-btn" type="button" hidden>View as participant</button>
     </div>
   </header>
@@ -1025,7 +1073,7 @@ html, body { margin: 0; }
 <div class="confetti" id="confetti" aria-hidden="true"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
-const AIC_ENC = {"iv": "IVgJHGMZNVukNagL", "ct": "h9bssu3H6hu4abvDZBl_X_36OO9WuDgHecUochgEQrMAxslfRaLFcGcNiXBMQ8zpY-3ROyml0awTJWpCaPgfiZNzPJ6D8ccDbPuvqb37B9_n0LZ0ybIRhA6MBibMnVvbAZJi0yDnZ8K55trxHY9LxiTKHgzLFRJm8Dgd_FiO9BiEbvtvIaQis74IDPEr81y3KyBISyd_v0KhYaazroPWMBQpOqmncOd64y2y8XvoMwcSrXrBgC8dUw9PUHpIEig_TJKz88IZ8HkuSKV4Q5M8Ayro01BE_3F0d7CY_0eG4nAFYsKJbYSXnNmBLU_t8sKoaxoTVWi9BBg6y8Y3OSCq5XrYy_qy9cGQKGJtHJ0SEZtLGBwFBD75JHc2DbBCef7Z0_ywdDZVBO69CRdKAUT-oEIEINvtOAD_aKj44PMKjNehAPrg-8iL6t7wPtMWakSIG0tBWy0IxWDzUSyQtGjcrGqSGfUUhv_i9M2w_sruFYTB1MH6DyTGTIDbFgbG9wWqcP7nsme1eVxLgDQBDjBkpfVYOn_MdEEFD3Fg2NBpdenXo1vzKbKHcqCHO2x24Qjq7eMEEN2YTNcGlnaimib1VBNRSlOahl4mjpvodfC5gg8e1pkO4W9r4a7LViO21U4e33cMXTfT4Vc2t-YYB4Z4BNRoqsM1ocrxPdjpDHRUgNF8f-ecLGXeMe49zWWk4nr_4vRkuLysOxwuTWVmT5oCMCAmv8veqS_OYXKwMJySuUofzYo6BQ73EiQt6H7Qi1louGuIAN6jX68-QEpgm6yquHq8_3-jswZ4zAqRWxqvKOaGEhdnTm9N48Ii-fIUrqXcBzRGlR0g8pd7r-nV5uxZBptbeycoV0PUNlAZ4AImDNH35Nx6Ribr6ZIIKcNUIoK_uj1PKytotapJgUgyjNukxCCsBVzG9byR8epdbdOIF-tIIqs_gtsORsknFBMShWN00hjqbdcxmi-FSDbtPFTGfvDAZAiQUxlRWqYfe_GO10KNe3BsupXU01g5HuhrQcprNaiAoWN64c8gz5M2OUEL7pC1etpJQ0_mkKhAT6ZaYK76LOquNaMeCfFxEePtTV07Yir29aQOpcX6c097eosCNWiaxHM723OwmpbIxmV-IbqzYcKvoHzd0z06PF0awr2omDXGqveJ-f4LPb8oFWwXajdNhcJ4DSNupfMgzcxjrqge1Hpfo0ZxgbpOQzA2ioCDJS9zy4c5wv-mSQJD1xhpN4rTBwIIHa_CRLX29uzOAXIwoiocENHlT6SSF_adhuScU0bmi0uAFinPPVrfw6syuxjIe3VboeTC3w0sY3Ip70SUUxvWzax_vs7663E5qxXlQtnLZ9n_X_6dRxxFHbnZ_58feU6iSb3josBr9XNUAwEDwYaNx8k5afOGqqdIA2-eSKTq6ZCH3EYnK2648TpGPSPNsc2-c-rrLt2luAyhLRWJtyHWTuV5Tua5xdU_MWL-BhbyCb7rsr0P2PlpWv5KpcOJw98MSUboRwJqCin2mR2HLNlm_7nlEpkqv7rYFqlWNDqo_oNuwPe1fxaPzl7L9VDiVc6peZsL-GESQPsOY3fi2ySHpU9o29Cjr_NHeOPHc_kdHjHBMZ7O8YbIxsyRN3SiaJCSDPH-GBDCnE_2Fzm1GkSXVux45f-RTR57WSgnYpwmqA5m1RXlEe4psn8WE1u4M1rNvLy9BOGoGVAeIJ-7pUXGbtFwe0U6EaSNG8F7Ks3KQjH0v4nrGfCOATj6eZfW8y8AmW0w9ZJ4omDQEE5WbvYnNbAKIvBwM3Jt4CqNTHAWwgDp05aDYeBnL7pGTy2m1be5XgAyl3BovwaXu_L5z5mO2sY3o1bQqkfe_FODgJcjEc0qGz9X0MgCsDKSgS-PIkod1TgwgORxeJcV3HkBIW1g1KerouGWaTQjHvIdYdoDxB4OoQxJ5VvxywmHZWNTg0uYY4SeUrvWSmCRqXCmrUKwAB4WE_kW8ddQla0MrrkELVvOQsjS-Z5nz3siBTTzOOYiRj83cWs2t2bxbH0E3h8JS7YTSTnTIJjiAmK_MctGtACpzxGzHH6SGiE3h7SjXIh6WeZRQSpcOnIsbJLWpVy19muZsJ5RzEWHTVi_UmZ53KBuO6Qj_0S5-JHkBYXWXm1t9ysh-WjNCuEeDGuL1JnMG6_aZNpju2m1_6lZT8Qxrkv1r4Md9R0pmUOiWqtutndyNsnFytckp8YePVvwnSB_ATigRNvSxFcNIkAugaI8NkX9Uvoqt5RyCsTlgMq1ARaOAV0PAeeOlJSElU4whrYcECao0wctKp82NgiSgwBPeO4O0BpWJrcFBRxH2Ca2lPvq8xU9AYBp-eqN5AaJpgS575rUGK4qe3XkCqwamnF5eeouPV-Py-Hgs_aQ9p_kpK19lI2_GguNXuPLGvhbfQ85hUbCwQwB7x0b8Bq_P-je4n2iW3js5SS-cmY_weMCSXfVlEYnc0BwkoqsxI3V6IgyVQ5_zxA3n8E80cG2tnxYRUUYXswGLTykMFM-hLZoh5j0L3XOBbzY8zyCoUSCU-deZO9k_ZYbhlsF_jnK4aTMLvX0zhdiydqWzXB0ZMem9mYBCQJ-wJip3ghiC9ameN1R_8x2E0ozChTOToyeL_9Rylqx16L_vFpHSzYLLiin6hzzGc33TQdehPjIyGSnwATtJWAN2WisLHfI4JlVdbO7ceBre-WgnPsp5_GbpgeUs5ktPwYEEwDDIzErkrKLPXbpN_stfKFTA7ozqh0y7u_WltsFggfjAHDWEamOOi5vJDaqvU5LDrvc6k5NzF2oFlR-62oZqeXGDjHq2Yn517cmizkD4QNcjI2lk5EjKH_vZ_d7TxpRqc2KHKGZV1yBTL53jyCIKtMAX6A68uwKFkda4rPDdGSLD-uFQvPYCEAdnB_yc7v4bWC9Z-v_kuhBu3ZMDCkMdDlehLQ9rzBaTMM_JPRyQO9i0wY2quGX0c0pIXIZSsXj8U_cbPNUTveDaFCe57M6Py7QXm2djy4fnEvRRqydcCJtUD2WJBILHnfWXfA6q9TPjcRCoXKKFs3Cs7Ms3k2-TuHbKCfY95fPWeuWfUEGrGFm7A3EFHyI5hYRB6K6c4lCyuID6kxtgKFxV3Ony8TPPjG8xtZO_uY1vDZOueKs0geg141HYm8psyx1s_xtbMos8cei2-nh05YiYiqlcHIQTIoauBMtYElqU9VdziVy9nnXy5i__gJFepEeJvQiU80GefjFKCsfzBVgjoPMURD91UDi7freZUC6vmouZFxHeswDgB5x93VgqGnP1XgwvA2IDnQF1qk98ERj7BM_D1Kvd6aWoclFOaYpcVOljxFSRJFZbli_Tg_lktb-cDCg1TZvwpir4WLG-siFhaqw1vtXiDoPPbnE0b7Q3mS5U2DZlTUxugk3Bi8sH44zbi8pyEDZctJAwAuEufS714TorN0L9FiT-k4AmJ1KR5vMvYi3IChHj5RlD6MTAPR4Ygv14uIz-HQ6G2DVKtsCqmgpqKniYzaRZTRHQ8rxDm1qdpTOZs133R54W7dRVcmFVXNssSjzTinGIdccmEjdMqaxfhwJCdFOJh-qR7cYLQEgNG1hD76WjsSFQKIIvayzCs4kj6M6pZaIqhYyHjWGNxR2R4PtIt05NIvj6Q_xaw6qHhNMbaQHG-2DfKUlgLNumF08qwFnZiiZwjnPpjk5e5mgD34UTivQKbqXpW_e6n6tSWJ--bUHLKu3N8OmGusXPZyMILHf85Nl6XWeslDZCd6uejJ090xdR68YyiZdGTtV3MGaDfy_8Hovi40YRJLqJAyoBf3GRvOqp5CnNzpszCtkvxTOm5oYzS0NNxccHOTlKkK7qjgiY-wnRT_c4tYjKYmbalFV4VhkARheTXPStCvsyVhAJDIrz1ySvDYfGch23yIOBC8rL9pyPOZrbhhpqEatCScesP9WOcf-BsUsnrLR1xjQvcVCKuRtURG76Rnlt8EPKnGpPNalb_vmF4Al05qXXCzIsxRDeiJnHTXpkjLe24GBYRJDeVgmI69Kb8uQL-hoNjB5jWarWRkjJgXxAJ9rbGOqaUBHpHOJVXZFI39eo6remyz4s6MJOf3izY_vRtxkO8y-m5rpZFjFpwCxf86FyjBVCNywHqZbWjmCieEogYoHlFddeEXa_VJq3hTOGwHDR52eXiZB822GncHUeQHp5Y_d5d1AebmG_ouIDuv_CBSNHvwKqNG_K776XLqsAwSXlxYH8Wmg5cuObf-zM6ypFn1AgI1_7yIWAq8GR4RUzV8X0nqv-yW3cMerEI1J0L-0i9YdqNQq9leYHKk0tbRvf_5OVFHmO5dEoEYbG7lQAJAjgeTJrDuIkqkyXTBJC0KEm11d5VPj84LRUvAA0ssjhU-9AZ44V_t183yOyui4gIiPBYnRlQDgmhkUD6N5mx6h2mhmCSFLQwQt-Hm9WhSSmo_IIp0RNVECn9yz3bMgw_pRiJjS-s6et9SGpw5Vs2gFxHwWn-yFEoVWLVCgR5LQMJ1YDsBlGV7FG82umL08HFRtRDlvCOAHS_dvL6PBbU5i5N3Xuh37qWdXmLK2vLWMx-1gSjJ8QHs03FKYjnLPeA8zwGIF8WGcuQTOTWnbVGKM6wZnDFCZ4VgF_6LGvNDCOlLeBjI7F2orTjJpVvBSPNo5TYF-OZNq6-emHlivmqoM23s-8isaQ2wbfkgMbmOwDjZvsn2zSxqUxwyaQRfeIXm2VCY5IjwJcV9K8hAojMUI535BnZp8yynSi7QyYlSapArfE66x4Y0ZQwC-QMBEwZm-B27mLmQHtzaMBOGdBXteLg2U-Ih_CskakN_ZSMkDI-p2kzIfgqS79xtdDY4ZvtH4V6JuN7W2s67YbHBroNivtZEZrkjUcgBRmGUxpjDCm6pLYBvSmwLcY9LZdusjJ2ZwY17RsV1RufRjPZl7M5uqo6IuwpIwzpzbb5xRezJjsnWPTab-WsZ1LU2UdswUJc9jtVncDi6To0SLPOviesHcdgNDJGhabOMv1P-BJnVuDJ3tvbI_sK1_YixhMvJmBZkDu8yVdSIWq-Gwd7-m9UmFv2TAD5rJ9D_IPZl-TeXCrLniT9zz19eVltiX5BlYtgqw75abdsmxU9-53NffM_I2ryDx3rNe4s5iCwspdhH355h7JIpm_NpChf0TIEaWs223rw4KA3ELQYsb4hhvU-LRTEtMuEqbhOAvifQ_wjAvbZHHer-609IH3ghQ6jq9fBVlDAsvy9z3j4ZCwgI1Vby2mpFptpvDnzp9RrDDU8ZviZk5Ojge7s1nrvi7W5izew9-DQ-ofjlgy0qsxtCl9zJzuSPHSZ44oq5BZAP2jdg-8zVcWVZZOU__XT9Xg9Pf5ReknY8Yoj2GCi8SzFgPoko10TpTJYtgCYv2hiHg-qyrxm2UsPZsj7VkKq6WHj6Oyc1DrW9z0iLaL0ACsds-hx4bsKntKAn_vl91WCML4o-lG5Nc3beZ2wRR0YcvQt-lZnDCusu5W--h1ub2IZkEdbQrz4sOY0w6LT8kv_k4dC-k8VttwTkX93lqnbs8s4q3SQSgFbipceegjpDAvmBw6hI-ciNyGPbJFflJf6AhK_6cWtoJU3NJdU5tS1C_v6SFRtazIEKdFAAp-sRX3D6hi_g5T-weqqCAuzO87bnArvALFCGqaLoz038_mQSkQayrvFpDMPVd55_gzYNAJrvDj_2p2wVCKBNpC2l4LdlrBCcLelzG4N0TMm2ORH5nOqf0eqSdYcEOCCA2u6v0fV0t9ZlFpwxkSYdosZoDmIeh9D-FqjJPpzbfEYikfB51VAMGYOW7WsleHgBk9j29SM7OynPfapIpPS8E0asUgvvC1qoklhVBs_KQkEKd4U2f83U_zNbLtuP_7JPUuxqTGRNDdAkVQsB0pQZKMGL1YqgQLF-pFb2a95w9MA6uGRwtZeM0KRJlAMdesaynK89nUhpGgrBQ3MqOqv2-FruwTT4PgN8lqgXudNOjGykD2cUKbguWam6-BijacLobJSUOTjlH5wKjfsOIC0Kcfv3iAbB9leqwDGTcsavlaFMexx7OKQF5Is9OpQA4_gXJ3BXQMxCwFVqmdUg2ya1dfRNEKCmUOcus01fx1U8dlzVj5fuknIsZX-bLrn06IYMfquPbJsuFSZi34kA1U3FFRC5qfBOCeUkmeEdoX8B5vEowGMoBloqmG9UQUcWzHCpCmnmPN0ukUkbUVW-_mDWURiS3NMeUDzzLGgQlu_vV7Be4bwOc6-abc3_z6X_sCunHyS_rZJdt4LTDWoAJQaW_8jzR1cmgJJyWZx4cm6aarzjDI0fQED5Ugk8_MaFzaJsi2l2n9qVO7t0cM-vzhHcoF6WZ2HYysoXfnj1hUTN25vvX3CUEkOzrnyMbAnofPM10J4YT_pHZKmMQ-mPzUXD_MPS2NmBD4i4XTZqw4nu7FNiS2ER-JnFN2vHK27_kbK9ewihdivdPqmzrciwVRDPTZ27f4SeD6P2d-u_q7uPbvUf3Zflko_k4HyC182kIJ4d4iW0nZfyubJM1P9xfOBbvhIOwVkcOYjBZw7W3b20BpwWrVE-hVo2CHSaXJJ59iWlRNSL6if7ELerzjT71AIGodEWgqM19fEfKAlN7pkXaX8pO4MAFTa8-YNZ5__79LK_HH_0Yokp3hZdEyWEYVis9f8cm1h3emWwothripvEaIFX2dIf5VG6z1fDbAVQUCLb1_xdmYLLD6cOM_kovo2Gv1Fv1yGBfrlPFCZqsAm73pXVk-2mmNdRmM5NfrwweCUDVbgHBg7GPmxoctvW1yZI7vO4s4O37mJLCnzWwP47x3LnQpHtaxPCowgZ8j9-OERdxAaG_uH9d199JArUtfbejXPGS4GtuSe4QHXJlO29EkapSVr-vcWRLMxim0mmlyM6Lcmuz1imrUcBIDiqEKYfcVGZRszl855F4gyOUsX0GM3i_gE0FBKZFmkfrl_-PzoK8mAmi3Zbu7se6h_2IW6VkOE_NSGTZdjJzbGY60WAjsGy4jNIqW35X8VW0DdaEr8y89wOiUvUn4uJMoBCBowboxT58s-K0R8vbR37NoS84iFHFROF0GRt5kVL4QmHOynTZTBem6Rx_CXFIb4IsLNH-qYqj3LCZsE4bP0ASu2tMm1AIEgNUmmTAIo7-yOC588m0JTvfWpm_oezipl0hnadWHcwVTCJsWwUWijJh3ERB_qmkemSKDUQ6Cj1j-GbbzR68MVlQgILUHAuXxj-5WKVaaaOoC-hySCnscoijMqq4Yo05lnFxJDIomNTRI6B0lMAqSXxlOJKyytUXTXAfA-s6FpZ_j0WRei88_l5iDvgascfpPDmmDkzHY6AcFjwo3g_PML4vylkWqezwLaD7yf_lYLrkJGZwERXpmTBzkj2jiyiB1nbI9qyErP2XsjSV6mX00myKyuOF6M5w1oXWu_sVMvCnXbRuPn4go2pkwHxm08apkWmMAWykRdwIy8BP93sWO4-4u1KIG-kiiAuLrHNyWPq_lgjfk8_ACiDwVzRw0vXJ7w4WUk2O0NMTPYg_nzl2c5wc4rTh3Ajra-C_hmKMLEKuuhxU933z3m7r8_US-smSBN1cCeovrE52F-Y_cYsl2jU9e7IVCQeueeSVAKgBsB3lCWnCoJB7n4stDrbO9YVstsBVeMqSlnrX_hAvspF5BbbTS0hLyXlYWzHpBzIMxkasGDVL84l6hckciMWMeSCYnIFmCzgXjqrGorHw42IMeyFUQmjpw6GeJLub08UiVdP5aseByDx_FshHSG06njvskPCMpepLRRUqyTzm4yJGvCJf4MT5powOdXl-0al7u9TOMSH_vexzEifh3ZZHq4M_ZKZaEc8MgxnP5KM60rh755DSpvZDnrabsxAvw-81F59dDGKC1J0gRXo8rkWmf_97j39utDOCrcCAiAmfWrCQumUq2ruQMsFYrjzruuRnt-ZGhiIBv6tIm9p4_BSmzuj1ZVn01jtsX0m9GkDOnxJzM1kdvA7_9-FlrUtbj2kRMkzunnuo9FjZsHpzl5usyQpQwni39KKVdgdPR9YCjrnF9lN4cgXsnizmRiWU3gm0riYYtoVdo_TdJ1Yd9n_hNMl4Y7m1fQQUbVb_8nO3dfFU7fE_58HAuO46Vv8UzXkJvq3669GkVp0ojAMIClfUjTAlsrY4W-vW974ukLpmBeF9GRcqa7qXJuqBlrpTtleeABb_GYN4dzl_W75Vm9AUAUlQ95vJIsFLhDA7ldYTETV6GCCmr409Iz17EMT1Gb4vf8mi--nVjvpYWUbIs2HgkrT6Q0d8TN0WssKH7cR_eYY941mHoDv71Mb14zN2DmxLIGF2XrGiPx0NYjYcnEzSq1kYn_lo_TVynT6Gz9CegixS4Cx5MorAcMG8xikfDZW20qpxlWJiDy-cqyMhMEVyi4lBB1HbtuUNTF-oRb7hpZsWsqQ0HFmmAE-3vwbnnbTs5rR8_9L3I-W1T8lc7nvcW1HRx1qLWfUa8PxQDmVfI6hqo8z_94ae-FQ6Efj2VmDhOMtzm8q2ArWiwd9fma1rbb4oC0raJr--XQ2q6cGJZYjcKQarmvg8VhY4BTw3djl18vSuwrrcsVU-Dg4V2aU6QnplyocalMkQ76NXh3aG6bwDLWa_moqJCD1Q3OXghaGy3YtZVF4yrcgqcalRo3piEjTVjNTaqbXUxDmBxgp8uaCRSxwDJMwCpztHSNgZvNaS5Y3ok6chyq7JqGNtHNksIxKbVlthrnduTU-YOakDHbCkGtxhXFHIzQtv5pb4sQueLXaKwQWXk1CfwF1XEKtYQgBKqRKZJ-6I27FgRoKQWcnuaX4sBMzTMIaWR1_VKl1-oK-XHWPLsAdeJ4NgKtxjgY4gsuCj_JzxMOyL0xJ-HboOlxpik19aFSy5hjHbjsD_BVpTvithKbz61LFRFrY9jqyfgNCIr1ikaEhRO6zpM_CjFv3ufThoNgbki2RcjDZVUavEDQ3_K1rAFyjgf2w4voigP1sZYhvYzv6s5RhIV0KGJ34bLl_1DVSxyo-bGTuZLf3mE5KpPh6r_HmDYsqe9_Gc1iWce9uyxp7H2uMgMcnv3HBGaaZ0ROTQU0wjkv4or_n1hbKqsdTHs7saIk6romO2hofEE-pWskN066YJz3qWh9HqhlPIsSYQ22esG52duuqRZDDoyOh0kYA7FTUS88hPaZ0G2sKtXnQsuO-Ic40_zzt5o4Y81VlbCqZD_y7wlc2LlDwATGllNVzJi9hCb9M0jMIVHGD2b-t4oX8P8n1Lpjft0BjT0c2tFcsvw_e_464ojVm0vBbu4hgVsAxnXJo-cdUzWlh9bYNzcXPvzh3w_5FrKD3AvA5uc31ekjPeyDuhjiEi1MPwNvSF-gJujTXM2llMc_IEVpgto5BAa7X_54dcBfCIhUQv0p6vL2kZSvqv7rPwSvp9LKT5a4AjUBllP0wraRLJoh_glZ34h35baveUg0TqoNP5sHDYArScy4PKANyUFDth8FuXxEprRjzW23hkzgjf0gbez9qDSurT3wld0Pt9UN-w4OFqvJggaWYTxFCg01xTKmCMgYe5JE75HK1Wss89EDcwlUMmhNY2oX7dkzMYiBXz6FKOZ1xWxh8bO4vjCr3hSN9x6vh59hAaRypUV1EwP6r9oM739k7rqW3-4-Jf_Q_IStOMH6SksHPWyBIiid2Ndj0xuqCOtCS9wtuynt3XvYkQPgmzK3Cz_6YU2j8zaY1zogQ4v1afrPJbEX-sa5uXMjW9udcX0vI29wRbGKjHeeFCGjqZVPJNrVhfkpWwMid5C4f7I797sRfi637YV_RmvXFb8loeE0lxVUtagyn_yAi45TBPSywemM9_aiwRLa8F3B2y6VEqtrF3Pdlfhw2miv1WflCwVxGSWLOp-X0KP7EqJgj1a4xxn5b2LkQHvFPfEyMBg4PYo1okhvcBQjcg4TD0FzN_2HE7g9Gt9rWaVnhgPTQARkhULiChYE1-cosE5TKyHFE-44blfeqAN6vZ2yBfXoIqYALx_qVT0_7WcveUMayL5VMp_jXbRN8ACaxDdZsofrrwi-nZlT4c3rSXYm0M1wsao43s5aS_QflJ-SOe6st3uHOrUyQ415mgFXd8OoKOASVg2qTGkHmHw8Al_6vHLX0WTp3WdTYCmYE3t9SX7VEGG4ExrLPi6TOlA25shG533_7KnHYk9GnQfi7vFF7AJ9rM0-6Jzz9ARynm_w0xPwDZY0_yC_u-GitUHK-9-tYSNno9i60DGne-ymFkuyjJDniULdLoLqKnTIOIAs_JMcRW9zDNCIE29uy8JDMH5D-6disaPTlMLSACyxVkCMM1lIDnL4nv3CmAclfDFZdOdTcDGwKLQMBmBuC2ofvkBosUkqlLxvDdPhDSvtzEWnHcvo3zrccxbN6ozfi3yqFlQs69VaOIC_lsLtnRjJKBlyes7XkRB0fF6ZW1t9JxfDaG2l2qRZksOPPDeKCgBNCBE8cIQcLQMfF1DJMNCDJg_V299hma1OzhvwlW4IYxwQR65KE6Z9MQcahohDO3dTvqCQs49Hbi8eMpueqF7doHROSnx-CoYsbHp3cXBSrsv0RwiHnR_dbjraDcl_t_rPRqT1diuFZMEpcxVuiJIA-4bM0W4v92KrYTD-z5XX4R"};
+const AIC_ENC = {"iv": "olJGXqe89ZziEDgz", "ct": "HMlLZaaJRUIfSi_-7OOJTooaYDKMDQ_N5BWdxmVIsGR14hD8mctrpdvIbgEDXjggcTprH0UnV_ZlwVQ6GHi2s5GdHivM9B5mYLFTK0NH1r7kJGcQGypgsgu7LMlU0D3QhfFKQX6LmtdcZ9nLejUlOgMIwvjQq5Pmk9pOpNw8SCHKXIKd67Wzf6P2moVqGye757CuyDpPv7I_VJ3GnlXybhvOjujoty822zST2g-BGlGdTErNdc9bYMjsmXnugozFJTTehCNGzokWNNoKdz_JtaQjLgPJfJT7KBfG06EuHHLAHLUcTOUPDQRC4Np8uf6YkJ8St94aDQ3ChCP1TjkPaQ_dV36_I4hKupw4BoLdpbqyYCxmfqujs29WW5LO-6H4XFEHrgab-QzCPVcWMoIR9E3dtaysWfqRXAHFSl1d42S6uFVdWS8JYA1XO2dhB6iiP40q01RxjRc8JH3c85mMfrgyAw-qXuykZ8rJcxml2Cczlo57dskdw3umpN1NwtgggrjcTVAb6yqGMjaWTf-GU-Woi6eS1LIadRM44IIiv2P1TI7eVKDm2xqoOIsx-IHhiZZtWMIQyr6q0wHGwR-qEljN8fJ2FP1JexIqcjwr1sIcHZV7O1m0rxpqmfC7Zv8nItXObVc1HqACz9cLvdbpoRDEbWuB5qBZpS6aiPdDA8UMpawtSNMOthdJMq47t_KPapD7fwJOc14wUuWrBOHjTk2y-8Dz3YnqMc7xeDfFIBT3FH_Qfd4Es8GtgyNGz0MDLfBKEZEluxJ9JlIVL2KdHfVtnPtjm7Cy2wLHxVYMzLa3ZB-3fvM-ziQBBG873rVZSc8u99uhDhh6UOe2jeBeR4QShnKBomSWqNU55d9XGQzO_WGiYt4o3nsF5QXF27OtlrvVsOB-3jmetY_NpP7gXZtwtg80lyF-cFI-Fd3wXgwyeu_3NYXn3UX-APrHaYGKhaQaX7cVaX8FZ24QsKj8C5OLgGCd48WibmpbnEVHIHZpoI9rdYn3mEXVdbiTpK6Iub5ohRRQnO4Wt7ns8gTIzB06JTqQkz0n-kOjxchbg2d2rOEQ5GGvIXRfhSVRGGOzxy8mBKCEK5h9cM2-Vc6GDHMZC7GDNHD6jnUYKo2wqGo6kEIoRBpJdo8HY-eqfPPy-NKtZyQB2x26132gT8a5bOvwcpX38xN6H6q-imwwCnEMJNFZQM8ppBev3TenVh_wK_ygcU05C5WT19kQjOLG7y4oncjMPovBP0bjcchP_GYnQi-HvlhFMGx0UbgalIdlNOibQvm3YVe_-Z_LiBSxJBqgKfBtnZktMv5bjWtjcBFvQ8G6O0OVMEh45q_Xtt1ttGkc2zlwYACulVQUikJYqnIqd-mGnG46Wt4USXs_bQeFO_zVzRfcwh_5-XMw0BR9zkmthjTXTCFirlXcIT2_yeEDVUatOSv8mRgfO3fAzy4MS-1hJUFBDmrb07o8A0rqcEzqo-wH54yXdE-Cvyy-uTS2x3_NpTuTkNJWApjd1JT7pPqsh5T_VBdGJabmipwTu3wDvFKyyLVklyA0iZ9-E5kz2gZtjU51VSD-9IJRgiKFUg-MZcULsOBDq3mGIaKnERjuDxGkMamBZGOoqzYhOil7bdcAPYaOh1b5bzXZLD35F64K0lIY2OlRW1ok6UoEwYolLbCivB-D7CnadlTnlWevEfwpE6PzKB48lXzpkg-t3Sj2lqEOmSYXTYQtWTfiijkfpNCdDtnBPZHcgEDbs7FFMYf40ynWyp8VZHdnb8LZh7YvS4nJuAgVip1mhNYbmEDsh-6hhG4a65XCeTbnXTAvn7pOI2aR1rmVmk5yaiTtaKSrZV0WNDAZc8-6JDu0vpYZyq03sRvEq4xwclQekogZ8zjmHtMZxvR2u5YS0KAwKIB5bjf-Cbwy5XTuaTWarDLWnYRPdORkiohTcWUBw9Rc14FDF7OAHmVoRIB1b3QiXv7dDlEeG65mQ_Ac8yQN_uFzpKeAk6eFxABMejD-Y-RwVxDfFrnvz4LSR3lelHMERUCHpB8HmpE1tkGMA5h-SKbVJ_mwP7gPKF9U0PgpvnLBclmCJwNxrckXwkOmZYqnPWdwViv70jKx5S2fHshgxhOjpD5-1YUNCidRUdhDBo5iD_20gxps83Nq9uoYpLBX4BE2rvU5tZbIzAX_2C5Vr3l62C7A9Lw_tPLOHjhHixx7dV7ohpZumFormf-VySuDuMaXH7Aa0t6N_Xx7Bffgf6wxixw-uEG4IsxFdghxAQyW_5fhlKKYZHURN8JTY0KVf2d8ambjTG5qzuImL5wSVOkJnktwAllh9_ncqf0V63uPDOrkH9G0u9PRO8ou7KC-otlmIz5zXyI6neSBFaJz5FO_CswKfoIBoakqT6EAj6gotE2k-AYO3aadi3a6uKhDNUkSokKUu-Y21_Lj0L0TkW-aYdNjfmpkjmWxHufsRkN3aoEHstwRPcA3pkh2djBsknyU-o5CY3cCS-L90kpWbybMSWaz_KIKIP-F00jscmpHSaOXRTfrn472NSY08t9-SEYBHgAmr5cKyEhd8xRDoc28vfdrzNzpYi4ETIXB15wDci7Xx0zSUSfHkDhSZx8j-EQrjwLp0XlMNjISjaY7g6E_TOvxpR8bF6111ZBZDpCW5hVxrdUgjeIKMiVUFO7gP9mzbKPGNT2bBjU0AUBOtGVhsbiPiMOf9I1EXlWWtrOfCS0GR428bPoHdtItj5TddW5mIV0tbalnaDdKinrIH_6F3oO1lB6eTU9OASsKcwAf1s0XWXuDPTEBBm5V6FGFRluR-slnRJhHoi2uuigUpMv0yHW0Ia2Rok4yl7jqLvoyqD6AQgkWGeZxfOvORHTwOp9Gbvb6gbI13IMzWBMV_2u3Zg9Y2xupaKNBY4AK_EWq17QUjwEkoiPdbrSfn2IMZuf0uOFgq4RLsDO4mf-7WVd5wwf0LJfClmHzxd0U09fZ_9Hq9btZ4ImeoBH8h5T91GpEQSItPU9Bnhbmq4S42yy9a8oOaHX4IQHzTBRk5CWlxPt9n8wQOt9ydYZNieSeG29UKRQdSTm6klolE3mjqI9Pw_At_r16MOC-reCSttcPmqhK8Z-NnYDt0uprEvXc2C6Z6mIyBxyyIxYt1FmrcOwuMQenj4kqn5eQS-G4oytLjWLZ6rMUaCx_mDLDiLqsTjAHdkDLAQpQjz0rU8R_V795Bbjyfuc4QlMD1dWWBq71-PUwnn8QfQSZYUPny3LT7g4cYiNrbKbAAbVFdo3irOx3K1lNikRdyO8ETrA3If4B9WQmG-3uevxp_FjoXHSCpJnYe7t-gxkbfonQgxKRcOZvvumgApODSK4fU_euhWUG2tByL2iSBmsX_kcv8QaN6pn3nxfaUbxWN1x_di3awxf7lLKvFT2qNJ3pdwBC-Szj1gGv8j2TRIQ4h5cHbp7Xw8p6o5tPmQsp52PUJQtOF_vxzlvf8lBkh0lr7OOIqPiQXmNPfECBrPkJLSLNFdtfpEqDbf2nNG7_QNhsSmyf30TFw-TUx8w7DmTWP9wgUYtdNE0uzSDKh8MFurZx9ZYJnPWE0Jg5JUU-uLcvLg5Wl9sA9njRcbrCzL0z_QlVU7Kpt8o1e73NWRzQY6SkLZ5zMAo4jhHQQ7r8MdmBssNwfg1e-v9C7WsgA9XfAvnhP9dQ_4rUKpbbeJKUYCYZs03KqMQXGeWnQG2mek-_Vzx3zEp5-FI-DBV1h1w31BhapXzNzqGEHQH5xs3zGAgjkD0AP0qNNzuAu8dg39oGCQB37lBNtGRyBUlcNE5zZcsDz_xaFLFibHdCV2Wrl_QOvQ4Zyrv63Scf01MFbxQapfizyWclm4sh2dh8aW2Sfg5bJUEA6OCo_jn2e7jTTUDm_vQMf7DMXewqvrMuFGKG5cyYRAK_d7ShYX0zIpWXdvVj6KnGB5C24R-IlFaVuGp9CjzQnGP1tmKwIaUIV2zkFNSHYvHrdObxCMofKVKFAd7cEeTTfh18AFKVj2lCtk5yDsIeDn_OmFPiTX2hL13NlvXo7xcTuryJbS7eDpw7mYuuUbwu8oa1j1VCLzt2nHUPXbYPGeU3102P_3DwostsEXbIRyzPw_gwSMiYS-26Cgjj_b9IZngBWY2hp8qMGCNofpFt8h0NkDZXOcCAzqK38fWjeCtNifJHYOeq1YQxrO3DouHu1FSSYqw58CFQq3u-2d6wh55iLApunU7ifwFHQer_P-VMBcD0AMiryJT-SIYAnxfV-XP5FL0jOsfQf0XrKFpw8v27fPJos77H-Lt538D9OetxxPSp9z_yXNEcCKQYwTkp43X_AjadF7kKiUfQ0bKhTTld-v2hhhhTlOG_VbtqNMtsDUJFtowt11BIKmrd4dLIREg0G8qGk-PlKDvYWufHbQ7VujFakiYlDRfWjwz-eqkF9SkApxehx-eYOluCmeYIbt7EONA2g6DZjPb5RHPigyga3RFrnJpzjuZm2jM9Bm56-dKL7xfx0YeTxsGcqU_a9UgYgG0oraIWBCJFMHC4lTb3YGmeTSUW9rFuHdvp8T_9uvOHXARRsIIquD67wEUxzL3WnMpo4hmjUXDrWRvIlqtIk7YyKFooK0gk5WJh5NPiFxYVFwpd05rJm9u96Npir8A3B0ATe9ZHFQC18bKD5ZkwmpdBwNHcvlF4G1_bfjNEWqlRHGEc5TDmRbbJGI8-MyrMHaOvsLD7B5l_Ohrv083gF5Q7IHklmwsOcG4cYrE6VvVlYfjI_ZZkAwI8wVzOcS-yz_0Hf6SN6aeSxBMAxDASnFLTiEjAxKx2zXaNUTTNVTSK4YOPYAuSdCMWie4OyGEipkPkFHMUp-0NKFzQgR4Dz2JSQy8TQ8s5mtCd1VeQ_-lxi7rML24FQbRFAq49337SPX8xQEeSKlAV2i2Atm2rS5okKgEMDygLGoZpBBt8P59pgHchnyixHqxZi1MKVoswrAVb4ibJpDN9whPDx9ciTiHw8lLMJdZ6W4uJMPARM4DQzhL6GCt27uyttZz2SwZlfLqxwKNway07xHyFTPVQjJdJ8iVU761iXj9kkyNoE-ztLZmnH_GheTBWn3Dix363lxJKB_ktNTcMbqYo-k-NmWM8-vH-Wl8sqo_dluGfAqKWO5Ww5CSMXIsdgqiYbpi1Aumnw1ip2vGAS5vlVXi2YWCvBeZsrkYafPpxkZUAknl3UISlzqNvu6HmYlnCbhgpJasxWJQxFHIt91XUNztlj-UY-oDpj8taRseBIh4dQYUygTBRzHwFZAzisWWHBsW9i2RaOqDbPwD4SZX6lpRNbds_FTyKtGomys1HpwS8UnsKjXRBxm-o_fqyg3PZPy7SHYdX8O96J3i4BlX1bghO0qdZ5qTPtgZiYmLzTkVWEsS-BIYS24EkAr93fuCUhf7uaH5kh-mTMokC-2QHYQVeAyk4XPuBbunlJZyD9Y9FjSmmSuueaons4hUostuLHCSUiI-zpQmPpwJ88O0ViytGc-_qbbEDwRIZPLaIBmosJz8Co5KyucTw4YH-pCrlUnTqajKyqf7bfdLmRFd5Qus20m91K-7eQVMQsgdCQQkZ_Q-9LQ6KWtDff7pbd9JohsNA2sZxEdM_apvXs5SZ9xvm5gykMgLm6F0S4czoNCChNzqvFF0y0NWH4SlBiCrmO3oaEiWDAQhPUoW4zROrsG8rZfBUHXTj3TFvzRUuk7kdz6_loSzftQy65nlrc-Kju2WR2SlR-cWyA5cqNRXlL1WiDTyrO9gSD4eBC4iYEBPeBb1V2GE8ucGvr7QWHgazmzHnlBTc7kyejdwAzmCVvFU7aEOUWmgiKRa9rzClzoEgagmgNnHzgynHhOh_NDWArBVILWDD7t8xEmXJFdzcI9ZmuVOxCtrDFsXnm47AyBlKgyU7LtT7n64sajJzU2kXFZr71qVYXGXudbSx_3ua1VAnn4RQePWs3LyaevlhySxnIANf-gS8rZwkUcBia0SGmVHn8jPK1gXJIBZPaJEve_R_WukhlE674FAKTM7EckY-zXD4QaAUx8i_3rY8iIQ982Oa3AM-MNCGC1pjCG7fc1s6mWlirTJBk5xcg0Vk6nxT1JVM0mkwi6wXgzaWYMDiNvSIJr-MroAjVBlGrbtIbRpwzMmyZ_u4dFY_Uy4FW3BcUMyAuwcuirxZtdYXRYX-iu7V7SP8swgSqAjzIf87dgFnyCF3CHxjrFeOuFqQH7x-R1iU6jzqlnKCw5vflwAO2xl9ta1gHWc9vOXFg_MpcOo4Yxqbdfh5AsT_xTZplIMnBDOfvSHFMC7m_I28b88QwA4SJv3Q4q9R2GncfRFyHGxER2BpKpKh4_pCpGEjEepalVdBDKp1gunUvPY1A2r57ViRBwRyVgajH1hXGJL4muU4TDWxOxOK09ckvHl7DGO25hV1NHHX9sky4th58SSpmzia7MxX4ZXWlqeil6Akf7Bc2ZAmoTJk3xttJ1mHmWLi4flsuAhaMH5fYOFT2yWZb3xyEeohTgG3I2FFunYhm9wCxL2aqTQyusvRW-srOV4OMPru3PaAFx_YrRXuNd0x7XfbJSb2qpEPdGzv9hbipkdX1dF1h5uFbgXd5AxcoxrlSiqlnyUUZuzRGKlpSew7I5q3EIBj67ftSbn8qvt4cxvJiWorCvsMSTzQYMRI1Hf-8FzCbpABjwIsGP5szXjBFnk1qnX5IqIn6Ogo7-KGfO4n--peoZDP-r1ZfR0PBUoDC-5lGXk62_WVwCrwhkMoub3rLBoITVN3xETSJXlqAPmPc3hzMrswbv3WkdScpwrHltrWsQStrVFyPSOpo1GetZHudNfjoC0G5i_k0ebaZjCKG4EJqHw46iBhdWW4qiqRpRX6wm6rGCfrmcQFhrKWgXzNsS36iABSHX5uGthw5P5c6OIQv0ui5p277EAeaoMxuZpD7ZretPgRPbZlLfbufwcpbO7OVBS8g785Jnvq7HB2cR_CpWyaWj8KBJV74Z6P5lYiMYPYCIme7pjcVPus0lUxAlX9zClQ1EccV8hSKB9bpA6WnDyh6V5ekSUqhjTUblHFb1XaSHzPbKWzLOPbhH4ozqPnCB1KcGnol3k4mhvLzJ-Nlv0wfW1d81x-BsTR_jUhl7k0-Dd-Rz_zp_Hacvmizva8L2DZuucUwI32IvIXlTh9t0lBOc_kfwYZLvs7y2ef42_shlieRTkVq06fQ8bAExl8jxbgMdepWZLj072y7yojM4k1QeyD4Lm2TIfCeQiXyuYUEXv0c6XdB0g8vjdREmXkbLfvynux54594PaCXvTMN2rFVGaLBGrL16auI6GwnIK9DFz9vlgWwJjxENQxovnsZZOt59w-vUdR3eqpuUOI8Ey9VyrB4jzv3hI654peSwDSbKGgIh5jsyPCM2YAdtEB89xzGlwcODTn3bkA4tJv_nsS9caY9cUtX9WVt-HIo_Oj1CAA1HX1eigYRDS9gcaCjQA0A93sWGQSYlXUq9OPy7jI2JZ9TzaQC0r8u9rbHOZePi2CNecjNF5hF0r4OeTbxnLK7cnXwaxeAYD4UYxAhEsGai94NQzZ1DIv8zJit1G3xyjSNFtd7NRQsKehMD0NR37lIO7eRFg1fw182AORNtrjzU-bveZjGYZAxYtE8OHgG-Hw2hC_wffQjhIJC61m_u2iaxHNezt6i4uamr5dtbHBgGHl631ZVXURNpBJPPshdFIqmzMQVXIvygaKzQD3133z_sSkJ5vk4o2sytCGutQFHZQmKM5waeBNwj_4WrHYlZLTuS9_kaYJb0H3S3YtimOdX1knikMvZEKl_g5UL7QnexzNhlFvhArxe2LDmCvZmcT89YfcosoVVcNnYkq54qRBDjGuTD7S1nIFz-n215zt7pudW4Wp3zCAZaWYdRTqRPV-MxO_ACl5e6n23hXPZh4NeNLEHezYJN9wUsJEJyrczkWdyPb5whXH63afLZr1DYTn4AadVv7iCT4kIrgX8nbYUM6reMJI4KoO1iIINqegLMlO4t0k8KhG1LyEid92LSIrMKAdOvmhg8XKvvcurxH8pf4_o-IC4KSGEnll6H-NJqO-kfqzO0kE1fBXhUyfAFXsi992g7Q-nJ4f1rYY2Nyo-NoMKae1aEnF_7LRWJcd6I6V99kU367p9jm0cVimfTDpIekggCxc2em3JOKiA3yPk31a_qVlouVEUzP3M1w-2ikYuTMHN1Mg2Flde06_hT9-_xfdKeUt-6m0OiS0f2ExCXvbqLGBthm80PhZZrQGiqPknY7Ti8arl6RRGPM7vLiTL8p4yzFjFRzNhtokpsW5yh-QbuYX52WivLE-o2k4bFjruKKFrav04lQCUYM3dP1XG-UxuBtEBuIxhmIabFglMz0kN61ktNCLJaw_VUHfUmu4VNEYkAu-PNGJTAySuvyka7ZlvP-65qtBndUz_Onwe40RskQLHLKo6zIEna77L5H4vzlOunLOuea3rBBcSXcSRW8FHSZdMjRwtveblwH5YbbiQc2fkvcwCYejshVr7PU4Kqz8UJTNvw-hG_Xv8fenJWfMRtIj4GisDVXKqzV5I37EejNz6ZYpB8dchEAfL0X1o9rfNG6M6Q1bfwIW8DcjFdgSuP0niWTKQAjnneY3_WfYqRGgHLGf3PyEAsi_t1wGSsE9oPsMxcfGMPptwWSnT4u_AQhYiVSgURY7Cxb9lHP9d1Cq-c1dmtVmZPtfd-7AjyQTqZz9Sw1FEzWNqBsMyeNCAGn_AV7GLBgZqjBOKed7rSQI6ASyPSrEmvo5OZmDb_9UDZQgqp39Ib8Jg0xBwdcZ2AVzSxBsB1pQb1Wa3erG5kAsWK8DV9uf_7j1FPvCdup-iI0WSVYZdi04Ic_ysOCCTz1dVry2gXNWFLig_bVPp7LwYqRetl8FQdb-LkrpM-ukCWEo5HC4GL_60L1J1HHtcyWsFuYWqQ1U_3xdsgd35FA7yuysFc29sSbn0fKlpaNE_Z3vb9eYZMqRO3TBfkhghv3FDmSHlUrw8jZgCKoDWSWg82OQ83k6X4mCGrtFVGWIF_dqBDrH-zgTV7K9ZGjhhQ3o6Au19ji0eo5m0Ym-Y9f-R07jiyn2PM68z_faqGyG8XHPWFIYvMppQPdn8rUimcZyujZfNiHUW9PAAKj4BZZFtoRcwz5W0hJcefxp2TjGBk-FEd_h5BtNW97vXAOImQoJGxMFB5m4dfV8W4UdI9dmj5iY9OqaBdmBKDVAS5mmcEWKvI-dep1-KmQoyUSHyFBfep9YVNt7nEBFwM697DGfRZA8KBjMjKPSH3YiuEPUlPHhfmqCdTCYF0vGzYTxM0ZbI9C1N2gyGlFTG0Kar_eTMsc-TyHy6VhVJytu13ymehSvl0I0YfCYqnIqK6odGaKkFVuM_6fHlTFjgc5Xdgd9LUo8yDWR234z_R78J5MTMN5NN21IGSU5cK2i5WpYD7q8NgWEt6W9_-kHyNV0qW68ve8C5YoLfB-BwIFlwwcNY6N9VQV1goa51dZ_JJUbjFOm6pzLlLbj83wfAoKEBmGp5eV2KKeIjzaP6LwRUlVM6DxISSR__L421Crv--NWmoEsNtdh1vFdVQglXjMEAUQB80xrB6huD0KaGfuUjVIH9CCyR9aUyIINEgQ3Ie2Nn5VKnPMcS13-DX9Hue7MXprmR3bDezaQAN2PWs_TH2t3tWW6rjoGsLBF0KGit72u6xYokgqHhkSx-8wd2xf9D18WYLedj5Ik8228dFSIXW5oX1FVM2B-xyg8guW4fGAdAO8ovq-yqRNRc-G8fxGSvEmp_kxtzcaHYNFHfVRl-wNgGShX1UIj-MnTj03ruiW5bEYb5mX_YPzwB4l9PmsJrEuM4NPBBtV6LZzmdATx8QNamaOJa8rYw0O1c-jpPMd7heag6CSPI5JxPaLkxo-D3Gb0eJHboLNkM5YAnMhK1WPGlxRcuvhehfWpsbehmVGSdj7w8dSDZ5D641o7rR_Gj-Xo8eY3X8TLPLgdVEirZ6MvBFoueC80aMCGCwu3AZrSF3ZFN0lzQkDIJoKHqxxIdNWoKuqC3aOnQFiXJXb8_6P0RLw6N_tInKXCdL-V_4Y5GTOMt1CjQJT2hvtRw8NamR66TWfXZS17xDfVTddsRFvDU49irCp2WIls2etDIJNMxc8K9TDy6o7i1clq5zzBTMVokDZ7-h_JS3N6pLoBfbWMSv2rZUrXP_2JJmBJxno9PyzxCtj_1dYAd214rIgmROhj_rDS3rx_9bdb8wBkyc4WZOstVlELlcYUY8DQRDpOxpHaTv4JRlN5bxbwco2R7OrrZmA5y1qeUGMROkRDYPP7sTfeboXo2w1ftWnW8LHhyHiaN0ORVdzZwgN4LRngH9MKyYZRREJu3KF7aUzTjidxyMv2DJvuVWY65YKw5ZFklQR2LSbt9CXG_elWa69FEOY8c2yxptpwJkCnM0zosDtoyzoznfl5s2f2EbAyCm1hKvqqN0ZjPBZYLm95_SLwl63bj74XIPAVFllDJGkmvp8it4x8wbfLuH9DzXxqYd3ft2cixu7MfhrvSWaMfhrNlUIFqprrIcm4nJJhw1QkfczNpRZfcdLZmwiL5EByNjyUsz1hLEI51tA3Y2aT1e1Ew1XBFPLivAwtCu6LwKMRNnlFOhgXbaMJdzi95vK49Wq1eHjxEHhi"};
 const AIC_HOST_HASH = "bc2729187980e2f386849cb4dd8c23df1c7071685c9215a6db3241de57e27768";
 (function () {
   "use strict";
@@ -1051,7 +1099,12 @@ const AIC_HOST_HASH = "bc2729187980e2f386849cb4dd8c23df1c7071685c9215a6db3241de5
   function makeDb(topic) {
     const store = new Map();
     const subs = new Set();
-    let loaded = false, settleT = null, fireT = null, lastId = "all", es = null;
+    let loaded = false, settleT = null, fireT = null, lastId = "all", es = null, open = false, lastStatus = "";
+    const pending = [];
+    function status() {
+      const st = !open ? "offline" : pending.length ? "sending" : "live";
+      if (st !== lastStatus) { lastStatus = st; window.dispatchEvent(new CustomEvent("aic-net", { detail: st })); }
+    }
     const lvl = (p) => p.split("/").length;
     function apply(m) {
       if (!m || !m.op) return;
@@ -1071,7 +1124,7 @@ const AIC_HOST_HASH = "bc2729187980e2f386849cb4dd8c23df1c7071685c9215a6db3241de5
     function connect() {
       try { if (es) es.close(); } catch (e) {}
       es = new EventSource(NTFY + "/" + topic + "/sse?since=" + lastId);
-      es.onopen = () => { if (!loaded) settle(1200); };
+      es.onopen = () => { open = true; status(); flush(); if (!loaded) settle(1200); };
       es.onmessage = (ev) => {
         let d; try { d = JSON.parse(ev.data); } catch (e) { return; }
         if (d.event && d.event !== "message") return;
@@ -1079,12 +1132,38 @@ const AIC_HOST_HASH = "bc2729187980e2f386849cb4dd8c23df1c7071685c9215a6db3241de5
         let m; try { m = JSON.parse(d.message); } catch (e) { return; }
         apply(m); schedule();
       };
-      es.onerror = () => { try { es.close(); } catch (e) {} setTimeout(connect, 2500); };
+      es.onerror = () => { open = false; status(); try { es.close(); } catch (e) {} clearTimeout(reT); reT = setTimeout(connect, 2500); };
     }
+    let reT = null;
     connect();
+    const revive = () => { if (!es || es.readyState !== 1) { clearTimeout(reT); connect(); } flush(); };
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") revive(); });
+    window.addEventListener("online", revive);
+    window.addEventListener("pageshow", revive);
+    setInterval(() => { if (es && es.readyState === 2) revive(); }, 5000);
     setTimeout(() => { if (!loaded) { loaded = true; fireAll(); } }, 4000);
-    function pub(m) {
+    let flushing = false;
+    function send(m) {
       return fetch(NTFY + "/" + topic, { method: "POST", body: JSON.stringify(m) }).then((r) => { if (!r.ok) throw new Error("http " + r.status); });
+    }
+    async function flush() {
+      if (flushing) return;
+      flushing = true;
+      while (pending.length) {
+        const job = pending[0];
+        try { await send(job.m); pending.shift(); job.ok(); job.tries = 0; }
+        catch (e) {
+          job.tries = (job.tries || 0) + 1;
+          status();
+          if (job.tries > 20) { pending.shift(); job.ko(e); continue; }
+          await new Promise((r) => setTimeout(r, Math.min(15000, 1500 * job.tries)));
+        }
+        status();
+      }
+      flushing = false; status();
+    }
+    function pub(m) {
+      return new Promise((ok, ko) => { pending.push({ m, ok, ko }); status(); flush(); });
     }
     function local(m) { apply(m); schedule(); return pub(m); }
     function sub(fn) { subs.add(fn); if (loaded) fn(); return () => subs.delete(fn); }
@@ -1388,6 +1467,8 @@ function applyMode() {
   $("host-tools").hidden = !OWNER;
   $("theme-btn").hidden = !host;
   $("fs-btn").hidden = !(host && document.fullscreenEnabled);
+  $("reload-btn").hidden = !host;
+  renderNet();
   $("mode-btn").hidden = !OWNER;
   $("mode-btn").textContent = host ? "View as participant" : "Back to presenter";
   fitZoom();
@@ -1415,7 +1496,7 @@ async function initDb() {
     if (window.claude && claude.use) db = await claude.use("db");
   } catch (e) { db = null; }
   if (!db) return;
-  if (MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now() });
+  if (MODE === "participant") write(BASE + "/joins/" + sid, joinDoc());
   while (queue.length) { const q = queue.shift(); write(q[0], q[1]); }
   startSubs();
 }
@@ -1432,7 +1513,7 @@ function subscribeState() {
       const next = Object.assign({}, DEFAULT_STATE, d);
       if (seenEpoch !== null && next.epoch !== seenEpoch) {
         Object.keys(mine).forEach((k) => delete mine[k]);
-        if (MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now() });
+        if (MODE === "participant") write(BASE + "/joins/" + sid, joinDoc());
       }
       seenEpoch = next.epoch;
       state = next;
@@ -1460,12 +1541,13 @@ function setupTools() {
       else document.documentElement.requestFullscreen();
     } catch (e) {}
   });
+  $("reload-btn").addEventListener("click", () => location.reload());
   $("mode-btn").addEventListener("click", () => {
     modePref = MODE === "host" ? "participant" : "host";
     try { sessionStorage.setItem("aic_mode", modePref); } catch (e) {}
     applyMode();
     if (db) {
-      if (MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now() });
+      if (MODE === "participant") write(BASE + "/joins/" + sid, joinDoc());
       startSubs();
     }
   });
@@ -1666,17 +1748,25 @@ function dotsRow(list) {
 }
 
 /* ----- participant ----- */
+let pKey = "", pForce = false;
 function renderParticipant() {
   const root = $("p-card");
+  const key = (state.phase === "battle" || state.phase === "wall") ? state.phase + state.run : "";
+  if (key && key === pKey && !pForce && root.firstChild) return;
+  pKey = key; pForce = false;
   clear(root);
+  if (state.phase === "battle") { renderParticipantBattle(root); return; }
+  if (state.phase === "wall") { renderParticipantWall(root); return; }
   const c = curCase();
+  if (c && !qSeen[mk(c)] && state.phase === "question") qSeen[mk(c)] = Date.now();
   if (state.phase === "lobby" || (!c && state.phase !== "end")) {
     const card = h("div", "card result-card");
     card.appendChild(h("span", "chip plain l-guide", db ? "Connected" : "Offline"));
     card.appendChild(h("h3", null, db ? "You are in" : "Not connected"));
     card.appendChild(h("p", "msg", db
       ? "Waiting for the presenter to start the next round. This screen updates by itself."
-      : "The live service is unavailable. Ask the presenter to share the link with Contributor access."));
+      : "The live service is unavailable. Check your connection and reload the page."));
+    if (db) card.appendChild(nickCard());
     root.appendChild(card);
     return;
   }
@@ -1689,6 +1779,8 @@ function renderParticipant() {
     card.appendChild(h("h3", null, "Round " + state.round + " done"));
     const p = pct(score, list.length);
     card.appendChild(h("p", "msg", p >= 70 ? "Strong round. Wait for the debrief on the main screen." : "Tricky on purpose. The presenter will debrief with the group."));
+    const rk = state.ranks && state.ranks[sid];
+    if (rk) card.appendChild(h("div", "rank-pill", "#" + rk + " of " + (state.rankN || rk) + (nick ? " · " + nick : "")));
     card.appendChild(h("span", "share-status", "Waiting for the next round"));
     root.appendChild(card);
     animateDonut(card);
@@ -1737,11 +1829,13 @@ function renderParticipant() {
   }
   root.appendChild(card);
 }
+const qSeen = {};
 function participantPick(c, col) {
   if (state.phase !== "question" || mine[mk(c)]) return;
+  const dt = Date.now() - (qSeen[mk(c)] || Date.now());
   const ok = col === c.answer;
   mine[mk(c)] = { pick: col, correct: ok };
-  write(BASE + "/responses/" + sid + "_" + c.id, { case: c.id, round: c.round, run: state.run, pick: col, correct: ok, ts: Date.now() });
+  write(BASE + "/responses/" + sid + "_" + c.id, { case: c.id, round: c.round, run: state.run, pick: col, correct: ok, dt, ts: Date.now() });
   renderParticipant();
 }
 
@@ -1755,10 +1849,10 @@ function resetButton() {
     if (!resetArmed) { resetArmed = true; setTimeout(() => { resetArmed = false; renderQuiz(); }, 4000); renderQuiz(); return; }
     resetArmed = false; resetBusy = true; renderQuiz();
     try {
-      if (db.wipe) await db.wipe(["responses", "joins", "calc"].map((cn) => BASE + "/" + cn));
+      if (db.wipe) await db.wipe(["responses", "joins", "calc", "battle", "wall"].map((cn) => BASE + "/" + cn));
       else {
         const jobs = [];
-        ["responses", "joins", "calc"].forEach((cn) => (data.ids[cn] || []).forEach((id) => jobs.push(db.doc(BASE + "/" + cn + "/" + id).delete())));
+        ["responses", "joins", "calc", "battle", "wall"].forEach((cn) => (data.ids[cn] || []).forEach((id) => jobs.push(db.doc(BASE + "/" + cn + "/" + id).delete())));
         await Promise.all(jobs);
       }
       writeState({ phase: "lobby", epoch: Date.now(), expected: null });
@@ -1787,6 +1881,8 @@ function renderHost() {
   const root = $("h-card");
   clear(root);
   $("h-legend").hidden = state.phase !== "lobby";
+  if (state.phase === "battle") { renderHostBattle(root); return; }
+  if (state.phase === "wall") { renderHostWall(root); return; }
   const c = curCase();
   const list = roundList();
   if (state.phase === "lobby" || (!c && state.phase !== "end")) {
@@ -1809,6 +1905,27 @@ function renderHost() {
       wrap.appendChild(b);
     });
     root.appendChild(wrap);
+    const extra = h("div", "rounds");
+    const bc = h("div", "round-card round-b");
+    bc.appendChild(h("div", "round-num", "✎"));
+    bc.appendChild(h("h3", null, "Prompt battle"));
+    bc.appendChild(h("p", null, "Everyone writes a prompt on their phone. The best ones go on screen."));
+    const bsel = h("div", "battle-pick");
+    BATTLES.forEach((bt, i) => {
+      const bb = h("button", "tool-btn", bt.title, { type: "button" });
+      bb.addEventListener("click", () => writeState({ phase: "battle", battle: i, run: Date.now(), spot: null }));
+      bsel.appendChild(bb);
+    });
+    bc.appendChild(bsel);
+    extra.appendChild(bc);
+    const wc = h("button", "round-card round-w", null, { type: "button" });
+    wc.appendChild(h("div", "round-num", "★"));
+    wc.appendChild(h("h3", null, "Commitment wall"));
+    wc.appendChild(h("p", null, "To close: each person adds the habit they will change. A word cloud builds live."));
+    const wm = h("div", "round-meta"); wm.appendChild(h("span", null, "5 min")); wm.appendChild(h("span", "round-state", "Start")); wc.appendChild(wm);
+    wc.addEventListener("click", () => writeState({ phase: "wall", run: Date.now() }));
+    extra.appendChild(wc);
+    root.appendChild(extra);
     const pc = h("div", "card panel-card");
     pc.appendChild(h("h3", null, "Participants"));
     pc.appendChild(h("p", "sub", "The answer is revealed once this many people have answered. Change it if someone has not joined or has left."));
@@ -1837,6 +1954,7 @@ function renderHost() {
     card.appendChild(h("p", "msg", tot ? pct(ok, tot) + "% of all answers were right. The cases below are sorted by the question order." : "No answers recorded for this round."));
     root.appendChild(card);
     animateDonut(card);
+    if (!state.handsMode) root.appendChild(podiumBlock(list.length));
     const pc = h("div", "card panel-card");
     list.forEach((x) => pc.appendChild(caseBar(x, t[x.id])));
     root.appendChild(pc);
@@ -1856,7 +1974,7 @@ function renderHost() {
   tt.appendChild(h("span", null, "Question " + (state.idx + 1) + " of " + list.length));
   top.appendChild(tt);
   const end = h("button", "tool-btn", "End round", { type: "button" });
-  end.addEventListener("click", () => writeState({ phase: "end" }));
+  end.addEventListener("click", () => endRound());
   top.appendChild(end);
   root.appendChild(top);
   const d = h("div", "dots");
@@ -1955,7 +2073,7 @@ function renderHost() {
     act.style.justifyContent = "flex-start";
     const last = state.idx + 1 >= list.length;
     const nx = h("button", "btn primary", last ? "Finish round" : "Next question", { type: "button" });
-    nx.addEventListener("click", () => (last ? writeState({ phase: "end" }) : writeState({ phase: "question", idx: state.idx + 1, hands: { green: 0, amber: 0, red: 0 } })));
+    nx.addEventListener("click", () => (last ? endRound() : writeState({ phase: "question", idx: state.idx + 1, hands: { green: 0, amber: 0, red: 0 } })));
     act.appendChild(nx);
     card.appendChild(act);
   }
@@ -2237,17 +2355,291 @@ $("calc-submit").addEventListener("click", async () => {
 });
 
 /* ---------- Results ---------- */
-const data = { responses: [], joins: 0, calc: [], ids: { responses: [], joins: [], calc: [] } };
+const data = { responses: [], joins: 0, calc: [], battle: [], wall: [], nicks: {}, ids: { responses: [], joins: [], calc: [], battle: [], wall: [] } };
 let roundFilter = 0;
+/* ---------- Engagement: nicknames, podium, prompt battle, wall, network ---------- */
+const ADJ = ["Swift", "Bold", "Calm", "Clever", "Sunny", "Brave", "Quiet", "Lucky", "Bright", "Witty", "Curious", "Steady"];
+const ANIMALS = ["Gelada", "Hyena", "Ibex", "Crane", "Lion", "Fox", "Zebra", "Kudu", "Falcon", "Owl", "Cheetah", "Hornbill"];
+function randomNick() { return ADJ[Math.floor(Math.random() * ADJ.length)] + " " + ANIMALS[Math.floor(Math.random() * ANIMALS.length)]; }
+let nick = "";
+try { nick = sessionStorage.getItem("aic_nick") || ""; } catch (e) {}
+function setNick(n) {
+  nick = (n || "").slice(0, 24);
+  try { sessionStorage.setItem("aic_nick", nick); } catch (e) {}
+  if (db && MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now(), nick });
+  renderQuiz();
+}
+function joinDoc() { return { ts: Date.now(), nick }; }
+const nameOf = (id) => (data.nicks && data.nicks[id]) || "Anonymous";
+
+function nickCard() {
+  const box = h("div", "nick-box");
+  box.appendChild(h("div", "qask", nick ? "You play as" : "Pick a nickname for the podium (optional)"));
+  const row = h("div", "nick-row");
+  const cur = h("b", "nick-cur", nick || "Anonymous");
+  row.appendChild(cur);
+  const sh = h("button", "tool-btn", nick ? "Shuffle" : "Get a nickname", { type: "button" });
+  sh.addEventListener("click", () => setNick(randomNick()));
+  row.appendChild(sh);
+  if (nick) {
+    const an = h("button", "tool-btn", "Stay anonymous", { type: "button" });
+    an.addEventListener("click", () => setNick(""));
+    row.appendChild(an);
+  }
+  box.appendChild(row);
+  box.appendChild(h("p", "nick-note", "Only the top 3 nicknames are shown on the main screen. Your answers stay anonymous."));
+  return box;
+}
+
+/* ----- Podium ----- */
+function computeRanking(run) {
+  const per = {};
+  data.responses.forEach((r) => {
+    if (r.run !== run || !r._id) return;
+    const p = r._id.split("_")[0];
+    const x = per[p] || (per[p] = { id: p, score: 0, time: 0, n: 0 });
+    x.n++;
+    if (r.correct) x.score++;
+    x.time += Math.max(0, Math.min(120000, r.dt || 60000));
+  });
+  return Object.values(per).sort((a, b) => b.score - a.score || a.time - b.time);
+}
+function endRound() {
+  const rk = computeRanking(state.run);
+  const podium = rk.slice(0, 3).map((x) => ({ name: nameOf(x.id), score: x.score }));
+  const ranks = {};
+  rk.forEach((x, i) => (ranks[x.id] = i + 1));
+  writeState({ phase: "end", podium, ranks, rankN: rk.length });
+}
+function podiumBlock(total) {
+  const p = state.podium || [];
+  const wrap = h("div", "card panel-card");
+  wrap.appendChild(h("h3", null, "Podium"));
+  wrap.appendChild(h("p", "sub", "Most right answers, then fastest. Out of " + total + " questions."));
+  if (!p.length) { wrap.appendChild(h("div", "empty", "No answers yet.")); return wrap; }
+  const pod = h("div", "podium");
+  [1, 0, 2].forEach((i) => {
+    if (!p[i]) return;
+    const col = h("div", "pod pod-" + (i + 1));
+    col.appendChild(h("div", "pod-name", p[i].name));
+    col.appendChild(h("div", "pod-score", p[i].score + " / " + total));
+    const step = h("div", "pod-step");
+    step.appendChild(h("b", null, String(i + 1)));
+    col.appendChild(step);
+    pod.appendChild(col);
+  });
+  wrap.appendChild(pod);
+  return wrap;
+}
+
+/* ----- Prompt battle ----- */
+const BATTLES = [
+  { title: "Brief your director", task: "Write a prompt to summarize a 40 page evaluation report for your director, who has 3 minutes before a committee." },
+  { title: "Email a counterpart", task: "Write a prompt to draft an email to a ministry counterpart about a delayed tender, keeping the relationship warm." },
+  { title: "Prepare a site visit", task: "Write a prompt to prepare 5 sharp questions for a site visit of an electric bus depot." }
+];
+const ING_RX = {
+  role: /\b(you are|act as|as an? |imagine you|you're an?)\b/i,
+  context: /\b(for (my|a|the|our)|audience|reader|because|context|background|i am|i'm|we are|my (director|boss|manager|team|partner))\b/i,
+  format: /\b(bullets?|table|list|\d+\s*(words|lines|points|bullets|questions|paragraphs|sentences)|format|paragraphs?|subject line|headings?|sections?)\b/i,
+  constraints: /\b(max(imum)?|under|no more than|do not|don't|only|avoid|limit|without|less than|keep it)\b/i
+};
+function scorePrompt(t) {
+  const has = {};
+  let s = 0;
+  Object.keys(ING_RX).forEach((k) => { has[k] = ING_RX[k].test(t); if (has[k]) s++; });
+  if (t.trim().length > 40) s += 0.5;
+  const risky = /@|\b\d{6,}\b|\b(IBAN|passport|password)\b/i.test(t);
+  return { has, score: s, risky };
+}
+function ingBadges(sc) {
+  const row = h("div", "ing-legend");
+  ORDER.filter((k) => k !== "task").forEach((k) => {
+    const b = h("span", "ing" + (sc.has[k] ? "" : " off"), (sc.has[k] ? "✓ " : "") + ING[k]);
+    b.dataset.k = k;
+    row.appendChild(b);
+  });
+  if (sc.risky) row.appendChild(h("span", "ing warn-ing", "! check data"));
+  return row;
+}
+let battleDraft = {};
+function renderParticipantBattle(root) {
+  const b = BATTLES[state.battle || 0];
+  const key = state.run + "_b";
+  const sent = mine[key];
+  const card = h("div", "card qcard");
+  card.appendChild(h("span", "chip plain l-guide", "Prompt battle"));
+  card.appendChild(h("div", "qtext", b.title));
+  card.appendChild(h("div", "why", b.task));
+  const ta = h("textarea", "battle-input", null, { maxlength: "600", rows: "7", placeholder: "You are… The reader is… Give… Keep it under…", "aria-label": "Your prompt" });
+  ta.value = battleDraft[key] != null ? battleDraft[key] : sent ? sent.text : "";
+  const live = h("div");
+  const upd = () => { clear(live); live.appendChild(ingBadges(scorePrompt(ta.value))); };
+  ta.addEventListener("input", () => { battleDraft[key] = ta.value; upd(); });
+  upd();
+  card.appendChild(ta);
+  card.appendChild(live);
+  card.appendChild(h("p", "nick-note", "Do not paste real names, amounts or project data. The presenter may show your prompt on screen" + (nick ? " as " + nick : " anonymously") + "."));
+  const btn = h("button", "btn primary", sent ? "Update my prompt" : "Send my prompt", { type: "button" });
+  btn.addEventListener("click", () => {
+    const text = ta.value.trim();
+    if (text.length < 10) { ta.focus(); return; }
+    mine[key] = { text };
+    delete battleDraft[key];
+    write(BASE + "/battle/" + sid + "_" + state.run, { run: state.run, text, nick, ts: Date.now() });
+    pForce = true; renderParticipant();
+  });
+  const row = h("div", "btn-row"); row.style.justifyContent = "flex-start"; row.appendChild(btn);
+  if (sent) row.appendChild(h("span", "share-status", "Sent. You can still edit it."));
+  card.appendChild(row);
+  root.appendChild(card);
+}
+function renderHostBattle(root) {
+  const b = BATTLES[state.battle || 0];
+  const entries = (data.battle || []).filter((x) => x.run === state.run && x.text)
+    .map((x) => Object.assign({}, x, { sc: scorePrompt(x.text) }))
+    .sort((a, c) => c.sc.score - a.sc.score || a.ts - c.ts);
+  const top = h("div", "play-top");
+  const tt = h("div", "play-title");
+  tt.appendChild(h("b", null, "Prompt battle: " + b.title));
+  tt.appendChild(h("span", null, entries.length + " prompts received"));
+  top.appendChild(tt);
+  const back = h("button", "tool-btn", "Back to lobby", { type: "button" });
+  back.addEventListener("click", () => writeState({ phase: "lobby", spot: null }));
+  top.appendChild(back);
+  root.appendChild(top);
+  const brief = h("div", "card qcard");
+  brief.appendChild(h("div", "qtext", b.task));
+  brief.appendChild(h("div", "qask", "Scan the QR code, write your prompt on your phone. A good prompt has a role, context, format and limits."));
+  root.appendChild(brief);
+  const spot = entries.find((x) => x._id === state.spot);
+  if (spot) {
+    const sp = h("div", "card spotlight");
+    sp.appendChild(h("div", "spot-by", spot.nick || "Anonymous"));
+    sp.appendChild(h("div", "spot-text", spot.text));
+    sp.appendChild(ingBadges(spot.sc));
+    const close = h("button", "tool-btn", "Close", { type: "button" });
+    close.addEventListener("click", () => writeState({ spot: null }));
+    sp.appendChild(close);
+    root.appendChild(sp);
+  }
+  const grid = h("div", "battle-grid");
+  if (!entries.length) grid.appendChild(h("div", "empty", "Waiting for prompts…"));
+  entries.forEach((x, i) => {
+    const c = h("button", "battle-card" + (x._id === state.spot ? " is-spot" : ""), null, { type: "button" });
+    const hd = h("div", "battle-hd");
+    hd.appendChild(h("b", null, (i < 3 ? ["🥇 ", "🥈 ", "🥉 "][i] : "") + (x.nick || "Anonymous")));
+    hd.appendChild(h("span", null, Math.floor(x.sc.score) + "/4"));
+    c.appendChild(hd);
+    c.appendChild(h("div", "battle-text", x.text.length > 220 ? x.text.slice(0, 220) + "…" : x.text));
+    c.appendChild(ingBadges(x.sc));
+    c.addEventListener("click", () => writeState({ spot: x._id }));
+    grid.appendChild(c);
+  });
+  root.appendChild(grid);
+}
+
+/* ----- Commitment wall ----- */
+const STOP = new Set("a an the and or of to in on for with my i will be is are it this that at by from as not no never always use ai before after more less our your their we you they me all any each every".split(" "));
+function renderParticipantWall(root) {
+  const key = state.run + "_w";
+  const list = mine[key] || [];
+  const card = h("div", "card qcard");
+  card.appendChild(h("span", "chip plain l-guide", "Commitment wall"));
+  card.appendChild(h("div", "qtext", "One habit you will change this week"));
+  card.appendChild(h("div", "qask", "A few words, up to 3 entries. Shown on the main screen."));
+  const inp = h("input", "wall-input", null, { type: "text", maxlength: "80", placeholder: "Anonymize before pasting", "aria-label": "Your commitment" });
+  card.appendChild(inp);
+  const btn = h("button", "btn primary", "Add to the wall", { type: "button" });
+  btn.disabled = list.length >= 3;
+  btn.addEventListener("click", () => {
+    const t = inp.value.trim();
+    if (t.length < 3 || list.length >= 3) return;
+    const n = list.length + 1;
+    mine[key] = list.concat([t]);
+    write(BASE + "/wall/" + sid + "_" + state.run + "_" + n, { run: state.run, text: t, ts: Date.now() });
+    pForce = true; renderParticipant();
+  });
+  const row = h("div", "btn-row"); row.style.justifyContent = "flex-start"; row.appendChild(btn);
+  card.appendChild(row);
+  list.forEach((t) => card.appendChild(h("div", "review-row", "✓ " + t)));
+  root.appendChild(card);
+}
+const CLOUD_COLS = ["task", "context", "role", "format", "constraints"];
+function renderHostWall(root) {
+  const items = (data.wall || []).filter((x) => x.run === state.run && x.text);
+  const top = h("div", "play-top");
+  const tt = h("div", "play-title");
+  tt.appendChild(h("b", null, "Commitment wall"));
+  tt.appendChild(h("span", null, items.length + " commitments"));
+  top.appendChild(tt);
+  const back = h("button", "tool-btn", "Back to lobby", { type: "button" });
+  back.addEventListener("click", () => writeState({ phase: "lobby" }));
+  top.appendChild(back);
+  root.appendChild(top);
+  const freq = {};
+  items.forEach((x) => {
+    const seen = new Set();
+    x.text.toLowerCase().replace(/[^a-zà-ÿ0-9' ]+/gi, " ").split(/\s+/).forEach((w) => {
+      w = w.replace(/^'+|'+$/g, "");
+      if (w.length < 3 || STOP.has(w) || seen.has(w)) return;
+      seen.add(w); freq[w] = (freq[w] || 0) + 1;
+    });
+  });
+  const words = Object.keys(freq).map((w) => [w, freq[w]]).sort((a, b) => b[1] - a[1]).slice(0, 40);
+  const card = h("div", "card cloud-card");
+  if (!words.length) card.appendChild(h("div", "empty", "Scan the QR code and add the habit you will change this week."));
+  const mx = words.length ? words[0][1] : 1;
+  const cloud = h("div", "cloud");
+  words.sort((a, b) => (a[0] < b[0] ? -1 : 1)).forEach(([w, n], i) => {
+    const s = h("span", "cloud-w", w);
+    s.style.fontSize = (16 + (n / mx) * 46).toFixed(0) + "px";
+    s.style.color = "var(--" + CLOUD_COLS[i % CLOUD_COLS.length] + "-ink)";
+    s.title = n + (n > 1 ? " mentions" : " mention");
+    cloud.appendChild(s);
+  });
+  card.appendChild(cloud);
+  root.appendChild(card);
+  if (items.length) {
+    const lst = h("div", "card panel-card");
+    lst.appendChild(h("h3", null, "Latest"));
+    items.slice().sort((a, b) => b.ts - a.ts).slice(0, 8).forEach((x) => lst.appendChild(h("div", "review-row", x.text)));
+    root.appendChild(lst);
+  }
+}
+
+/* ----- Network status ----- */
+let netState = window.__AIC ? "connecting" : "live";
+function netLabel() {
+  if (!db) return ["offline", "Offline"];
+  if (netState === "live") return ["live", "Live"];
+  if (netState === "sending") return ["sending", "Sending…"];
+  if (netState === "offline") return ["offline", "Reconnecting…"];
+  return ["sending", "Connecting…"];
+}
+function renderNet() {
+  const el = $("net-pill");
+  if (!el) return;
+  const [cls, txt] = netLabel();
+  const tools = $("host-tools");
+  if (MODE === "host" && tools && el.parentNode !== tools) tools.insertBefore(el, tools.firstChild);
+  if (MODE !== "host" && el.parentNode !== document.body) document.body.insertBefore(el, document.body.firstChild);
+  el.className = "net-pill " + cls + (MODE === "host" ? " inline" : "");
+  el.textContent = txt;
+  el.hidden = false;
+}
+window.addEventListener("aic-net", (e) => { netState = e.detail; renderNet(); });
 function subscribe() {
   const listen = (name, fn) => {
     try {
-      const un = db.collection(BASE + "/" + name).limit(1000).onSnapshot((snap) => { data.ids[name] = snap.docs.map((d) => d.id); fn(snap.docs.map((d) => d.data() || {})); renderResults(); renderQuiz(); checkAuto(); }, () => {});
+      const un = db.collection(BASE + "/" + name).limit(1000).onSnapshot((snap) => { data.ids[name] = snap.docs.map((d) => d.id); fn(snap.docs.map((d) => Object.assign({ _id: d.id }, d.data() || {}))); renderResults(); renderQuiz(); checkAuto(); }, () => {});
       if (un) unsubs.push(un);
     } catch (e) {}
   };
   listen("responses", (a) => (data.responses = a));
-  listen("joins", (a) => (data.joins = a.length));
+  listen("joins", (a) => { data.joins = a.length; data.nicks = {}; a.forEach((x) => { if (x.nick) data.nicks[x._id] = x.nick; }); });
+  listen("battle", (a) => (data.battle = a));
+  listen("wall", (a) => (data.wall = a));
   listen("calc", (a) => (data.calc = a));
 }
 function tally() {
