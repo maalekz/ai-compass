@@ -1,0 +1,2362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>AI Compass</title>
+<meta name="author" content="Malek Mehio, mehiom@afd.fr">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:wght@400..700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2f7;
+  --surface: #ffffff;
+  --surface-2: #e4eaf2;
+  --surface-3: #f5f8fc;
+  --ink: #13203d;
+  --muted: #56637f;
+  --border: rgba(19,32,61,0.12);
+  --brand: #2c58e8;
+  --brand-ink: #1b3db5;
+  --brand-soft: rgba(44,88,232,0.10);
+  --hero-bg: #2347cf;
+  --sun: #ffc83d;
+  --sun-soft: rgba(255,200,61,0.22);
+  --sun-ink: #6b4a00;
+  --good: #12924f;
+  --good-on: #ffffff;
+  --good-soft: rgba(18,146,79,0.12);
+  --good-ink: #0b6b39;
+  --warn: #f2a900;
+  --warn-on: #1d1400;
+  --warn-soft: rgba(242,169,0,0.16);
+  --warn-ink: #8a5a00;
+  --bad: #d83a40;
+  --bad-on: #ffffff;
+  --bad-soft: rgba(216,58,64,0.11);
+  --bad-ink: #a5262b;
+  --task: #2c58e8;
+  --task-soft: rgba(44,88,232,0.12);
+  --task-ink: #1b3db5;
+  --context: #0f9d8a;
+  --context-soft: rgba(15,157,138,0.13);
+  --context-ink: #0a6f62;
+  --role: #7c3aed;
+  --role-soft: rgba(124,58,237,0.12);
+  --role-ink: #5b21b6;
+  --format: #db2777;
+  --format-soft: rgba(219,39,119,0.11);
+  --format-ink: #a31457;
+  --constraints: #ea6a12;
+  --constraints-soft: rgba(234,106,18,0.13);
+  --constraints-ink: #a24a07;
+  --shadow: 0 1px 2px rgba(19,32,61,0.06), 0 12px 30px -18px rgba(19,32,61,0.30);
+  --shadow-sm: 0 1px 2px rgba(19,32,61,0.12), 0 2px 8px -2px rgba(19,32,61,0.12);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1322;
+    --surface: #171e33;
+    --surface-2: #212a45;
+    --surface-3: #1b2339;
+    --ink: #edf1fb;
+    --muted: #9aa7c7;
+    --border: rgba(237,241,251,0.14);
+    --brand: #7e9dff;
+    --brand-ink: #adc0ff;
+    --brand-soft: rgba(126,157,255,0.16);
+    --hero-bg: #1b2a6b;
+    --sun: #ffd05a;
+    --sun-soft: rgba(255,208,90,0.18);
+    --sun-ink: #ffe29a;
+    --good: #34d08a;
+    --good-on: #04210f;
+    --good-soft: rgba(52,208,138,0.16);
+    --good-ink: #74e7b0;
+    --warn: #ffbf3a;
+    --warn-on: #241800;
+    --warn-soft: rgba(255,191,58,0.16);
+    --warn-ink: #ffd37a;
+    --bad: #ff6b70;
+    --bad-on: #2a0709;
+    --bad-soft: rgba(255,107,112,0.16);
+    --bad-ink: #ffa0a4;
+    --task: #7e9dff;
+    --task-soft: rgba(126,157,255,0.18);
+    --task-ink: #b5c6ff;
+    --context: #3fd3bf;
+    --context-soft: rgba(63,211,191,0.16);
+    --context-ink: #8ae8da;
+    --role: #b08cff;
+    --role-soft: rgba(176,140,255,0.18);
+    --role-ink: #d3bfff;
+    --format: #ff7ab8;
+    --format-soft: rgba(255,122,184,0.17);
+    --format-ink: #ffb0d4;
+    --constraints: #ff9c52;
+    --constraints-soft: rgba(255,156,82,0.17);
+    --constraints-ink: #ffc392;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 16px 34px -18px rgba(0,0,0,0.6);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4), 0 2px 8px -2px rgba(0,0,0,0.4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1322;
+  --surface: #171e33;
+  --surface-2: #212a45;
+  --surface-3: #1b2339;
+  --ink: #edf1fb;
+  --muted: #9aa7c7;
+  --border: rgba(237,241,251,0.14);
+  --brand: #7e9dff;
+  --brand-ink: #adc0ff;
+  --brand-soft: rgba(126,157,255,0.16);
+  --hero-bg: #1b2a6b;
+  --sun: #ffd05a;
+  --sun-soft: rgba(255,208,90,0.18);
+  --sun-ink: #ffe29a;
+  --good: #34d08a;
+  --good-on: #04210f;
+  --good-soft: rgba(52,208,138,0.16);
+  --good-ink: #74e7b0;
+  --warn: #ffbf3a;
+  --warn-on: #241800;
+  --warn-soft: rgba(255,191,58,0.16);
+  --warn-ink: #ffd37a;
+  --bad: #ff6b70;
+  --bad-on: #2a0709;
+  --bad-soft: rgba(255,107,112,0.16);
+  --bad-ink: #ffa0a4;
+  --task: #7e9dff;
+  --task-soft: rgba(126,157,255,0.18);
+  --task-ink: #b5c6ff;
+  --context: #3fd3bf;
+  --context-soft: rgba(63,211,191,0.16);
+  --context-ink: #8ae8da;
+  --role: #b08cff;
+  --role-soft: rgba(176,140,255,0.18);
+  --role-ink: #d3bfff;
+  --format: #ff7ab8;
+  --format-soft: rgba(255,122,184,0.17);
+  --format-ink: #ffb0d4;
+  --constraints: #ff9c52;
+  --constraints-soft: rgba(255,156,82,0.17);
+  --constraints-ink: #ffc392;
+  --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 16px 34px -18px rgba(0,0,0,0.6);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4), 0 2px 8px -2px rgba(0,0,0,0.4);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  padding-inline: 16px;
+  padding-block: 16px 100px;
+}
+@media (min-width: 760px) {
+  body { padding-inline: 24px; padding-block: 26px 56px; }
+}
+.app { max-width: 880px; margin: 0 auto; }
+h1, h2, h3, h4 {
+  font-family: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+p { margin: 0; }
+button { font-family: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; border-radius: 8px; }
+.mono { font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Masthead and nav ---------- */
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.brand { display: flex; align-items: center; gap: 11px; }
+.mark { width: 40px; height: 40px; flex: none; }
+.brand-name {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.brand-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -8px 24px -16px rgba(19, 32, 61, 0.35);
+}
+.nav button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 2px;
+  border-radius: 12px;
+  cursor: pointer;
+  min-height: 48px;
+}
+.nav button svg { width: 22px; height: 22px; }
+.nav button[aria-selected="true"] { color: var(--brand-ink); background: var(--brand-soft); }
+@media (min-width: 760px) {
+  .nav {
+    position: static;
+    display: flex;
+    gap: 2px;
+    background: var(--surface-2);
+    border: none;
+    border-radius: 999px;
+    padding: 4px;
+    box-shadow: none;
+  }
+  .nav button {
+    flex-direction: row;
+    gap: 7px;
+    font-size: 13.5px;
+    padding: 8px 15px;
+    border-radius: 999px;
+    min-height: 0;
+  }
+  .nav button svg { width: 17px; height: 17px; }
+  .nav button[aria-selected="true"] { background: var(--surface); box-shadow: var(--shadow-sm); }
+}
+
+section.panel { display: flex; flex-direction: column; gap: 18px; }
+.section-head h2 { font-size: 26px; font-weight: 800; }
+.section-head p { color: var(--muted); margin-top: 6px; max-width: 62ch; }
+
+/* ---------- Hero (agenda) ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  padding: 26px 22px;
+  border-radius: 22px;
+  color: #fff;
+  background-color: var(--hero-bg);
+  background-image:
+    radial-gradient(circle at 100% 0, rgba(255,255,255,0.12) 0 150px, transparent 151px),
+    repeating-radial-gradient(circle at 100% 0, rgba(255,255,255,0.08) 0 1px, transparent 1px 30px);
+}
+@media (min-width: 720px) {
+  .hero { grid-template-columns: 1fr 224px; padding: 34px 32px; align-items: center; }
+}
+.eyebrow-light {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sun);
+}
+.hero h1 { font-size: clamp(32px, 7vw, 46px); font-weight: 800; line-height: 1.02; margin: 10px 0 12px; }
+.hero p.lead { color: rgba(255,255,255,0.86); max-width: 46ch; font-size: 15.5px; }
+.hero-stats { display: flex; gap: 22px; margin-top: 20px; }
+.hero-stats div { display: flex; flex-direction: column; }
+.hero-stats b {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.hero-stats span { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+.qr-card {
+  background: #ffffff;
+  color: #13203d;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  text-align: center;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 20, 0.6);
+}
+.qr-box { line-height: 0; width: 100%; max-width: 188px; }
+.qr-box img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.qr-caption { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 16px; }
+.qr-url { font-family: "JetBrains Mono", monospace; font-size: 10px; color: #56637f; word-break: break-all; line-height: 1.35; }
+.copy-btn {
+  border: 1.5px solid #cfd8e8;
+  background: #f3f6fb;
+  color: #13203d;
+  font-weight: 700;
+  font-size: 12.5px;
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.copy-btn:hover { border-color: #2c58e8; color: #1b3db5; }
+
+.how { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 720px) { .how { grid-template-columns: repeat(3, 1fr); } }
+.how-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.how-num {
+  flex: none;
+  width: 30px; height: 30px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  background: var(--sun);
+  color: #3b2900;
+}
+.how-step b { display: block; font-size: 14.5px; }
+.how-step span { font-size: 13px; color: var(--muted); }
+
+.timeline-card { padding: 22px 20px 12px; }
+.timeline-card h3 { font-size: 20px; font-weight: 800; }
+.timeline-card .sub { color: var(--muted); font-size: 13.5px; margin: 4px 0 14px; }
+.tl { position: relative; display: flex; flex-direction: column; }
+.tl-row {
+  display: grid;
+  grid-template-columns: 82px 18px 1fr;
+  gap: 8px 12px;
+  padding-bottom: 18px;
+  position: relative;
+}
+.tl-row:last-child { padding-bottom: 8px; }
+.tl-time { font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 600; color: var(--muted); padding-top: 3px; line-height: 1.3; }
+.tl-dot { width: 14px; height: 14px; border-radius: 50%; margin-top: 4px; background: var(--c, var(--brand)); box-shadow: 0 0 0 4px var(--cs, var(--brand-soft)); position: relative; z-index: 1; justify-self: center; }
+.tl-row::before {
+  content: "";
+  position: absolute;
+  left: calc(82px + 12px + 8px + 6px);
+  top: 20px; bottom: -2px;
+  width: 2px;
+  background: var(--border);
+}
+.tl-row:last-child::before { display: none; }
+.tl-title { font-weight: 800; font-size: 15px; font-family: "Bricolage Grotesque", sans-serif; }
+.tl-desc { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+.tl-min { display: inline-block; margin-left: 8px; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; color: var(--c-ink, var(--brand-ink)); background: var(--cs, var(--brand-soft)); padding: 1px 8px; border-radius: 999px; vertical-align: 2px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  border: none;
+  border-radius: 14px;
+  padding: 13px 20px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  background: var(--ink);
+  color: var(--bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--brand); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #0a1030; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0a1030; } }
+.btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); }
+.btn:disabled { opacity: 0.5; cursor: default; filter: none; }
+.btn svg { width: 18px; height: 18px; }
+
+/* ---------- Quiz ---------- */
+.rounds { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 720px) { .rounds { grid-template-columns: repeat(3, 1fr); } }
+.round-card {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  position: relative;
+  min-height: 190px;
+}
+.round-card:hover { border-color: var(--rc, var(--brand)); }
+.round-num {
+  width: 46px; height: 46px;
+  border-radius: 15px;
+  display: grid; place-items: center;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 24px; font-weight: 800;
+  background: var(--rcs, var(--brand-soft));
+  color: var(--rci, var(--brand-ink));
+}
+.round-card h3 { font-size: 20px; font-weight: 800; margin-top: 4px; }
+.round-card p { color: var(--muted); font-size: 13.5px; flex: 1; }
+.round-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.round-state {
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.round-state.done { background: var(--good-soft); color: var(--good-ink); }
+.round-1 { --rc: var(--task); --rcs: var(--task-soft); --rci: var(--task-ink); }
+.round-2 { --rc: var(--role); --rcs: var(--role-soft); --rci: var(--role-ink); }
+.round-3 { --rc: var(--context); --rcs: var(--context-soft); --rci: var(--context-ink); }
+
+.legend-card { padding: 16px 18px; }
+.legend-card summary { cursor: pointer; font-weight: 800; font-family: "Bricolage Grotesque", sans-serif; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.legend-card summary::-webkit-details-marker { display: none; }
+.legend-card summary .chev { transition: transform 0.15s; color: var(--muted); }
+.legend-card[open] summary .chev { transform: rotate(180deg); }
+.lv-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.lv-row { display: grid; grid-template-columns: 118px 1fr; gap: 12px; align-items: start; font-size: 13.5px; color: var(--muted); }
+.lv-row p { margin: 0; }
+@media (max-width: 460px) { .lv-row { grid-template-columns: 1fr; gap: 4px; } }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.9; }
+.chip.l-pub { background: var(--good-soft); color: var(--good-ink); }
+.chip.l-res { background: var(--warn-soft); color: var(--warn-ink); }
+.chip.l-conf { background: var(--bad-soft); color: var(--bad-ink); }
+.chip.l-strict { background: var(--bad); color: var(--bad-on); }
+.chip.l-pers { background: var(--role-soft); color: var(--role-ink); }
+.chip.l-guide { background: var(--brand-soft); color: var(--brand-ink); }
+.chip.plain::before { display: none; }
+
+.play-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.back-btn { border: none; background: var(--surface); border: 1px solid var(--border); width: 42px; height: 42px; border-radius: 14px; cursor: pointer; display: grid; place-items: center; font-size: 18px; }
+.play-title { flex: 1; min-width: 0; }
+.play-title b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 17px; line-height: 1.15; }
+.play-title span { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.streak {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--sun-soft); color: var(--sun-ink);
+  font-weight: 800; font-size: 13px;
+  padding: 6px 12px; border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+.streak svg { width: 15px; height: 15px; fill: var(--sun); stroke: var(--sun-ink); stroke-width: 1.6; }
+.streak.hot { animation: pulse 0.6s ease; }
+
+.dots { display: flex; gap: 6px; flex-wrap: wrap; }
+.dots i { height: 8px; flex: 1 1 14px; min-width: 14px; max-width: 40px; border-radius: 6px; background: var(--surface-2); }
+.dots i.ok { background: var(--good); }
+.dots i.ko { background: var(--bad); }
+.dots i.now { background: var(--brand); }
+
+.qcard { padding: 22px 20px; display: flex; flex-direction: column; gap: 16px; }
+.qkind { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.qtext {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 4.6vw, 25px);
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+}
+.qask { color: var(--muted); font-size: 13.5px; font-weight: 600; }
+.answers { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 720px) { .answers { grid-template-columns: repeat(3, 1fr); } .ans { flex-direction: column; align-items: flex-start; } }
+.ans {
+  display: flex; align-items: center; gap: 13px;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform 0.08s, border-color 0.12s, background 0.12s, opacity 0.2s;
+  min-height: 64px;
+}
+.ans:hover:not(:disabled) { transform: translateY(-2px); }
+.ans .ic { flex: none; width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; font-size: 20px; }
+.ans[data-c="green"] .ic { background: var(--good); color: var(--good-on); }
+.ans[data-c="amber"] .ic { background: var(--warn); color: var(--warn-on); }
+.ans[data-c="red"] .ic { background: var(--bad); color: var(--bad-on); }
+.ans[data-c="green"]:hover:not(:disabled) { border-color: var(--good); }
+.ans[data-c="amber"]:hover:not(:disabled) { border-color: var(--warn); }
+.ans[data-c="red"]:hover:not(:disabled) { border-color: var(--bad); }
+.ans b { display: block; font-size: 15.5px; font-weight: 800; line-height: 1.2; }
+.ans small { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; font-weight: 500; line-height: 1.3; }
+.ans:disabled { cursor: default; opacity: 0.45; transform: none; }
+.ans.is-correct { opacity: 1; border-color: var(--good); background: var(--good-soft); }
+.ans.is-wrong { opacity: 1; border-color: var(--bad); background: var(--bad-soft); animation: shake 0.35s; }
+
+.reveal { border-radius: 16px; padding: 16px 16px 14px; border: 2px solid; display: flex; flex-direction: column; gap: 9px; animation: rise 0.25s ease; }
+.reveal.ok { border-color: var(--good); background: var(--good-soft); }
+.reveal.ko { border-color: var(--bad); background: var(--bad-soft); }
+.reveal .verdict { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 18px; }
+.reveal.ok .verdict { color: var(--good-ink); }
+.reveal.ko .verdict { color: var(--bad-ink); }
+.reveal .why { font-size: 14.5px; line-height: 1.55; }
+.reveal .src { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); }
+.next-row { display: flex; justify-content: flex-end; }
+
+.result-card { padding: 28px 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.donut { position: relative; width: 150px; height: 150px; }
+.donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut .trk { fill: none; stroke: var(--surface-2); stroke-width: 12; }
+.donut .val { fill: none; stroke: var(--brand); stroke-width: 12; stroke-linecap: round; transition: stroke-dasharray 0.8s ease; }
+.donut .lbl { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; }
+.donut .lbl b { font-family: "Bricolage Grotesque", sans-serif; font-size: 38px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.donut .lbl span { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.result-card h3 { font-size: 24px; font-weight: 800; }
+.result-card .msg { color: var(--muted); max-width: 44ch; }
+.share-status { font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-ink); }
+.share-status.off { background: var(--surface-2); color: var(--muted); }
+.review { width: 100%; display: flex; flex-direction: column; gap: 8px; text-align: left; margin-top: 4px; }
+.review h4 { font-size: 14px; color: var(--muted); font-weight: 700; font-family: "Figtree", sans-serif; letter-spacing: 0; }
+.review-row { display: flex; gap: 10px; background: var(--surface-3); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; font-size: 13.5px; line-height: 1.4; }
+.review-row b { flex: none; font-family: "JetBrains Mono", monospace; font-size: 11px; padding-top: 2px; color: var(--bad-ink); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+
+.confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 40; }
+.confetti i { position: absolute; top: -12px; width: 9px; height: 14px; border-radius: 2px; animation: fall 2.4s ease-in forwards; }
+
+/* ---------- Prompt lab ---------- */
+[data-k="role"] { --c: var(--role); --cs: var(--role-soft); --ci: var(--role-ink); }
+[data-k="context"] { --c: var(--context); --cs: var(--context-soft); --ci: var(--context-ink); }
+[data-k="task"] { --c: var(--task); --cs: var(--task-soft); --ci: var(--task-ink); }
+[data-k="format"] { --c: var(--format); --cs: var(--format-soft); --ci: var(--format-ink); }
+[data-k="constraints"] { --c: var(--constraints); --cs: var(--constraints-soft); --ci: var(--constraints-ink); }
+[data-k="vague"] { --c: var(--bad); --cs: var(--bad-soft); --ci: var(--bad-ink); }
+[data-k="input"] { --c: var(--muted); --cs: var(--surface-3); --ci: var(--muted); }
+
+.recipes { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 8px; margin-inline: -2px; scrollbar-width: thin; }
+.recipe-chip {
+  flex: none;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-weight: 800;
+  font-size: 13.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.recipe-chip[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.ing-legend { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.ing { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 6px; background: var(--cs); color: var(--ci); border: 1px solid transparent; }
+
+.deck-meta { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.deck-meta .stepno { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600; color: var(--muted); }
+.quality { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.qbar { width: 130px; height: 9px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
+.qbar i { display: block; height: 100%; width: 0; border-radius: 6px; background: var(--brand); transition: width 0.45s ease; }
+
+.track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 12px;
+  margin-inline: -2px;
+  cursor: grab;
+  scrollbar-width: none;
+}
+.track::-webkit-scrollbar { display: none; }
+.track.dragging { scroll-snap-type: none; cursor: grabbing; user-select: none; }
+.pcard {
+  flex: 0 0 90%;
+  scroll-snap-align: start;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+@media (min-width: 720px) { .pcard { flex-basis: 82%; padding: 22px; } }
+.pcard-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.step-tag { display: inline-flex; align-items: center; gap: 7px; background: var(--cs); color: var(--ci); font-weight: 800; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
+.step-tag svg { width: 14px; height: 14px; }
+.pcard h3 { font-size: 20px; font-weight: 800; }
+.pblock { display: flex; flex-direction: column; gap: 8px; }
+.seg {
+  position: relative;
+  background: var(--cs);
+  border-left: 4px solid var(--c);
+  border-radius: 4px 12px 12px 4px;
+  padding: 18px 12px 10px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.seg-tag { position: absolute; top: 4px; left: 12px; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ci); }
+.seg.is-new { box-shadow: 0 0 0 2px var(--c); animation: pop 0.45s ease; }
+.seg[data-k="input"] { border-left-style: dashed; background: transparent; border: 2px dashed var(--border); border-radius: 12px; padding: 10px 12px; color: var(--muted); }
+.seg[data-k="input"] .seg-tag { display: none; }
+.why { font-size: 14.5px; line-height: 1.55; }
+.why b { font-weight: 800; }
+.outcome { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; padding: 11px 13px; border-radius: 12px; background: var(--surface-3); border: 1px solid var(--border); }
+.outcome b { flex: none; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 3px; color: var(--muted); }
+.preflight { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.preflight li { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.45; }
+.preflight li svg { width: 18px; height: 18px; flex: none; color: var(--good); margin-top: 1px; }
+
+.deck-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.arrow { width: 48px; height: 48px; border-radius: 16px; border: 2px solid var(--border); background: var(--surface); cursor: pointer; display: grid; place-items: center; font-size: 20px; }
+.arrow:disabled { opacity: 0.35; cursor: default; }
+.arrow.next { background: var(--brand); border-color: var(--brand); color: #fff; }
+:root[data-theme="dark"] .arrow.next { color: #0a1030; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .arrow.next { color: #0a1030; } }
+.pager { display: flex; gap: 8px; align-items: center; }
+.pager button { border: none; padding: 0; width: 10px; height: 10px; border-radius: 6px; background: var(--surface-2); cursor: pointer; transition: width 0.2s, background 0.2s; }
+.pager button[aria-current="true"] { width: 26px; background: var(--brand); }
+.swipe-hint { text-align: center; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+
+.doctor { padding: 22px 20px; display: flex; flex-direction: column; gap: 14px; }
+.doctor h3 { font-size: 22px; font-weight: 800; }
+.doctor .sub { color: var(--muted); font-size: 13.5px; }
+.doc-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.doc-opt { border: 2px solid var(--border); background: var(--surface); border-radius: 12px; padding: 10px 16px; font-weight: 800; font-size: 14px; cursor: pointer; min-height: 44px; }
+.doc-opt:hover:not(:disabled) { border-color: var(--c); background: var(--cs); }
+.doc-opt:disabled { cursor: default; opacity: 0.5; }
+.doc-opt.is-best { opacity: 1; border-color: var(--good); background: var(--good-soft); }
+.doc-opt.is-miss { opacity: 1; border-color: var(--bad); background: var(--bad-soft); }
+.seg.missing { border-left-style: dashed; background: transparent; border: 2px dashed var(--c); border-radius: 12px; padding: 14px 12px 8px; color: var(--ci); font-style: italic; }
+.seg.neutral { --c: var(--border); --cs: var(--surface-3); --ci: var(--muted); }
+
+/* ---------- Calculator ---------- */
+.calc-card { padding: 8px 18px; }
+.task { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border); }
+.task:last-child { border-bottom: none; }
+.task-name { font-weight: 800; font-size: 15px; font-family: "Bricolage Grotesque", sans-serif; }
+.task-gain { font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 600; color: var(--brand-ink); background: var(--brand-soft); padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.task-ctrl { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+.task-ctrl .out { text-align: right; min-width: 118px; line-height: 1.25; }
+.task-ctrl .out b { display: block; font-family: "JetBrains Mono", monospace; font-size: 14px; font-variant-numeric: tabular-nums; }
+.task-ctrl .out span { font-size: 12px; color: var(--good-ink); font-weight: 700; }
+input[type="range"] { width: 100%; accent-color: var(--brand); height: 28px; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 460px) { .tiles { grid-template-columns: 1fr; } }
+.tile { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px 16px; }
+.tile .tl { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--muted); }
+.tile .tv { font-family: "Bricolage Grotesque", sans-serif; font-size: 32px; font-weight: 800; line-height: 1.1; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.tile .tn { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.tile.hl { background: var(--brand); color: #fff; border-color: var(--brand); }
+:root[data-theme="dark"] .tile.hl { color: #0a1030; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tile.hl { color: #0a1030; } }
+.tile.hl .tl, .tile.hl .tn { color: inherit; opacity: 0.8; }
+.calc-note { font-size: 13px; color: var(--muted); }
+.calc-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Results ---------- */
+.panel-card { padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; }
+.panel-card h3 { font-size: 20px; font-weight: 800; }
+.panel-card .sub { color: var(--muted); font-size: 13.5px; margin-top: -8px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.seg-ctl { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; gap: 2px; }
+.seg-ctl button { border: none; background: none; font-weight: 700; font-size: 12.5px; padding: 7px 12px; border-radius: 999px; cursor: pointer; color: var(--muted); }
+.seg-ctl button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); }
+.empty { text-align: center; color: var(--muted); padding: 26px 12px; font-size: 14px; }
+.debated { display: flex; flex-direction: column; gap: 12px; }
+.bar-row { display: flex; flex-direction: column; gap: 7px; padding-top: 12px; border-top: 1px solid var(--border); }
+.bar-row:first-child { border-top: none; padding-top: 0; }
+.bar-top { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: baseline; }
+.bar-top .n { font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 600; color: var(--muted); }
+.bar-top .t { font-size: 13.5px; line-height: 1.4; }
+.bar-top .p { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stack { display: flex; gap: 2px; height: 26px; border-radius: 8px; overflow: hidden; background: var(--surface-2); }
+.stack div { display: flex; align-items: center; justify-content: center; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; border-radius: 4px; transition: flex-basis 0.35s ease; }
+.stack .g { background: var(--good); color: var(--good-on); }
+.stack .a { background: var(--warn); color: var(--warn-on); }
+.stack .r { background: var(--bad); color: var(--bad-on); }
+.stack div.ok { box-shadow: inset 0 0 0 2px var(--ink); }
+.bar-foot { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); font-weight: 600; }
+.key span { display: inline-flex; align-items: center; gap: 6px; }
+.key i { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+.key .g { background: var(--good); } .key .a { background: var(--warn); } .key .r { background: var(--bad); }
+.hbars { display: flex; flex-direction: column; gap: 10px; }
+.hbar { display: grid; grid-template-columns: minmax(0, 150px) 1fr 52px; gap: 10px; align-items: center; font-size: 13px; }
+@media (max-width: 460px) { .hbar { grid-template-columns: minmax(0, 110px) 1fr 44px; } }
+.hbar .lab { font-weight: 600; line-height: 1.25; }
+.hbar .tr { height: 14px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+.hbar .tr i { display: block; height: 100%; background: var(--brand); border-radius: 6px; transition: width 0.4s ease; }
+.hbar .v { font-family: "JetBrains Mono", monospace; font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; }
+.round-bars .hbar .tr i { background: var(--rc, var(--brand)); }
+
+footer.credit {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ---------- Motion ---------- */
+@keyframes pop { 0% { transform: scale(0.97); opacity: 0.2; } 60% { transform: scale(1.01); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes rise { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes pulse { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
+@keyframes fall { to { transform: translateY(110vh) rotate(540deg); opacity: 0.9; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+[hidden] { display: none !important; }
+
+/* ---------- Modes ---------- */
+.app.pending { visibility: hidden; }
+.nav { grid-template-columns: repeat(var(--n, 5), 1fr); }
+.host-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.host-tools[hidden] { display: none; }
+.tool-btn { border: 1.5px solid var(--border); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 13px; cursor: pointer; }
+.tool-btn:hover { border-color: var(--brand); }
+.notice { background: var(--sun-soft); color: var(--sun-ink); border-radius: 14px; padding: 12px 16px; font-size: 14px; line-height: 1.45; font-weight: 600; }
+.notice b { font-weight: 800; }
+.btn.danger { background: var(--bad); color: var(--bad-on); }
+.round-card:disabled { opacity: 0.55; cursor: default; }
+.round-card:disabled:hover { border-color: var(--border); }
+.round-state.locked { background: var(--surface-2); color: var(--muted); }
+.ctl-rounds { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.ctl-round { text-align: left; border: 2px solid var(--border); background: var(--surface); border-radius: 16px; padding: 14px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 4px; }
+.ctl-round b { font-family: "Bricolage Grotesque", sans-serif; font-size: 16px; font-weight: 800; }
+.ctl-round span { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600; color: var(--muted); }
+.ctl-round[aria-pressed="true"] { border-color: var(--good); background: var(--good-soft); }
+.ctl-round[aria-pressed="true"] span { color: var(--good-ink); }
+
+/* Presenter (TV) mode: the page is scaled up by script with zoom */
+.host .app { max-width: 1280px; }
+.host body, html.host body { font-size: 16px; }
+.host .hero { grid-template-columns: 1fr 300px; }
+.host .qr-box { max-width: 250px; }
+.host .qr-caption { font-size: 20px; }
+.host .qr-url { font-size: 11.5px; }
+.host .hero-stats b { font-size: 46px; }
+.host .seg { font-size: 14px; }
+.host .pcard { flex-basis: 78%; }
+.host .tile .tv { font-size: 40px; }
+.host .bar-top .t { font-size: 15px; }
+.host .stack { height: 30px; }
+
+/* ---------- Live quiz ---------- */
+.ans.picked { opacity: 1; border-color: var(--brand); background: var(--brand-soft); }
+.ans.static { cursor: default; opacity: 1; }
+.ans.static:hover { transform: none; }
+.meter { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: center; }
+.meter b { font-family: "Bricolage Grotesque", sans-serif; font-size: 44px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.meter span { font-size: 14px; color: var(--muted); font-weight: 700; }
+.meter .qbar { grid-column: 1 / -1; width: 100%; height: 14px; }
+.stepper { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stepper-n { font-family: "Bricolage Grotesque", sans-serif; font-size: 26px; font-weight: 800; min-width: 38px; text-align: center; font-variant-numeric: tabular-nums; }
+.stepper-note { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.auto-toggle { display: inline-flex; align-items: center; gap: 4px; font-size: 13.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.auto-toggle input { width: 18px; height: 18px; accent-color: var(--brand); }
+.res-rows { display: flex; flex-direction: column; gap: 10px; }
+.res-row { display: grid; grid-template-columns: 38px 1fr auto; gap: 14px; align-items: center; border: 2px solid var(--border); border-radius: 16px; padding: 12px 16px; }
+.res-row.is-correct { border-color: var(--good); background: var(--good-soft); }
+.res-row .ic { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; font-size: 20px; }
+.res-row[data-c="green"] .ic { background: var(--good); color: var(--good-on); }
+.res-row[data-c="amber"] .ic { background: var(--warn); color: var(--warn-on); }
+.res-row[data-c="red"] .ic { background: var(--bad); color: var(--bad-on); }
+.res-mid b { display: block; font-size: 15.5px; font-weight: 800; margin-bottom: 6px; }
+.res-track { height: 14px; background: var(--surface-2); border-radius: 7px; overflow: hidden; }
+.res-track i { display: block; height: 100%; border-radius: 7px; transition: width 0.5s ease; }
+.res-row[data-c="green"] .res-track i { background: var(--good); }
+.res-row[data-c="amber"] .res-track i { background: var(--warn); }
+.res-row[data-c="red"] .res-track i { background: var(--bad); }
+.res-n { font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.host .qtext { font-size: 30px; }
+.host .meter b { font-size: 60px; }
+.host .res-mid b { font-size: 18px; }
+.join-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.join-form input { flex: 1 1 260px; min-height: 48px; border: 2px solid var(--border); border-radius: 14px; padding: 0 14px; font: inherit; background: var(--surface); color: var(--ink); }
+.hands-ctr { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; }
+.ans.static { flex-wrap: wrap; }
+
+#share-note, #join-card { display: none !important; }
+html, body { margin: 0; }
+.lock { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 24px; }
+.lock h1 { font-size: 28px; }
+.lock p { color: var(--muted); max-width: 32ch; }
+
+</style>
+</head>
+<body>
+<div class="app pending">
+  <header class="masthead">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="14" fill="#2c58e8"/>
+        <circle cx="24" cy="24" r="14" fill="none" stroke="#fff" stroke-width="2.5" opacity="0.9"/>
+        <path d="M24 11l5 13-5 13-5-13z" fill="#ffc83d"/>
+        <circle cx="24" cy="24" r="2.4" fill="#2c58e8"/>
+      </svg>
+      <div>
+        <div class="brand-name">AI Compass</div>
+        <div class="brand-sub">Using public AI safely at AFD</div>
+      </div>
+    </div>
+    <nav class="nav" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-agenda" data-tab="agenda" data-m="h" aria-selected="true"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Start</button>
+      <button role="tab" id="tab-quiz" data-tab="quiz" data-m="b" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Quiz</button>
+      <button role="tab" id="tab-prompt" data-tab="prompt" data-m="b" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="3"/><path d="M8 3h11a2 2 0 0 1 2 2v11"/></svg>Prompt lab</button>
+      <button role="tab" id="tab-calc" data-tab="calc" data-m="p" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>Time</button>
+      <button role="tab" id="tab-results" data-tab="results" data-m="h" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Results</button>
+    </nav>
+    <div class="host-tools" id="host-tools" hidden>
+      <button class="tool-btn" id="theme-btn" type="button">Dark</button>
+      <button class="tool-btn" id="fs-btn" type="button" hidden>Full screen</button>
+      <button class="tool-btn" id="mode-btn" type="button" hidden>View as participant</button>
+    </div>
+  </header>
+
+  <!-- START -->
+  <section class="panel" id="panel-agenda" role="tabpanel" aria-labelledby="tab-agenda">
+    <div class="hero">
+      <div>
+        <div class="eyebrow-light">AFD workshop · 60 minutes</div>
+        <h1>Use public AI without leaking what matters.</h1>
+        <p class="lead">Play along on your phone. Answers are anonymous and we look at the group results together, live.</p>
+        <div class="hero-stats">
+          <div><b id="join-count">0</b><span>colleagues joined</span></div>
+          <div><b id="hero-rounds">0</b><span>answers so far</span></div>
+        </div>
+      </div>
+      <div class="qr-card">
+        <div class="qr-box" id="qr-box" aria-label="QR code to join the quiz"></div>
+        <div class="qr-caption">Scan to join</div>
+        <div class="qr-url" id="qr-url"></div>
+        <button class="copy-btn" id="copy-link-btn" type="button">Copy link</button>
+      </div>
+    </div>
+
+    <div class="how">
+      <div class="how-step"><span class="how-num">1</span><div><b>Scan the code</b><span>Open the link on your phone.</span></div></div>
+      <div class="how-step"><span class="how-num">2</span><div><b>Answer the cases</b><span>Three colours: paste, anonymize, never.</span></div></div>
+      <div class="how-step"><span class="how-num">3</span><div><b>Compare together</b><span>See where the group disagrees.</span></div></div>
+    </div>
+
+    <div class="notice" id="share-note">Before you start: in the Share menu, give your colleagues <b>Contributor</b> access, otherwise the QR code only opens the Claude app and their answers are not recorded. Then start a round from the <b>Quiz</b> tab.</div>
+
+    <div class="card panel-card" id="join-card">
+      <h3>QR code target</h3>
+      <p class="sub">If a scan opens the Claude app without the quiz, copy the link from the Share menu (the public one) and paste it here. The QR code updates for everyone.</p>
+      <div class="join-form">
+        <input id="join-input" type="url" inputmode="url" placeholder="https://claude.ai/…" aria-label="Share link">
+        <button class="btn primary" id="join-apply" type="button">Update QR</button>
+        <button class="btn ghost" id="join-reset" type="button">Default</button>
+      </div>
+    </div>
+
+    <div class="card timeline-card">
+      <h3>Run of show</h3>
+      <p class="sub">One hour, five moments, mostly hands on.</p>
+      <div class="tl" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="panel" id="panel-quiz" role="tabpanel" aria-labelledby="tab-quiz" hidden>
+    <div id="p-quiz" class="panel"><div id="p-card" class="panel"></div></div>
+    <div id="h-quiz" class="panel" hidden>
+      <div id="h-card" class="panel"></div>
+      <details class="card legend-card" id="h-legend">
+        <summary>The four AFD confidentiality levels <svg class="i chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="lv-list" id="lv-list"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- PROMPT LAB -->
+  <section class="panel" id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" hidden>
+    <div class="section-head">
+      <h2>Prompt lab</h2>
+      <p>Pick a task, then swipe the cards. Each card adds one ingredient to turn a vague prompt into a good one.</p>
+    </div>
+    <div class="recipes" id="recipes" role="tablist" aria-label="Tasks"></div>
+    <div class="ing-legend" id="ing-legend"></div>
+    <div class="deck-meta">
+      <span class="stepno" id="stepno"></span>
+      <div class="quality">Prompt quality <div class="qbar"><i id="qbar"></i></div></div>
+    </div>
+    <div class="track" id="track" tabindex="0" aria-label="Prompt cards, swipe sideways"></div>
+    <div class="deck-controls">
+      <button class="arrow" id="prev-card" type="button" aria-label="Previous card">←</button>
+      <div class="pager" id="pager"></div>
+      <button class="arrow next" id="next-card" type="button" aria-label="Next card">→</button>
+    </div>
+    <div class="swipe-hint" id="swipe-hint">Swipe or drag sideways</div>
+
+    <div class="card doctor" id="doctor">
+      <div>
+        <h3>Prompt doctor</h3>
+        <p class="sub">A prompt is missing one ingredient. Which one?</p>
+      </div>
+      <div class="chip plain l-guide" id="doc-count" style="align-self:flex-start"></div>
+      <div class="pblock" id="doc-prompt"></div>
+      <div class="doc-opts" id="doc-opts"></div>
+      <div id="doc-reveal"></div>
+      <div class="next-row"><button class="btn primary" id="doc-next" type="button" hidden>Next case</button></div>
+    </div>
+  </section>
+
+  <!-- CALC -->
+  <section class="panel" id="panel-calc" role="tabpanel" aria-labelledby="tab-calc" hidden>
+    <div class="section-head">
+      <h2>How much time could it give back?</h2>
+      <p>For each task, say how many hours a week you spend on it. We apply a cautious gain and you still check every output.</p>
+    </div>
+    <div class="card calc-card" id="tasks"></div>
+    <div class="tiles">
+      <div class="tile"><div class="tl">Per week</div><div class="tv" id="t-week">0 h</div><div class="tn">hours saved</div></div>
+      <div class="tile"><div class="tl">Per month</div><div class="tv" id="t-month">0 h</div><div class="tn">about 4.3 weeks</div></div>
+      <div class="tile hl"><div class="tl">Per year</div><div class="tv" id="t-year">0 h</div><div class="tn" id="t-days">0 working days</div></div>
+    </div>
+    <p class="calc-note">Estimates only. Time to check, anonymize and rework is already counted in the gain.</p>
+    <div class="calc-actions">
+      <button class="btn primary" id="calc-submit" type="button">Share my estimate anonymously</button>
+      <span class="share-status off" id="calc-status">Not shared yet</span>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="panel" id="panel-results" role="tabpanel" aria-labelledby="tab-results" hidden>
+    <div class="section-head">
+      <h2>Live results</h2>
+      <p>Live and anonymous. No names, no devices, only counts.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="tl">Joined</div><div class="tv" id="r-joined">0</div><div class="tn">colleagues</div></div>
+      <div class="tile"><div class="tl">Answers</div><div class="tv" id="r-answers">0</div><div class="tn">in total</div></div>
+      <div class="tile hl"><div class="tl">Group accuracy</div><div class="tv" id="r-acc">0%</div><div class="tn">right answers</div></div>
+    </div>
+
+    <div class="card panel-card">
+      <h3>Most debated cases</h3>
+      <p class="sub">The lowest agreement with the expected answer.</p>
+      <div class="debated" id="debated"></div>
+    </div>
+
+    <div class="card panel-card">
+      <div class="filters">
+        <h3>Every case</h3>
+        <div class="seg-ctl" id="round-filter" role="group" aria-label="Filter by round">
+          <button type="button" data-f="0" aria-pressed="true">All</button>
+          <button type="button" data-f="1" aria-pressed="false">Round 1</button>
+          <button type="button" data-f="2" aria-pressed="false">Round 2</button>
+          <button type="button" data-f="3" aria-pressed="false">Round 3</button>
+        </div>
+      </div>
+      <div class="key"><span><i class="g"></i>Paste</span><span><i class="a"></i>Anonymize</span><span><i class="r"></i>Never</span><span>Outlined segment: expected answer</span></div>
+      <div class="debated" id="case-bars"></div>
+    </div>
+
+    <div class="card panel-card">
+      <h3>By round</h3>
+      <div class="hbars round-bars" id="round-bars"></div>
+    </div>
+
+    <div class="card panel-card">
+      <h3>Time saved, as estimated by the group</h3>
+      <div class="tiles">
+        <div class="tile"><div class="tl">Estimates</div><div class="tv" id="c-n">0</div><div class="tn">shared</div></div>
+        <div class="tile"><div class="tl">Average</div><div class="tv" id="c-avg">0 h</div><div class="tn">per person per week</div></div>
+        <div class="tile hl"><div class="tl">Group total</div><div class="tv" id="c-total">0 h</div><div class="tn">per year</div></div>
+      </div>
+      <div class="hbars" id="calc-bars"></div>
+    </div>
+  </section>
+
+  <footer class="credit"><span>Malek Mehio, AFD Addis Ababa</span><span>mehiom@afd.fr</span></footer>
+</div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+const AIC_ENC = {"iv": "IVgJHGMZNVukNagL", "ct": "h9bssu3H6hu4abvDZBl_X_36OO9WuDgHecUochgEQrMAxslfRaLFcGcNiXBMQ8zpY-3ROyml0awTJWpCaPgfiZNzPJ6D8ccDbPuvqb37B9_n0LZ0ybIRhA6MBibMnVvbAZJi0yDnZ8K55trxHY9LxiTKHgzLFRJm8Dgd_FiO9BiEbvtvIaQis74IDPEr81y3KyBISyd_v0KhYaazroPWMBQpOqmncOd64y2y8XvoMwcSrXrBgC8dUw9PUHpIEig_TJKz88IZ8HkuSKV4Q5M8Ayro01BE_3F0d7CY_0eG4nAFYsKJbYSXnNmBLU_t8sKoaxoTVWi9BBg6y8Y3OSCq5XrYy_qy9cGQKGJtHJ0SEZtLGBwFBD75JHc2DbBCef7Z0_ywdDZVBO69CRdKAUT-oEIEINvtOAD_aKj44PMKjNehAPrg-8iL6t7wPtMWakSIG0tBWy0IxWDzUSyQtGjcrGqSGfUUhv_i9M2w_sruFYTB1MH6DyTGTIDbFgbG9wWqcP7nsme1eVxLgDQBDjBkpfVYOn_MdEEFD3Fg2NBpdenXo1vzKbKHcqCHO2x24Qjq7eMEEN2YTNcGlnaimib1VBNRSlOahl4mjpvodfC5gg8e1pkO4W9r4a7LViO21U4e33cMXTfT4Vc2t-YYB4Z4BNRoqsM1ocrxPdjpDHRUgNF8f-ecLGXeMe49zWWk4nr_4vRkuLysOxwuTWVmT5oCMCAmv8veqS_OYXKwMJySuUofzYo6BQ73EiQt6H7Qi1louGuIAN6jX68-QEpgm6yquHq8_3-jswZ4zAqRWxqvKOaGEhdnTm9N48Ii-fIUrqXcBzRGlR0g8pd7r-nV5uxZBptbeycoV0PUNlAZ4AImDNH35Nx6Ribr6ZIIKcNUIoK_uj1PKytotapJgUgyjNukxCCsBVzG9byR8epdbdOIF-tIIqs_gtsORsknFBMShWN00hjqbdcxmi-FSDbtPFTGfvDAZAiQUxlRWqYfe_GO10KNe3BsupXU01g5HuhrQcprNaiAoWN64c8gz5M2OUEL7pC1etpJQ0_mkKhAT6ZaYK76LOquNaMeCfFxEePtTV07Yir29aQOpcX6c097eosCNWiaxHM723OwmpbIxmV-IbqzYcKvoHzd0z06PF0awr2omDXGqveJ-f4LPb8oFWwXajdNhcJ4DSNupfMgzcxjrqge1Hpfo0ZxgbpOQzA2ioCDJS9zy4c5wv-mSQJD1xhpN4rTBwIIHa_CRLX29uzOAXIwoiocENHlT6SSF_adhuScU0bmi0uAFinPPVrfw6syuxjIe3VboeTC3w0sY3Ip70SUUxvWzax_vs7663E5qxXlQtnLZ9n_X_6dRxxFHbnZ_58feU6iSb3josBr9XNUAwEDwYaNx8k5afOGqqdIA2-eSKTq6ZCH3EYnK2648TpGPSPNsc2-c-rrLt2luAyhLRWJtyHWTuV5Tua5xdU_MWL-BhbyCb7rsr0P2PlpWv5KpcOJw98MSUboRwJqCin2mR2HLNlm_7nlEpkqv7rYFqlWNDqo_oNuwPe1fxaPzl7L9VDiVc6peZsL-GESQPsOY3fi2ySHpU9o29Cjr_NHeOPHc_kdHjHBMZ7O8YbIxsyRN3SiaJCSDPH-GBDCnE_2Fzm1GkSXVux45f-RTR57WSgnYpwmqA5m1RXlEe4psn8WE1u4M1rNvLy9BOGoGVAeIJ-7pUXGbtFwe0U6EaSNG8F7Ks3KQjH0v4nrGfCOATj6eZfW8y8AmW0w9ZJ4omDQEE5WbvYnNbAKIvBwM3Jt4CqNTHAWwgDp05aDYeBnL7pGTy2m1be5XgAyl3BovwaXu_L5z5mO2sY3o1bQqkfe_FODgJcjEc0qGz9X0MgCsDKSgS-PIkod1TgwgORxeJcV3HkBIW1g1KerouGWaTQjHvIdYdoDxB4OoQxJ5VvxywmHZWNTg0uYY4SeUrvWSmCRqXCmrUKwAB4WE_kW8ddQla0MrrkELVvOQsjS-Z5nz3siBTTzOOYiRj83cWs2t2bxbH0E3h8JS7YTSTnTIJjiAmK_MctGtACpzxGzHH6SGiE3h7SjXIh6WeZRQSpcOnIsbJLWpVy19muZsJ5RzEWHTVi_UmZ53KBuO6Qj_0S5-JHkBYXWXm1t9ysh-WjNCuEeDGuL1JnMG6_aZNpju2m1_6lZT8Qxrkv1r4Md9R0pmUOiWqtutndyNsnFytckp8YePVvwnSB_ATigRNvSxFcNIkAugaI8NkX9Uvoqt5RyCsTlgMq1ARaOAV0PAeeOlJSElU4whrYcECao0wctKp82NgiSgwBPeO4O0BpWJrcFBRxH2Ca2lPvq8xU9AYBp-eqN5AaJpgS575rUGK4qe3XkCqwamnF5eeouPV-Py-Hgs_aQ9p_kpK19lI2_GguNXuPLGvhbfQ85hUbCwQwB7x0b8Bq_P-je4n2iW3js5SS-cmY_weMCSXfVlEYnc0BwkoqsxI3V6IgyVQ5_zxA3n8E80cG2tnxYRUUYXswGLTykMFM-hLZoh5j0L3XOBbzY8zyCoUSCU-deZO9k_ZYbhlsF_jnK4aTMLvX0zhdiydqWzXB0ZMem9mYBCQJ-wJip3ghiC9ameN1R_8x2E0ozChTOToyeL_9Rylqx16L_vFpHSzYLLiin6hzzGc33TQdehPjIyGSnwATtJWAN2WisLHfI4JlVdbO7ceBre-WgnPsp5_GbpgeUs5ktPwYEEwDDIzErkrKLPXbpN_stfKFTA7ozqh0y7u_WltsFggfjAHDWEamOOi5vJDaqvU5LDrvc6k5NzF2oFlR-62oZqeXGDjHq2Yn517cmizkD4QNcjI2lk5EjKH_vZ_d7TxpRqc2KHKGZV1yBTL53jyCIKtMAX6A68uwKFkda4rPDdGSLD-uFQvPYCEAdnB_yc7v4bWC9Z-v_kuhBu3ZMDCkMdDlehLQ9rzBaTMM_JPRyQO9i0wY2quGX0c0pIXIZSsXj8U_cbPNUTveDaFCe57M6Py7QXm2djy4fnEvRRqydcCJtUD2WJBILHnfWXfA6q9TPjcRCoXKKFs3Cs7Ms3k2-TuHbKCfY95fPWeuWfUEGrGFm7A3EFHyI5hYRB6K6c4lCyuID6kxtgKFxV3Ony8TPPjG8xtZO_uY1vDZOueKs0geg141HYm8psyx1s_xtbMos8cei2-nh05YiYiqlcHIQTIoauBMtYElqU9VdziVy9nnXy5i__gJFepEeJvQiU80GefjFKCsfzBVgjoPMURD91UDi7freZUC6vmouZFxHeswDgB5x93VgqGnP1XgwvA2IDnQF1qk98ERj7BM_D1Kvd6aWoclFOaYpcVOljxFSRJFZbli_Tg_lktb-cDCg1TZvwpir4WLG-siFhaqw1vtXiDoPPbnE0b7Q3mS5U2DZlTUxugk3Bi8sH44zbi8pyEDZctJAwAuEufS714TorN0L9FiT-k4AmJ1KR5vMvYi3IChHj5RlD6MTAPR4Ygv14uIz-HQ6G2DVKtsCqmgpqKniYzaRZTRHQ8rxDm1qdpTOZs133R54W7dRVcmFVXNssSjzTinGIdccmEjdMqaxfhwJCdFOJh-qR7cYLQEgNG1hD76WjsSFQKIIvayzCs4kj6M6pZaIqhYyHjWGNxR2R4PtIt05NIvj6Q_xaw6qHhNMbaQHG-2DfKUlgLNumF08qwFnZiiZwjnPpjk5e5mgD34UTivQKbqXpW_e6n6tSWJ--bUHLKu3N8OmGusXPZyMILHf85Nl6XWeslDZCd6uejJ090xdR68YyiZdGTtV3MGaDfy_8Hovi40YRJLqJAyoBf3GRvOqp5CnNzpszCtkvxTOm5oYzS0NNxccHOTlKkK7qjgiY-wnRT_c4tYjKYmbalFV4VhkARheTXPStCvsyVhAJDIrz1ySvDYfGch23yIOBC8rL9pyPOZrbhhpqEatCScesP9WOcf-BsUsnrLR1xjQvcVCKuRtURG76Rnlt8EPKnGpPNalb_vmF4Al05qXXCzIsxRDeiJnHTXpkjLe24GBYRJDeVgmI69Kb8uQL-hoNjB5jWarWRkjJgXxAJ9rbGOqaUBHpHOJVXZFI39eo6remyz4s6MJOf3izY_vRtxkO8y-m5rpZFjFpwCxf86FyjBVCNywHqZbWjmCieEogYoHlFddeEXa_VJq3hTOGwHDR52eXiZB822GncHUeQHp5Y_d5d1AebmG_ouIDuv_CBSNHvwKqNG_K776XLqsAwSXlxYH8Wmg5cuObf-zM6ypFn1AgI1_7yIWAq8GR4RUzV8X0nqv-yW3cMerEI1J0L-0i9YdqNQq9leYHKk0tbRvf_5OVFHmO5dEoEYbG7lQAJAjgeTJrDuIkqkyXTBJC0KEm11d5VPj84LRUvAA0ssjhU-9AZ44V_t183yOyui4gIiPBYnRlQDgmhkUD6N5mx6h2mhmCSFLQwQt-Hm9WhSSmo_IIp0RNVECn9yz3bMgw_pRiJjS-s6et9SGpw5Vs2gFxHwWn-yFEoVWLVCgR5LQMJ1YDsBlGV7FG82umL08HFRtRDlvCOAHS_dvL6PBbU5i5N3Xuh37qWdXmLK2vLWMx-1gSjJ8QHs03FKYjnLPeA8zwGIF8WGcuQTOTWnbVGKM6wZnDFCZ4VgF_6LGvNDCOlLeBjI7F2orTjJpVvBSPNo5TYF-OZNq6-emHlivmqoM23s-8isaQ2wbfkgMbmOwDjZvsn2zSxqUxwyaQRfeIXm2VCY5IjwJcV9K8hAojMUI535BnZp8yynSi7QyYlSapArfE66x4Y0ZQwC-QMBEwZm-B27mLmQHtzaMBOGdBXteLg2U-Ih_CskakN_ZSMkDI-p2kzIfgqS79xtdDY4ZvtH4V6JuN7W2s67YbHBroNivtZEZrkjUcgBRmGUxpjDCm6pLYBvSmwLcY9LZdusjJ2ZwY17RsV1RufRjPZl7M5uqo6IuwpIwzpzbb5xRezJjsnWPTab-WsZ1LU2UdswUJc9jtVncDi6To0SLPOviesHcdgNDJGhabOMv1P-BJnVuDJ3tvbI_sK1_YixhMvJmBZkDu8yVdSIWq-Gwd7-m9UmFv2TAD5rJ9D_IPZl-TeXCrLniT9zz19eVltiX5BlYtgqw75abdsmxU9-53NffM_I2ryDx3rNe4s5iCwspdhH355h7JIpm_NpChf0TIEaWs223rw4KA3ELQYsb4hhvU-LRTEtMuEqbhOAvifQ_wjAvbZHHer-609IH3ghQ6jq9fBVlDAsvy9z3j4ZCwgI1Vby2mpFptpvDnzp9RrDDU8ZviZk5Ojge7s1nrvi7W5izew9-DQ-ofjlgy0qsxtCl9zJzuSPHSZ44oq5BZAP2jdg-8zVcWVZZOU__XT9Xg9Pf5ReknY8Yoj2GCi8SzFgPoko10TpTJYtgCYv2hiHg-qyrxm2UsPZsj7VkKq6WHj6Oyc1DrW9z0iLaL0ACsds-hx4bsKntKAn_vl91WCML4o-lG5Nc3beZ2wRR0YcvQt-lZnDCusu5W--h1ub2IZkEdbQrz4sOY0w6LT8kv_k4dC-k8VttwTkX93lqnbs8s4q3SQSgFbipceegjpDAvmBw6hI-ciNyGPbJFflJf6AhK_6cWtoJU3NJdU5tS1C_v6SFRtazIEKdFAAp-sRX3D6hi_g5T-weqqCAuzO87bnArvALFCGqaLoz038_mQSkQayrvFpDMPVd55_gzYNAJrvDj_2p2wVCKBNpC2l4LdlrBCcLelzG4N0TMm2ORH5nOqf0eqSdYcEOCCA2u6v0fV0t9ZlFpwxkSYdosZoDmIeh9D-FqjJPpzbfEYikfB51VAMGYOW7WsleHgBk9j29SM7OynPfapIpPS8E0asUgvvC1qoklhVBs_KQkEKd4U2f83U_zNbLtuP_7JPUuxqTGRNDdAkVQsB0pQZKMGL1YqgQLF-pFb2a95w9MA6uGRwtZeM0KRJlAMdesaynK89nUhpGgrBQ3MqOqv2-FruwTT4PgN8lqgXudNOjGykD2cUKbguWam6-BijacLobJSUOTjlH5wKjfsOIC0Kcfv3iAbB9leqwDGTcsavlaFMexx7OKQF5Is9OpQA4_gXJ3BXQMxCwFVqmdUg2ya1dfRNEKCmUOcus01fx1U8dlzVj5fuknIsZX-bLrn06IYMfquPbJsuFSZi34kA1U3FFRC5qfBOCeUkmeEdoX8B5vEowGMoBloqmG9UQUcWzHCpCmnmPN0ukUkbUVW-_mDWURiS3NMeUDzzLGgQlu_vV7Be4bwOc6-abc3_z6X_sCunHyS_rZJdt4LTDWoAJQaW_8jzR1cmgJJyWZx4cm6aarzjDI0fQED5Ugk8_MaFzaJsi2l2n9qVO7t0cM-vzhHcoF6WZ2HYysoXfnj1hUTN25vvX3CUEkOzrnyMbAnofPM10J4YT_pHZKmMQ-mPzUXD_MPS2NmBD4i4XTZqw4nu7FNiS2ER-JnFN2vHK27_kbK9ewihdivdPqmzrciwVRDPTZ27f4SeD6P2d-u_q7uPbvUf3Zflko_k4HyC182kIJ4d4iW0nZfyubJM1P9xfOBbvhIOwVkcOYjBZw7W3b20BpwWrVE-hVo2CHSaXJJ59iWlRNSL6if7ELerzjT71AIGodEWgqM19fEfKAlN7pkXaX8pO4MAFTa8-YNZ5__79LK_HH_0Yokp3hZdEyWEYVis9f8cm1h3emWwothripvEaIFX2dIf5VG6z1fDbAVQUCLb1_xdmYLLD6cOM_kovo2Gv1Fv1yGBfrlPFCZqsAm73pXVk-2mmNdRmM5NfrwweCUDVbgHBg7GPmxoctvW1yZI7vO4s4O37mJLCnzWwP47x3LnQpHtaxPCowgZ8j9-OERdxAaG_uH9d199JArUtfbejXPGS4GtuSe4QHXJlO29EkapSVr-vcWRLMxim0mmlyM6Lcmuz1imrUcBIDiqEKYfcVGZRszl855F4gyOUsX0GM3i_gE0FBKZFmkfrl_-PzoK8mAmi3Zbu7se6h_2IW6VkOE_NSGTZdjJzbGY60WAjsGy4jNIqW35X8VW0DdaEr8y89wOiUvUn4uJMoBCBowboxT58s-K0R8vbR37NoS84iFHFROF0GRt5kVL4QmHOynTZTBem6Rx_CXFIb4IsLNH-qYqj3LCZsE4bP0ASu2tMm1AIEgNUmmTAIo7-yOC588m0JTvfWpm_oezipl0hnadWHcwVTCJsWwUWijJh3ERB_qmkemSKDUQ6Cj1j-GbbzR68MVlQgILUHAuXxj-5WKVaaaOoC-hySCnscoijMqq4Yo05lnFxJDIomNTRI6B0lMAqSXxlOJKyytUXTXAfA-s6FpZ_j0WRei88_l5iDvgascfpPDmmDkzHY6AcFjwo3g_PML4vylkWqezwLaD7yf_lYLrkJGZwERXpmTBzkj2jiyiB1nbI9qyErP2XsjSV6mX00myKyuOF6M5w1oXWu_sVMvCnXbRuPn4go2pkwHxm08apkWmMAWykRdwIy8BP93sWO4-4u1KIG-kiiAuLrHNyWPq_lgjfk8_ACiDwVzRw0vXJ7w4WUk2O0NMTPYg_nzl2c5wc4rTh3Ajra-C_hmKMLEKuuhxU933z3m7r8_US-smSBN1cCeovrE52F-Y_cYsl2jU9e7IVCQeueeSVAKgBsB3lCWnCoJB7n4stDrbO9YVstsBVeMqSlnrX_hAvspF5BbbTS0hLyXlYWzHpBzIMxkasGDVL84l6hckciMWMeSCYnIFmCzgXjqrGorHw42IMeyFUQmjpw6GeJLub08UiVdP5aseByDx_FshHSG06njvskPCMpepLRRUqyTzm4yJGvCJf4MT5powOdXl-0al7u9TOMSH_vexzEifh3ZZHq4M_ZKZaEc8MgxnP5KM60rh755DSpvZDnrabsxAvw-81F59dDGKC1J0gRXo8rkWmf_97j39utDOCrcCAiAmfWrCQumUq2ruQMsFYrjzruuRnt-ZGhiIBv6tIm9p4_BSmzuj1ZVn01jtsX0m9GkDOnxJzM1kdvA7_9-FlrUtbj2kRMkzunnuo9FjZsHpzl5usyQpQwni39KKVdgdPR9YCjrnF9lN4cgXsnizmRiWU3gm0riYYtoVdo_TdJ1Yd9n_hNMl4Y7m1fQQUbVb_8nO3dfFU7fE_58HAuO46Vv8UzXkJvq3669GkVp0ojAMIClfUjTAlsrY4W-vW974ukLpmBeF9GRcqa7qXJuqBlrpTtleeABb_GYN4dzl_W75Vm9AUAUlQ95vJIsFLhDA7ldYTETV6GCCmr409Iz17EMT1Gb4vf8mi--nVjvpYWUbIs2HgkrT6Q0d8TN0WssKH7cR_eYY941mHoDv71Mb14zN2DmxLIGF2XrGiPx0NYjYcnEzSq1kYn_lo_TVynT6Gz9CegixS4Cx5MorAcMG8xikfDZW20qpxlWJiDy-cqyMhMEVyi4lBB1HbtuUNTF-oRb7hpZsWsqQ0HFmmAE-3vwbnnbTs5rR8_9L3I-W1T8lc7nvcW1HRx1qLWfUa8PxQDmVfI6hqo8z_94ae-FQ6Efj2VmDhOMtzm8q2ArWiwd9fma1rbb4oC0raJr--XQ2q6cGJZYjcKQarmvg8VhY4BTw3djl18vSuwrrcsVU-Dg4V2aU6QnplyocalMkQ76NXh3aG6bwDLWa_moqJCD1Q3OXghaGy3YtZVF4yrcgqcalRo3piEjTVjNTaqbXUxDmBxgp8uaCRSxwDJMwCpztHSNgZvNaS5Y3ok6chyq7JqGNtHNksIxKbVlthrnduTU-YOakDHbCkGtxhXFHIzQtv5pb4sQueLXaKwQWXk1CfwF1XEKtYQgBKqRKZJ-6I27FgRoKQWcnuaX4sBMzTMIaWR1_VKl1-oK-XHWPLsAdeJ4NgKtxjgY4gsuCj_JzxMOyL0xJ-HboOlxpik19aFSy5hjHbjsD_BVpTvithKbz61LFRFrY9jqyfgNCIr1ikaEhRO6zpM_CjFv3ufThoNgbki2RcjDZVUavEDQ3_K1rAFyjgf2w4voigP1sZYhvYzv6s5RhIV0KGJ34bLl_1DVSxyo-bGTuZLf3mE5KpPh6r_HmDYsqe9_Gc1iWce9uyxp7H2uMgMcnv3HBGaaZ0ROTQU0wjkv4or_n1hbKqsdTHs7saIk6romO2hofEE-pWskN066YJz3qWh9HqhlPIsSYQ22esG52duuqRZDDoyOh0kYA7FTUS88hPaZ0G2sKtXnQsuO-Ic40_zzt5o4Y81VlbCqZD_y7wlc2LlDwATGllNVzJi9hCb9M0jMIVHGD2b-t4oX8P8n1Lpjft0BjT0c2tFcsvw_e_464ojVm0vBbu4hgVsAxnXJo-cdUzWlh9bYNzcXPvzh3w_5FrKD3AvA5uc31ekjPeyDuhjiEi1MPwNvSF-gJujTXM2llMc_IEVpgto5BAa7X_54dcBfCIhUQv0p6vL2kZSvqv7rPwSvp9LKT5a4AjUBllP0wraRLJoh_glZ34h35baveUg0TqoNP5sHDYArScy4PKANyUFDth8FuXxEprRjzW23hkzgjf0gbez9qDSurT3wld0Pt9UN-w4OFqvJggaWYTxFCg01xTKmCMgYe5JE75HK1Wss89EDcwlUMmhNY2oX7dkzMYiBXz6FKOZ1xWxh8bO4vjCr3hSN9x6vh59hAaRypUV1EwP6r9oM739k7rqW3-4-Jf_Q_IStOMH6SksHPWyBIiid2Ndj0xuqCOtCS9wtuynt3XvYkQPgmzK3Cz_6YU2j8zaY1zogQ4v1afrPJbEX-sa5uXMjW9udcX0vI29wRbGKjHeeFCGjqZVPJNrVhfkpWwMid5C4f7I797sRfi637YV_RmvXFb8loeE0lxVUtagyn_yAi45TBPSywemM9_aiwRLa8F3B2y6VEqtrF3Pdlfhw2miv1WflCwVxGSWLOp-X0KP7EqJgj1a4xxn5b2LkQHvFPfEyMBg4PYo1okhvcBQjcg4TD0FzN_2HE7g9Gt9rWaVnhgPTQARkhULiChYE1-cosE5TKyHFE-44blfeqAN6vZ2yBfXoIqYALx_qVT0_7WcveUMayL5VMp_jXbRN8ACaxDdZsofrrwi-nZlT4c3rSXYm0M1wsao43s5aS_QflJ-SOe6st3uHOrUyQ415mgFXd8OoKOASVg2qTGkHmHw8Al_6vHLX0WTp3WdTYCmYE3t9SX7VEGG4ExrLPi6TOlA25shG533_7KnHYk9GnQfi7vFF7AJ9rM0-6Jzz9ARynm_w0xPwDZY0_yC_u-GitUHK-9-tYSNno9i60DGne-ymFkuyjJDniULdLoLqKnTIOIAs_JMcRW9zDNCIE29uy8JDMH5D-6disaPTlMLSACyxVkCMM1lIDnL4nv3CmAclfDFZdOdTcDGwKLQMBmBuC2ofvkBosUkqlLxvDdPhDSvtzEWnHcvo3zrccxbN6ozfi3yqFlQs69VaOIC_lsLtnRjJKBlyes7XkRB0fF6ZW1t9JxfDaG2l2qRZksOPPDeKCgBNCBE8cIQcLQMfF1DJMNCDJg_V299hma1OzhvwlW4IYxwQR65KE6Z9MQcahohDO3dTvqCQs49Hbi8eMpueqF7doHROSnx-CoYsbHp3cXBSrsv0RwiHnR_dbjraDcl_t_rPRqT1diuFZMEpcxVuiJIA-4bM0W4v92KrYTD-z5XX4R"};
+const AIC_HOST_HASH = "bc2729187980e2f386849cb4dd8c23df1c7071685c9215a6db3241de57e27768";
+(function () {
+  "use strict";
+  const NTFY = window.NTFY_BASE || "https://ntfy.sh";
+  const b64u = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+  async function sha(s) {
+    const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(d)).map((x) => x.toString(16).padStart(2, "0")).join("");
+  }
+  const params = new URLSearchParams(location.hash.slice(1));
+  window.__AIC = { key: params.get("k") || "", host: params.get("h") || "" };
+
+  function lock(msg) {
+    const app = document.querySelector(".app");
+    if (app) app.remove();
+    const d = document.createElement("div");
+    d.className = "lock";
+    d.innerHTML = '<svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#2c58e8"/><circle cx="24" cy="24" r="14" fill="none" stroke="#fff" stroke-width="2.5"/><path d="M24 11l5 13-5 13-5-13z" fill="#ffc83d"/></svg><h1>AI Compass</h1><p></p>';
+    d.querySelector("p").textContent = msg;
+    document.body.appendChild(d);
+  }
+
+  function makeDb(topic) {
+    const store = new Map();
+    const subs = new Set();
+    let loaded = false, settleT = null, fireT = null, lastId = "all", es = null;
+    const lvl = (p) => p.split("/").length;
+    function apply(m) {
+      if (!m || !m.op) return;
+      if (m.op === "set") store.set(m.path, m.data);
+      else if (m.op === "del") store.delete(m.path);
+      else if (m.op === "wipe") {
+        Array.from(store.keys()).forEach((p) => { if ((m.prefixes || []).some((px) => p.indexOf(px + "/") === 0)) store.delete(p); });
+      }
+    }
+    function fireAll() { subs.forEach((s) => { try { s(); } catch (e) {} }); }
+    function settle(ms) { clearTimeout(settleT); settleT = setTimeout(() => { loaded = true; fireAll(); }, ms); }
+    function schedule() {
+      if (!loaded) { settle(500); return; }
+      if (fireT) return;
+      fireT = setTimeout(() => { fireT = null; fireAll(); }, 40);
+    }
+    function connect() {
+      try { if (es) es.close(); } catch (e) {}
+      es = new EventSource(NTFY + "/" + topic + "/sse?since=" + lastId);
+      es.onopen = () => { if (!loaded) settle(1200); };
+      es.onmessage = (ev) => {
+        let d; try { d = JSON.parse(ev.data); } catch (e) { return; }
+        if (d.event && d.event !== "message") return;
+        if (d.id) lastId = d.id;
+        let m; try { m = JSON.parse(d.message); } catch (e) { return; }
+        apply(m); schedule();
+      };
+      es.onerror = () => { try { es.close(); } catch (e) {} setTimeout(connect, 2500); };
+    }
+    connect();
+    setTimeout(() => { if (!loaded) { loaded = true; fireAll(); } }, 4000);
+    function pub(m) {
+      return fetch(NTFY + "/" + topic, { method: "POST", body: JSON.stringify(m) }).then((r) => { if (!r.ok) throw new Error("http " + r.status); });
+    }
+    function local(m) { apply(m); schedule(); return pub(m); }
+    function sub(fn) { subs.add(fn); if (loaded) fn(); return () => subs.delete(fn); }
+    function docSnap(p) { return { id: p.split("/").pop(), exists: store.has(p), data: () => store.get(p), metadata: {} }; }
+    function colSnap(c) {
+      const docs = [];
+      store.forEach((v, p) => { if (p.indexOf(c + "/") === 0 && lvl(p) === lvl(c) + 1) docs.push({ id: p.split("/").pop(), exists: true, data: () => v, metadata: {} }); });
+      return { docs, size: docs.length, empty: !docs.length, metadata: {} };
+    }
+    return {
+      doc: (p) => ({
+        set: (d) => local({ op: "set", path: p, data: JSON.parse(JSON.stringify(d)) }),
+        delete: () => local({ op: "del", path: p }),
+        onSnapshot: (next) => sub(() => next(docSnap(p)))
+      }),
+      collection: (c) => ({ limit: () => ({ onSnapshot: (next) => sub(() => next(colSnap(c))) }) }),
+      wipe: (prefixes) => local({ op: "wipe", prefixes })
+    };
+  }
+
+  window.__aicBoot = async function (runApp) {
+    const k = window.__AIC.key;
+    if (!k) return lock("Scan the QR code shown in the room to join the session.");
+    let cases;
+    try {
+      const key = await crypto.subtle.importKey("raw", b64u(k), "AES-GCM", false, ["decrypt"]);
+      const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64u(AIC_ENC.iv) }, key, b64u(AIC_ENC.ct));
+      cases = JSON.parse(new TextDecoder().decode(pt));
+    } catch (e) {
+      return lock("This link is not valid any more. Scan the QR code shown in the room.");
+    }
+    const topic = "aic" + (await sha("aic:" + k)).slice(0, 24);
+    const isHost = !!window.__AIC.host && (await sha("host:" + window.__AIC.host)) === AIC_HOST_HASH;
+    const db = makeDb(topic);
+    window.claude = { use: async (n) => (n === "db" ? db : n === "user" ? { isOwner: async () => isHost } : null) };
+    runApp(cases);
+  };
+})();
+
+const ARTIFACT_URL = "https://claude.ai/artifact/Mvu8xA3VDa5yW8y4KDx6Ao";
+const JOIN_URL = location.origin + location.pathname + "#k=" + window.__AIC.key;
+const SESSION = "live1";
+const BASE = "sessions/" + SESSION;
+
+const ROUNDS = [
+  { n: 1, title: "Public or not?", min: 8, desc: "Quick calls on everyday material. Is it safe to paste as it is?" },
+  { n: 2, title: "Which level?", min: 10, desc: "Real AFD document types, sorted by the confidentiality policy." },
+  { n: 3, title: "Good habits", min: 8, desc: "Accounts, devices, checks and images. What does the guide say?" }
+];
+
+const ANS = {
+  doc: {
+    green: ["Paste it", "Public or generic, no risk"],
+    amber: ["Anonymize first", "Remove names, amounts, identifiers"],
+    red: ["Never paste", "Too sensitive for a public tool"]
+  },
+  habit: {
+    green: ["Good practice", "Follows the AFD guide"],
+    amber: ["Needs care", "Acceptable with conditions"],
+    red: ["Not allowed", "Goes against the guide"]
+  }
+};
+
+const KINDS = {
+  doc: "Document",
+  habit: "Habit"
+};
+
+const LEVELS = {
+  pub: { chip: "l-pub", name: "Public", text: "Already published or free to share. Safe for any use." },
+  res: { chip: "l-res", name: "Restricted", text: "Internal working material. Anonymize before any public AI." },
+  conf: { chip: "l-conf", name: "Confidential", text: "Sensitive about clients, risk or people. Never in a public AI." },
+  strict: { chip: "l-strict", name: "Strictly confidential", text: "Security, whistleblowing, fraud, insider information. Never." }
+};
+
+const GUIDE = "AFD AI guide 2024";
+const POL = "AFD-R0135";
+
+const CASES = [];
+
+const RECIPES = [
+  {
+    id: "summary", name: "Summarize a report",
+    task: "Summarize this report.",
+    input: "[Report text, anonymized: Project X, Country Y, Amount A]",
+    bad: "A generic wall of text. Unclear audience, too long, no priorities.",
+    good: "Five bullets for a director, with decisions needed and risks flagged.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "A role sets the point of view and the vocabulary.", t: "You are an advisor who briefs senior managers at a development bank." },
+      { k: "context", title: "Add the context", why: "Say who reads it and why. The model cannot guess.", t: "The reader is a department director with 3 minutes before a committee. She knows the sector but not this project." },
+      { k: "format", title: "Fix the format", why: "A clear shape saves you a rewrite.", t: "Give 5 bullets, then a line called Decisions needed, then a line called Main risks." },
+      { k: "constraints", title: "Set the limits", why: "Constraints stop the model from drifting or inventing.", t: "Maximum 120 words. Use only what is in the text. If something is unclear, say so instead of guessing." }
+    ],
+    safety: ["Names and amounts replaced by placeholders", "Document is Public or anonymized Restricted", "I will check every figure against the original"]
+  },
+  {
+    id: "email", name: "Write a partner email",
+    task: "Write an email to the partner about the delay.",
+    input: "[Facts: delay of about 6 weeks, reason: procurement review, no names]",
+    bad: "A stiff, over long email with an apology nobody asked for.",
+    good: "A short, firm and warm email with a clear ask and a date.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "Tone starts with who is speaking.", t: "You are a project officer at a development agency writing to a long standing partner." },
+      { k: "context", title: "Add the context", why: "Relationship and history shape the tone.", t: "The relationship is good. The disbursement schedule slipped. I want to keep trust and agree a new date." },
+      { k: "format", title: "Fix the format", why: "Tell it the shape you want.", t: "Write a short email with a subject line, three short paragraphs, and one clear request at the end." },
+      { k: "constraints", title: "Set the limits", why: "Limits avoid risky promises and flowery text.", t: "Under 150 words. No legal commitments. No blame. Plain English." }
+    ],
+    safety: ["No partner name, amounts or contract numbers pasted", "I add the real names myself at the end", "I read it aloud before sending"]
+  },
+  {
+    id: "minutes", name: "Turn notes into minutes",
+    task: "Make minutes from my notes.",
+    input: "[Rough notes, with names replaced by Person A, Person B]",
+    bad: "A long narrative that mixes decisions, opinions and side comments.",
+    good: "Clean minutes with decisions, owners and deadlines in a table.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "A note taker thinks differently from a storyteller.", t: "You are an executive assistant who writes clear meeting minutes." },
+      { k: "context", title: "Add the context", why: "Purpose tells it what matters.", t: "This was a 45 minute internal coordination meeting on a regional programme. The minutes go to participants only." },
+      { k: "format", title: "Fix the format", why: "A table keeps owners and dates visible.", t: "Output: 1) three line summary, 2) decisions, 3) a table with Action, Owner, Deadline." },
+      { k: "constraints", title: "Set the limits", why: "Stop it from filling the gaps.", t: "Do not invent owners or dates. Mark anything missing as To confirm." }
+    ],
+    safety: ["Names replaced by Person A, B", "No sensitive topics such as HR or incidents", "I check owners and dates against my memory"]
+  },
+  {
+    id: "data", name: "Analyze a table",
+    task: "Analyze this data.",
+    input: "[Aggregated, anonymized table: Region 1 to 5, indicators by year]",
+    bad: "Vague observations and a few wrong numbers that look convincing.",
+    good: "Three findings with the numbers shown, plus checks you can repeat.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "An analyst reads data with a purpose.", t: "You are a careful data analyst supporting a programme team." },
+      { k: "context", title: "Add the context", why: "Say what decision the data supports.", t: "The table shows access to services by region over five years. I need to decide where to focus next year." },
+      { k: "format", title: "Fix the format", why: "Ask for numbers you can verify.", t: "Give 3 findings. For each, show the numbers used and how you calculated them." },
+      { k: "constraints", title: "Set the limits", why: "Data work needs strict honesty.", t: "Use only the table. Flag any gaps or odd values. Do not extrapolate beyond the years given." }
+    ],
+    safety: ["Data is aggregated, no names or identifiers", "Source is public or anonymized Restricted", "I recompute two numbers by hand"]
+  },
+  {
+    id: "translate", name: "Adapt a text",
+    task: "Translate and improve this paragraph.",
+    input: "[Your own draft paragraph, no names or figures]",
+    bad: "A literal translation that sounds stiff and mixes registers.",
+    good: "Natural, institutional English that keeps your meaning and tone.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "A role fixes the register.", t: "You are a professional editor for international development writing." },
+      { k: "context", title: "Add the context", why: "Audience decides the choices.", t: "The text is for a policy dialogue note read by ministry staff in Ethiopia. Many readers use English as a second language." },
+      { k: "format", title: "Fix the format", why: "Ask for what you need to learn from.", t: "Return the improved version, then a short list of the three biggest changes you made." },
+      { k: "constraints", title: "Set the limits", why: "Protect your meaning.", t: "Keep my meaning and my terms. Short sentences. No jargon. Do not add new facts." }
+    ],
+    safety: ["It is my own draft, nothing confidential", "No names, no amounts, no project titles", "I check technical terms are still right"]
+  },
+  {
+    id: "prep", name: "Prepare a tough meeting",
+    task: "Help me prepare for a meeting.",
+    input: "[Situation described generically, no names or figures]",
+    bad: "A generic list of tips you could find on any blog.",
+    good: "Likely questions, strong answers and a few things not to say.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "A sparring partner is more useful than a teacher.", t: "You are an experienced counterpart who asks hard but fair questions." },
+      { k: "context", title: "Add the context", why: "A realistic setting gives realistic questions.", t: "I meet a partner next week to renegotiate a timeline. They are worried about costs. I have 30 minutes." },
+      { k: "format", title: "Fix the format", why: "Make it practical.", t: "List 6 likely questions. For each, suggest a short answer I could give and one trap to avoid." },
+      { k: "constraints", title: "Set the limits", why: "Keep it usable.", t: "Be direct. Do not assume facts I did not give. Mark any assumption clearly." }
+    ],
+    safety: ["The situation is generic, no real partner or amounts", "I use it as practice, not as a script", "I adapt every answer to the real facts"]
+  },
+  {
+    id: "explain", name: "Explain a technical topic",
+    task: "Explain electric buses.",
+    input: "[Your question, with the real context left out]",
+    bad: "A textbook introduction that skips what you actually need.",
+    good: "A short, structured explainer with trade offs and questions to ask.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "A role sets the depth.", t: "You are a transport engineer explaining to a non specialist colleague." },
+      { k: "context", title: "Add the context", why: "Say what you already know and why you ask.", t: "I know bus networks but not electric fleets. I need to ask the right questions in a project discussion in a hot, hilly African city." },
+      { k: "format", title: "Fix the format", why: "Get something you can reuse.", t: "Explain in 5 short sections: costs, charging, maintenance, grid impact, risks. End with 5 questions I should ask." },
+      { k: "constraints", title: "Set the limits", why: "Avoid false confidence.", t: "No jargon without a one line definition. Say when something depends on local conditions. Tell me what you are unsure about." }
+    ],
+    safety: ["A general question, no project data inside", "I verify key claims with a trusted source", "I do not quote figures without checking them"]
+  },
+  {
+    id: "agenda", name: "Plan a workshop",
+    task: "Make an agenda for a workshop.",
+    input: "[Topic and duration, no names or sensitive project details]",
+    bad: "A generic list of sessions with no timing, owners or outcomes.",
+    good: "A timed run of show with goals, activities and a clear outcome.",
+    steps: [
+      { k: "role", title: "Give it a role", why: "Facilitators think in outcomes.", t: "You are an experienced facilitator of short working sessions." },
+      { k: "context", title: "Add the context", why: "Group, goal and constraints.", t: "20 colleagues, 90 minutes, one room. The goal is to agree three priorities for next quarter. Mixed levels of seniority." },
+      { k: "format", title: "Fix the format", why: "A table you can print.", t: "Give a table with Time, Activity, Purpose, Materials. Include one energizer and one break." },
+      { k: "constraints", title: "Set the limits", why: "Be realistic.", t: "No more than 6 activities. Everyone speaks at least once. Simple materials only." }
+    ],
+    safety: ["No confidential project content in the prompt", "I adjust timing to my real room and group", "I test the first activity myself"]
+  }
+];
+
+const DOCTOR = [
+  { segs: [{ k: "role", t: "You are a project officer at a development agency." }, { k: "task", t: "Write an email to a partner about a delayed disbursement." }, { k: "format", t: "Keep it under 150 words, three short paragraphs." }], miss: "context", why: "No context: the model does not know the relationship, the history or what you want from the email. Add it.", fix: "The relationship is good. The schedule slipped by 6 weeks. I want to agree a new date." },
+  { segs: [{ k: "context", t: "I brief a director who has 3 minutes before a committee." }, { k: "task", t: "Summarize the text below." }, { k: "format", t: "Give 5 bullets and a Decisions line." }], miss: "constraints", why: "No limits: nothing stops it from inventing details or running long.", fix: "Maximum 120 words. Use only the text. If unclear, say so." },
+  { segs: [{ k: "role", t: "You are a careful data analyst." }, { k: "context", t: "The table shows access to services by region over five years." }, { k: "task", t: "Tell me what is interesting." }], miss: "format", why: "No format: you will get a loose essay. Ask for the shape you can check.", fix: "Give 3 findings, each with the numbers used." },
+  { segs: [{ k: "context", t: "Internal coordination meeting, 45 minutes, notes below." }, { k: "format", t: "Table with Action, Owner, Deadline." }, { k: "constraints", t: "Do not invent owners or dates." }], miss: "task", why: "No clear task: the model has data and a format but no instruction.", fix: "Turn my notes into meeting minutes." },
+  { segs: [{ k: "task", t: "Explain how a solar mini-grid is financed." }, { k: "format", t: "Five short sections, end with five questions to ask." }, { k: "constraints", t: "Define jargon in one line. Say what you are unsure about." }], miss: "role", why: "No role: the depth and viewpoint are left to chance.", fix: "You are an energy finance specialist explaining to a non specialist colleague." },
+  { segs: [{ k: "role", t: "You are an editor for international development writing." }, { k: "task", t: "Improve this paragraph." }, { k: "constraints", t: "Keep my meaning. Short sentences. No new facts." }], miss: "context", why: "No context: who reads it and why decides the style.", fix: "It is for a policy note read by ministry staff who use English as a second language." }
+];
+
+const TASKS = [
+  { id: "summ", name: "Summarize long documents", gain: 0.5, hrs: 2 },
+  { id: "draft", name: "Draft emails and notes", gain: 0.4, hrs: 3 },
+  { id: "edit", name: "Rewrite and polish my texts", gain: 0.4, hrs: 2 },
+  { id: "min", name: "Meeting minutes and follow up", gain: 0.5, hrs: 1 },
+  { id: "trans", name: "Translate and adapt", gain: 0.5, hrs: 1 },
+  { id: "res", name: "First look at a new topic", gain: 0.3, hrs: 2 },
+  { id: "data", name: "Structure data and spreadsheets", gain: 0.3, hrs: 1 },
+  { id: "prep", name: "Prepare meetings and workshops", gain: 0.3, hrs: 1 }
+];
+
+const AGENDA = [
+  { time: "0:00", title: "Welcome and scan the QR", min: 5, desc: "Everyone joins on their phone.", c: "var(--brand)", cs: "var(--brand-soft)", ci: "var(--brand-ink)" },
+  { time: "0:05", title: "Quiz, round 1: Public or not?", min: 8, desc: "Ten quick calls on everyday material.", c: "var(--task)", cs: "var(--task-soft)", ci: "var(--task-ink)" },
+  { time: "0:13", title: "Live results and debate", min: 7, desc: "Where did the room disagree, and why?", c: "var(--sun)", cs: "var(--sun-soft)", ci: "var(--sun-ink)" },
+  { time: "0:20", title: "Quiz, round 2: Which level?", min: 10, desc: "AFD document types and the four levels.", c: "var(--role)", cs: "var(--role-soft)", ci: "var(--role-ink)" },
+  { time: "0:30", title: "Prompt lab", min: 12, desc: "Swipe the cards, then play Prompt doctor.", c: "var(--format)", cs: "var(--format-soft)", ci: "var(--format-ink)" },
+  { time: "0:42", title: "Quiz, round 3: Good habits", min: 8, desc: "Accounts, checks, images, regular use.", c: "var(--context)", cs: "var(--context-soft)", ci: "var(--context-ink)" },
+  { time: "0:50", title: "Time saved", min: 5, desc: "Estimate your own gain, share it anonymously.", c: "var(--constraints)", cs: "var(--constraints-soft)", ci: "var(--constraints-ink)" },
+  { time: "0:55", title: "Final results and commitments", min: 5, desc: "One habit each person will change this week.", c: "var(--good)", cs: "var(--good-soft)", ci: "var(--good-ink)" }
+];
+
+const ING = { role: "Role", context: "Context", task: "Task", format: "Format", constraints: "Constraints" };
+
+window.__aicBoot(function (cases) {
+CASES.push.apply(CASES, cases);
+(function () {
+"use strict";
+const $ = (id) => document.getElementById(id);
+const REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function h(tag, cls, text, attrs) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+function svgIcon(path, extra) {
+  const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  s.setAttribute("viewBox", "0 0 24 24");
+  s.setAttribute("class", "i" + (extra ? " " + extra : ""));
+  const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  p.setAttribute("d", path);
+  s.appendChild(p);
+  return s;
+}
+const CHECK = "M5 12.5l4.5 4.5L19 7.5";
+const r1 = (x) => Math.round(x * 10) / 10;
+const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
+
+/* ---------- Session and db ---------- */
+let sid = "";
+try { sid = sessionStorage.getItem("aic_sid") || ""; } catch (e) {}
+if (!sid) {
+  sid = "p" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+  try { sessionStorage.setItem("aic_sid", sid); } catch (e) {}
+}
+let db = null;
+const queue = [];
+let shareFailed = false;
+
+function write(path, data) {
+  if (!db) { queue.push([path, data]); return Promise.resolve(false); }
+  return db.doc(path).set(data).then(() => true, () => { shareFailed = true; return false; });
+}
+let MODE = "participant", OWNER = false;
+const unsubs = [];
+function withTimeout(p, ms) { return Promise.race([p, new Promise((r) => setTimeout(() => r(null), ms))]); }
+async function resolveOwner() {
+  try {
+    if (window.claude && claude.use) {
+      const u = await withTimeout(claude.use("user"), 2500);
+      if (u) OWNER = !!(await u.isOwner());
+    }
+  } catch (e) { OWNER = false; }
+}
+let modePref = null;
+function wantedMode() {
+  let pref = modePref;
+  if (!pref) { try { pref = sessionStorage.getItem("aic_mode"); } catch (e) {} }
+  return OWNER && pref !== "participant" ? "host" : "participant";
+}
+function applyMode() {
+  MODE = wantedMode();
+  const host = MODE === "host";
+  document.documentElement.classList.toggle("host", host);
+  let n = 0;
+  document.querySelectorAll(".nav button").forEach((b) => {
+    const m = b.dataset.m;
+    const ok = m === "b" || (host ? m === "h" : m === "p");
+    b.hidden = !ok;
+    if (ok) n++;
+  });
+  document.querySelector(".nav").style.setProperty("--n", String(n));
+  $("host-tools").hidden = !OWNER;
+  $("theme-btn").hidden = !host;
+  $("fs-btn").hidden = !(host && document.fullscreenEnabled);
+  $("mode-btn").hidden = !OWNER;
+  $("mode-btn").textContent = host ? "View as participant" : "Back to presenter";
+  fitZoom();
+  document.querySelector(".app").classList.remove("pending");
+  show(host ? "agenda" : "quiz", true);
+  renderQuiz();
+}
+function fitZoom() {
+  const app = document.querySelector(".app");
+  if (MODE !== "host") { app.style.zoom = ""; return; }
+  const z = Math.max(1, Math.min(2.4, window.innerWidth / 1150));
+  app.style.zoom = String(Math.round(z * 100) / 100);
+}
+window.addEventListener("resize", fitZoom);
+
+function stopSubs() { while (unsubs.length) { try { unsubs.pop()(); } catch (e) {} } }
+function startSubs() {
+  stopSubs();
+  if (!db) return;
+  subscribeState();
+  if (MODE === "host") subscribe();
+}
+async function initDb() {
+  try {
+    if (window.claude && claude.use) db = await claude.use("db");
+  } catch (e) { db = null; }
+  if (!db) return;
+  if (MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now() });
+  while (queue.length) { const q = queue.shift(); write(q[0], q[1]); }
+  startSubs();
+}
+
+/* ---------- Room state ---------- */
+const DEFAULT_STATE = { phase: "lobby", round: 0, idx: 0, run: 0, epoch: 0, expected: null, auto: true, joinUrl: null, handsMode: false, hands: { green: 0, amber: 0, red: 0 } };
+let state = Object.assign({}, DEFAULT_STATE);
+let seenEpoch = null;
+const mine = {};
+function subscribeState() {
+  try {
+    const un = db.doc(BASE + "/meta/state").onSnapshot((snap) => {
+      const d = (snap.exists && snap.data()) || {};
+      const next = Object.assign({}, DEFAULT_STATE, d);
+      if (seenEpoch !== null && next.epoch !== seenEpoch) {
+        Object.keys(mine).forEach((k) => delete mine[k]);
+        if (MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now() });
+      }
+      seenEpoch = next.epoch;
+      state = next;
+      renderQuiz(); checkAuto(); buildQR();
+    }, () => {});
+    if (un) unsubs.push(un);
+  } catch (e) {}
+}
+function writeState(patch) {
+  state = Object.assign({}, state, patch);
+  write(BASE + "/meta/state", state);
+  renderQuiz();
+}
+
+function setupTools() {
+  $("theme-btn").addEventListener("click", () => {
+    const root = document.documentElement;
+    const dark = root.getAttribute("data-theme") === "dark" || (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    root.setAttribute("data-theme", dark ? "light" : "dark");
+    $("theme-btn").textContent = dark ? "Dark" : "Light";
+  });
+  $("fs-btn").addEventListener("click", () => {
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    } catch (e) {}
+  });
+  $("mode-btn").addEventListener("click", () => {
+    modePref = MODE === "host" ? "participant" : "host";
+    try { sessionStorage.setItem("aic_mode", modePref); } catch (e) {}
+    applyMode();
+    if (db) {
+      if (MODE === "participant") write(BASE + "/joins/" + sid, { ts: Date.now() });
+      startSubs();
+    }
+  });
+}
+
+/* ---------- Tabs ---------- */
+const TABS = ["agenda", "quiz", "prompt", "calc", "results"];
+const ALLOWED = { host: ["agenda", "quiz", "prompt", "results"], participant: ["quiz", "prompt", "calc"] };
+function show(tab, fromHash) {
+  const allowed = ALLOWED[MODE];
+  if (allowed.indexOf(tab) < 0) tab = allowed[0];
+  TABS.forEach((t) => {
+    $("panel-" + t).hidden = t !== tab;
+    $("tab-" + t).setAttribute("aria-selected", t === tab ? "true" : "false");
+  });
+  if (!fromHash) window.scrollTo(0, 0);
+  if (tab === "prompt") setTimeout(() => goTo(deckIdx, false), 0);
+}
+document.querySelectorAll(".nav button").forEach((b) => b.addEventListener("click", () => show(b.dataset.tab)));
+
+/* ---------- Copy ---------- */
+function copyText(text, btn) {
+  const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => (btn.textContent = o), 1400); };
+  const fallback = () => {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+}
+
+/* ---------- Start panel ---------- */
+let lastQr = "";
+function joinUrl() { return state.joinUrl || JOIN_URL; }
+function buildQR() {
+  const url = joinUrl();
+  if (url === lastQr) return;
+  lastQr = url;
+  const box = $("qr-box");
+  try {
+    const qr = qrcode(0, "M");
+    qr.addData(url);
+    qr.make();
+    box.innerHTML = qr.createImgTag(6, 2);
+    const img = box.querySelector("img");
+    if (img) { img.alt = "QR code to join the quiz"; }
+  } catch (e) {
+    box.textContent = "QR unavailable, use the link below.";
+  }
+  $("qr-url").textContent = url.replace("https://", "");
+}
+function setupJoin() {
+  $("copy-link-btn").addEventListener("click", () => copyText(joinUrl(), $("copy-link-btn")));
+  $("join-apply").addEventListener("click", () => {
+    const v = $("join-input").value.trim();
+    if (!/^https:\/\/\S+$/.test(v)) { $("join-input").setCustomValidity("Paste a full https link"); $("join-input").reportValidity(); return; }
+    $("join-input").setCustomValidity("");
+    writeState({ joinUrl: v });
+    buildQR();
+  });
+  $("join-reset").addEventListener("click", () => { $("join-input").value = ""; writeState({ joinUrl: null }); buildQR(); });
+}
+function buildTimeline() {
+  const tl = $("timeline");
+  AGENDA.forEach((a) => {
+    const row = h("div", "tl-row");
+    row.style.setProperty("--c", a.c); row.style.setProperty("--cs", a.cs); row.style.setProperty("--c-ink", a.ci);
+    row.appendChild(h("div", "tl-time", a.time));
+    row.appendChild(h("div", "tl-dot"));
+    const body = h("div");
+    const t = h("div", "tl-title", a.title);
+    t.appendChild(h("span", "tl-min", a.min + " min"));
+    body.appendChild(t);
+    body.appendChild(h("div", "tl-desc", a.desc));
+    row.appendChild(body);
+    tl.appendChild(row);
+  });
+  const hr = $("hero-rounds");
+}
+
+function buildLegend() {
+  const list = $("lv-list");
+  Object.keys(LEVELS).forEach((k) => {
+    const row = h("div", "lv-row");
+    row.appendChild(h("span", "chip " + LEVELS[k].chip, LEVELS[k].name));
+    row.appendChild(h("p", null, LEVELS[k].text));
+    list.appendChild(row);
+  });
+}
+
+function confetti() {
+  if (REDUCED) return;
+  const box = $("confetti"); clear(box);
+  const cols = ["#2c58e8", "#ffc83d", "#12924f", "#db2777", "#7c3aed", "#ea6a12"];
+  for (let i = 0; i < 44; i++) {
+    const p = h("i");
+    p.style.left = Math.random() * 100 + "%";
+    p.style.background = cols[i % cols.length];
+    p.style.animationDelay = Math.random() * 0.5 + "s";
+    p.style.animationDuration = 1.8 + Math.random() * 1.2 + "s";
+    box.appendChild(p);
+  }
+  setTimeout(() => clear(box), 3600);
+}
+
+/* ---------- Quiz (live and synchronous) ---------- */
+const GLYPH = { green: "✓", amber: "!", red: "✕" };
+const COLS = ["green", "amber", "red"];
+
+function donutHTML(score, total) {
+  const p = total ? score / total : 0;
+  return '<div class="donut"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="52"/><circle class="val" cx="60" cy="60" r="52" stroke-dasharray="0 999" data-dash="' + (p * 326.7).toFixed(1) + '"/></svg><div class="lbl"><div style="text-align:center"><b>' + score + '</b><br><span>out of ' + total + "</span></div></div></div>";
+}
+function animateDonut(root) {
+  const v = root.querySelector(".donut .val");
+  if (v) setTimeout(() => v.setAttribute("stroke-dasharray", v.dataset.dash + " 999"), 60);
+}
+function curCase() { return roundList()[state.idx] || null; }
+function roundList() { return CASES.filter((c) => c.round === state.round); }
+function expectedN() { return state.expected != null ? state.expected : data.joins; }
+function answeredCount() {
+  const c = curCase();
+  if (!c) return 0;
+  return data.responses.filter((r) => r.case === c.id && r.run === state.run).length;
+}
+let autoKey = "";
+function checkAuto() {
+  if (MODE !== "host" || state.phase !== "question" || state.auto === false || state.handsMode) return;
+  const n = expectedN();
+  if (n > 0 && answeredCount() >= n) {
+    const k = state.run + "_" + state.idx;
+    if (autoKey === k) return;
+    autoKey = k;
+    writeState({ phase: "revealed" });
+  }
+}
+function handsTally() {
+  const g = state.hands || {};
+  const x = { green: g.green || 0, amber: g.amber || 0, red: g.red || 0 };
+  x.n = x.green + x.amber + x.red;
+  return x;
+}
+function runTally(run) {
+  const t = {};
+  CASES.forEach((c) => (t[c.id] = { green: 0, amber: 0, red: 0, n: 0 }));
+  data.responses.forEach((r) => {
+    if (r.run !== run) return;
+    const x = t[r.case];
+    if (x && x[r.pick] != null) { x[r.pick]++; x.n++; }
+  });
+  return t;
+}
+const mk = (c) => state.run + "_" + c.id;
+
+function renderQuiz() {
+  const p = $("p-quiz"), hq = $("h-quiz");
+  if (!p || !hq) return;
+  p.hidden = MODE === "host";
+  hq.hidden = MODE !== "host";
+  if (MODE === "host") renderHost(); else renderParticipant();
+}
+
+/* ----- shared pieces ----- */
+function qBlock(c) {
+  const kind = h("div", "qkind");
+  kind.appendChild(h("span", "chip plain l-guide", KINDS[c.kind]));
+  return [kind, h("div", "qtext", c.text), h("div", "qask", c.kind === "doc" ? "Can you paste this into a public AI?" : "How would you rate this?")];
+}
+function levelChips(c) {
+  const row = h("div", "qkind");
+  c.lv.forEach((k) => {
+    if (k === "guide") row.appendChild(h("span", "chip l-guide", "Guide rule"));
+    else row.appendChild(h("span", "chip " + LEVELS[k].chip, LEVELS[k].name));
+  });
+  return row;
+}
+function whyBlock(c, ok, verdict) {
+  const rv = h("div", "reveal " + (ok ? "ok" : "ko"));
+  rv.appendChild(h("div", "verdict", verdict));
+  rv.appendChild(levelChips(c));
+  rv.appendChild(h("div", "why", c.why));
+  rv.appendChild(h("div", "src", c.src));
+  return rv;
+}
+function dotsRow(list) {
+  const d = h("div", "dots");
+  list.forEach((c, i) => {
+    const it = h("i");
+    const m = mine[mk(c)];
+    const done = i < state.idx || (i === state.idx && state.phase === "revealed");
+    if (done && m) it.className = m.correct ? "ok" : "ko";
+    else if (i === state.idx) it.className = "now";
+    d.appendChild(it);
+  });
+  return d;
+}
+
+/* ----- participant ----- */
+function renderParticipant() {
+  const root = $("p-card");
+  clear(root);
+  const c = curCase();
+  if (state.phase === "lobby" || (!c && state.phase !== "end")) {
+    const card = h("div", "card result-card");
+    card.appendChild(h("span", "chip plain l-guide", db ? "Connected" : "Offline"));
+    card.appendChild(h("h3", null, db ? "You are in" : "Not connected"));
+    card.appendChild(h("p", "msg", db
+      ? "Waiting for the presenter to start the next round. This screen updates by itself."
+      : "The live service is unavailable. Ask the presenter to share the link with Contributor access."));
+    root.appendChild(card);
+    return;
+  }
+  const list = roundList();
+  const r = ROUNDS[state.round - 1];
+  if (state.phase === "end") {
+    const score = list.filter((x) => mine[mk(x)] && mine[mk(x)].correct).length;
+    const card = h("div", "card result-card");
+    card.innerHTML = donutHTML(score, list.length);
+    card.appendChild(h("h3", null, "Round " + state.round + " done"));
+    const p = pct(score, list.length);
+    card.appendChild(h("p", "msg", p >= 70 ? "Strong round. Wait for the debrief on the main screen." : "Tricky on purpose. The presenter will debrief with the group."));
+    card.appendChild(h("span", "share-status", "Waiting for the next round"));
+    root.appendChild(card);
+    animateDonut(card);
+    if (p >= 70) confetti();
+    return;
+  }
+  const m = mine[mk(c)];
+  const revealed = state.phase === "revealed";
+  const top = h("div", "play-top");
+  const t = h("div", "play-title");
+  t.appendChild(h("b", null, "Round " + state.round + ": " + r.title));
+  t.appendChild(h("span", null, "Question " + (state.idx + 1) + " of " + list.length));
+  top.appendChild(t);
+  const sc = list.filter((x) => mine[mk(x)] && mine[mk(x)].correct && (list.indexOf(x) < state.idx || (revealed && list.indexOf(x) === state.idx))).length;
+  const st = h("div", "streak");
+  st.appendChild(svgIcon("M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z"));
+  st.appendChild(h("span", null, String(sc)));
+  top.appendChild(st);
+  root.appendChild(top);
+  root.appendChild(dotsRow(list));
+  const card = h("div", "card qcard");
+  qBlock(c).forEach((n) => card.appendChild(n));
+  const ans = h("div", "answers");
+  COLS.forEach((col) => {
+    const lab = ANS[c.kind][col];
+    const b = h("button", "ans", null, { type: "button" });
+    b.dataset.c = col;
+    b.appendChild(h("span", "ic", GLYPH[col]));
+    const tx = h("span");
+    tx.appendChild(h("b", null, lab[0]));
+    tx.appendChild(h("small", null, lab[1]));
+    b.appendChild(tx);
+    if (m || revealed) b.disabled = true;
+    if (m && m.pick === col && !revealed) b.classList.add("picked");
+    if (revealed && col === c.answer) b.classList.add("is-correct");
+    if (revealed && m && m.pick === col && col !== c.answer) b.classList.add("is-wrong");
+    b.addEventListener("click", () => participantPick(c, col));
+    ans.appendChild(b);
+  });
+  card.appendChild(ans);
+  if (!revealed && m) card.appendChild(h("div", "share-status", "Answer sent. Waiting for the others…"));
+  if (revealed) {
+    if (m) card.appendChild(whyBlock(c, m.correct, m.correct ? "Correct" : "Expected: " + ANS[c.kind][c.answer][0]));
+    else card.appendChild(whyBlock(c, false, "No answer. Expected: " + ANS[c.kind][c.answer][0]));
+    card.appendChild(h("div", "share-status", "Waiting for the next question"));
+  }
+  root.appendChild(card);
+}
+function participantPick(c, col) {
+  if (state.phase !== "question" || mine[mk(c)]) return;
+  const ok = col === c.answer;
+  mine[mk(c)] = { pick: col, correct: ok };
+  write(BASE + "/responses/" + sid + "_" + c.id, { case: c.id, round: c.round, run: state.run, pick: col, correct: ok, ts: Date.now() });
+  renderParticipant();
+}
+
+/* ----- host ----- */
+let resetArmed = false, resetBusy = false;
+function resetButton() {
+  const label = resetBusy ? "Resetting…" : resetArmed ? "Tap again to erase " + data.responses.length + " answers" : "Reset all results";
+  const rb = h("button", "btn danger", label, { type: "button" });
+  rb.addEventListener("click", async () => {
+    if (resetBusy) return;
+    if (!resetArmed) { resetArmed = true; setTimeout(() => { resetArmed = false; renderQuiz(); }, 4000); renderQuiz(); return; }
+    resetArmed = false; resetBusy = true; renderQuiz();
+    try {
+      if (db.wipe) await db.wipe(["responses", "joins", "calc"].map((cn) => BASE + "/" + cn));
+      else {
+        const jobs = [];
+        ["responses", "joins", "calc"].forEach((cn) => (data.ids[cn] || []).forEach((id) => jobs.push(db.doc(BASE + "/" + cn + "/" + id).delete())));
+        await Promise.all(jobs);
+      }
+      writeState({ phase: "lobby", epoch: Date.now(), expected: null });
+    } catch (e) {}
+    resetBusy = false; renderQuiz();
+  });
+  return rb;
+}
+function stepper() {
+  const box = h("div", "stepper");
+  const n = expectedN();
+  const minus = h("button", "tool-btn", "−", { type: "button", "aria-label": "One fewer expected" });
+  const plus = h("button", "tool-btn", "+", { type: "button", "aria-label": "One more expected" });
+  const auto = h("button", "tool-btn", "Auto", { type: "button" });
+  minus.addEventListener("click", () => writeState({ expected: Math.max(1, n - 1) }));
+  plus.addEventListener("click", () => writeState({ expected: n + 1 }));
+  auto.addEventListener("click", () => writeState({ expected: null }));
+  box.appendChild(minus);
+  box.appendChild(h("b", "stepper-n", String(n)));
+  box.appendChild(plus);
+  box.appendChild(auto);
+  box.appendChild(h("span", "stepper-note", state.expected == null ? "Auto: everyone who joined (" + data.joins + ")" : "Fixed. " + data.joins + " joined"));
+  return box;
+}
+function renderHost() {
+  const root = $("h-card");
+  clear(root);
+  $("h-legend").hidden = state.phase !== "lobby";
+  const c = curCase();
+  const list = roundList();
+  if (state.phase === "lobby" || (!c && state.phase !== "end")) {
+    const sh = h("div", "section-head");
+    sh.appendChild(h("h2", null, "Live quiz"));
+    sh.appendChild(h("p", null, "Pick a round. Everyone answers on their phone. The answer appears here once everyone has answered."));
+    root.appendChild(sh);
+    const wrap = h("div", "rounds");
+    ROUNDS.forEach((r) => {
+      const n = CASES.filter((x) => x.round === r.n).length;
+      const b = h("button", "round-card round-" + r.n, null, { type: "button" });
+      b.appendChild(h("div", "round-num", String(r.n)));
+      b.appendChild(h("h3", null, r.title));
+      b.appendChild(h("p", null, r.desc));
+      const meta = h("div", "round-meta");
+      meta.appendChild(h("span", null, n + " cases · " + r.min + " min"));
+      meta.appendChild(h("span", "round-state", "Start"));
+      b.appendChild(meta);
+      b.addEventListener("click", () => writeState({ phase: "question", round: r.n, idx: 0, run: Date.now(), hands: { green: 0, amber: 0, red: 0 } }));
+      wrap.appendChild(b);
+    });
+    root.appendChild(wrap);
+    const pc = h("div", "card panel-card");
+    pc.appendChild(h("h3", null, "Participants"));
+    pc.appendChild(h("p", "sub", "The answer is revealed once this many people have answered. Change it if someone has not joined or has left."));
+    pc.appendChild(stepper());
+    const hl = h("label", "auto-toggle");
+    const hcb = h("input", null, null, { type: "checkbox" });
+    hcb.checked = !!state.handsMode;
+    hcb.addEventListener("change", () => writeState({ handsMode: hcb.checked }));
+    hl.appendChild(hcb);
+    hl.appendChild(document.createTextNode(" Hands mode: no phones, I enter the votes myself (hands or coloured cards)"));
+    pc.appendChild(hl);
+    const row = h("div", "btn-row");
+    row.style.justifyContent = "flex-start";
+    row.appendChild(resetButton());
+    pc.appendChild(row);
+    root.appendChild(pc);
+    return;
+  }
+  if (state.phase === "end") {
+    const t = runTally(state.run);
+    let ok = 0, tot = 0;
+    list.forEach((x) => { ok += t[x.id][x.answer]; tot += t[x.id].n; });
+    const card = h("div", "card result-card");
+    card.innerHTML = donutHTML(ok, tot).replace("out of " + tot, "answers right");
+    card.appendChild(h("h3", null, "Round " + state.round + " summary"));
+    card.appendChild(h("p", "msg", tot ? pct(ok, tot) + "% of all answers were right. The cases below are sorted by the question order." : "No answers recorded for this round."));
+    root.appendChild(card);
+    animateDonut(card);
+    const pc = h("div", "card panel-card");
+    list.forEach((x) => pc.appendChild(caseBar(x, t[x.id])));
+    root.appendChild(pc);
+    const br = h("div", "btn-row");
+    const back = h("button", "btn primary", "Back to rounds", { type: "button" });
+    back.addEventListener("click", () => writeState({ phase: "lobby" }));
+    br.appendChild(back);
+    root.appendChild(br);
+    return;
+  }
+  // question or revealed
+  const revealed = state.phase === "revealed";
+  const r = ROUNDS[state.round - 1];
+  const top = h("div", "play-top");
+  const tt = h("div", "play-title");
+  tt.appendChild(h("b", null, "Round " + state.round + ": " + r.title));
+  tt.appendChild(h("span", null, "Question " + (state.idx + 1) + " of " + list.length));
+  top.appendChild(tt);
+  const end = h("button", "tool-btn", "End round", { type: "button" });
+  end.addEventListener("click", () => writeState({ phase: "end" }));
+  top.appendChild(end);
+  root.appendChild(top);
+  const d = h("div", "dots");
+  list.forEach((x, i) => d.appendChild(h("i", i < state.idx || (revealed && i === state.idx) ? "ok" : i === state.idx ? "now" : "")));
+  root.appendChild(d);
+  const t = state.handsMode ? handsTally() : runTally(state.run)[c.id];
+  const exp = expectedN();
+  const card = h("div", "card qcard");
+  qBlock(c).forEach((n) => card.appendChild(n));
+  if (!revealed && !state.handsMode) {
+    const done = answeredCount();
+    const meter = h("div", "meter");
+    meter.appendChild(h("b", null, done + " / " + exp));
+    meter.appendChild(h("span", null, "answered"));
+    const tr = h("div", "qbar"); const bi = h("i"); bi.style.width = Math.min(100, pct(done, exp)) + "%"; tr.appendChild(bi);
+    meter.appendChild(tr);
+    card.appendChild(meter);
+    const ans = h("div", "answers");
+    COLS.forEach((col) => {
+      const lab = ANS[c.kind][col];
+      const b = h("div", "ans static"); b.dataset.c = col;
+      b.appendChild(h("span", "ic", GLYPH[col]));
+      const tx = h("span");
+      tx.appendChild(h("b", null, lab[0]));
+      tx.appendChild(h("small", null, lab[1]));
+      b.appendChild(tx);
+      ans.appendChild(b);
+    });
+    card.appendChild(ans);
+    const act = h("div", "btn-row");
+    act.style.justifyContent = "flex-start";
+    const rv = h("button", "btn primary", done >= exp && exp > 0 ? "Reveal answers" : "Reveal now (" + Math.max(0, exp - done) + " missing)", { type: "button" });
+    rv.addEventListener("click", () => writeState({ phase: "revealed" }));
+    act.appendChild(rv);
+    const lab = h("label", "auto-toggle");
+    const cb = h("input", null, null, { type: "checkbox" });
+    cb.checked = state.auto !== false;
+    cb.addEventListener("change", () => writeState({ auto: cb.checked }));
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(" Reveal automatically when everyone has answered"));
+    act.appendChild(lab);
+    card.appendChild(act);
+    card.appendChild(h("div", "qask", "Participants expected"));
+    card.appendChild(stepper());
+  } else if (!revealed) {
+    card.appendChild(h("div", "qask", "Hands mode: ask the room to vote with a hand or a coloured card, then enter the counts."));
+    const ans = h("div", "answers");
+    COLS.forEach((col) => {
+      const lab = ANS[c.kind][col];
+      const b = h("div", "ans static"); b.dataset.c = col;
+      b.appendChild(h("span", "ic", GLYPH[col]));
+      const tx = h("span");
+      tx.appendChild(h("b", null, lab[0]));
+      tx.appendChild(h("small", null, lab[1]));
+      b.appendChild(tx);
+      const ctr = h("span", "hands-ctr");
+      const mi = h("button", "tool-btn", "−", { type: "button", "aria-label": "One fewer " + lab[0] });
+      const pl = h("button", "tool-btn", "+", { type: "button", "aria-label": "One more " + lab[0] });
+      mi.addEventListener("click", () => writeState({ hands: Object.assign({}, state.hands, { [col]: Math.max(0, state.hands[col] - 1) }) }));
+      pl.addEventListener("click", () => writeState({ hands: Object.assign({}, state.hands, { [col]: state.hands[col] + 1 }) }));
+      ctr.appendChild(mi); ctr.appendChild(h("b", "stepper-n", String(state.hands[col]))); ctr.appendChild(pl);
+      b.appendChild(ctr);
+      ans.appendChild(b);
+    });
+    card.appendChild(ans);
+    const act = h("div", "btn-row");
+    act.style.justifyContent = "flex-start";
+    const rv = h("button", "btn primary", "Reveal answers", { type: "button" });
+    rv.addEventListener("click", () => writeState({ phase: "revealed" }));
+    act.appendChild(rv);
+    card.appendChild(act);
+  } else {
+    const okN = t[c.answer];
+    const stat = h("div", "tile hl");
+    stat.appendChild(h("div", "tl", "Got it right"));
+    stat.appendChild(h("div", "tv", okN + " of " + t.n));
+    stat.appendChild(h("div", "tn", t.n ? pct(okN, t.n) + "% of the room" : "No answers"));
+    card.appendChild(stat);
+    const rows = h("div", "res-rows");
+    COLS.forEach((col) => {
+      const lab = ANS[c.kind][col];
+      const row = h("div", "res-row" + (col === c.answer ? " is-correct" : ""));
+      row.dataset.c = col;
+      row.appendChild(h("span", "ic", GLYPH[col]));
+      const mid = h("div", "res-mid");
+      mid.appendChild(h("b", null, lab[0] + (col === c.answer ? "  ✓ expected" : "")));
+      const tr = h("div", "res-track"); const f = h("i"); f.style.width = pct(t[col], t.n) + "%"; tr.appendChild(f);
+      mid.appendChild(tr);
+      row.appendChild(mid);
+      row.appendChild(h("span", "res-n", t[col] + " · " + pct(t[col], t.n) + "%"));
+      rows.appendChild(row);
+    });
+    card.appendChild(rows);
+    card.appendChild(whyBlock(c, true, "Expected: " + ANS[c.kind][c.answer][0]));
+    const act = h("div", "btn-row");
+    act.style.justifyContent = "flex-start";
+    const last = state.idx + 1 >= list.length;
+    const nx = h("button", "btn primary", last ? "Finish round" : "Next question", { type: "button" });
+    nx.addEventListener("click", () => (last ? writeState({ phase: "end" }) : writeState({ phase: "question", idx: state.idx + 1, hands: { green: 0, amber: 0, red: 0 } })));
+    act.appendChild(nx);
+    card.appendChild(act);
+  }
+  root.appendChild(card);
+}
+
+/* ---------- Prompt lab ---------- */
+const ORDER = ["role", "context", "task", "format", "constraints"];
+let recipeIdx = 0, deckIdx = 0, deckCards = [];
+
+function mkSeg(k, text, tag, isNew) {
+  const s = h("div", "seg" + (isNew ? " is-new" : ""));
+  s.dataset.k = k;
+  if (tag) s.appendChild(h("span", "seg-tag", tag));
+  s.appendChild(document.createTextNode(text));
+  return s;
+}
+function promptSegs(r, upto, newIdx) {
+  const items = [{ k: "task", t: r.task, tag: ING.task, nw: false }];
+  r.steps.slice(0, upto).forEach((s, i) => items.push({ k: s.k, t: s.t, tag: ING[s.k], nw: i === newIdx }));
+  items.sort((a, b) => ORDER.indexOf(a.k) - ORDER.indexOf(b.k));
+  const box = h("div", "pblock");
+  items.forEach((it) => box.appendChild(mkSeg(it.k, it.t, it.tag, it.nw)));
+  box.appendChild(mkSeg("input", r.input, "", false));
+  return box;
+}
+function outcome(label, text) {
+  const o = h("div", "outcome");
+  o.appendChild(h("b", null, label));
+  o.appendChild(h("span", null, text));
+  return o;
+}
+function buildDeck() {
+  const r = RECIPES[recipeIdx];
+  const track = $("track"); clear(track);
+  deckCards = [];
+  const total = r.steps.length + 2;
+  // card 0: vague
+  let c = h("div", "card pcard"); c.dataset.k = "vague";
+  let head = h("div", "pcard-head");
+  head.appendChild(h("span", "step-tag", "Start"));
+  c.appendChild(head);
+  c.appendChild(h("h3", null, "What most people type"));
+  const b0 = h("div", "pblock");
+  b0.appendChild(mkSeg("vague", r.task, "Vague prompt", false));
+  b0.appendChild(mkSeg("input", r.input, "", false));
+  c.appendChild(b0);
+  c.appendChild(h("p", "why", "The model has to guess the audience, the length, the format and the limits. So it guesses."));
+  c.appendChild(outcome("You get", r.bad));
+  track.appendChild(c); deckCards.push(c);
+  // step cards
+  r.steps.forEach((s, i) => {
+    const cd = h("div", "card pcard"); cd.dataset.k = s.k;
+    const hd = h("div", "pcard-head");
+    const tag = h("span", "step-tag");
+    tag.appendChild(svgIcon("M12 5v14M5 12h14"));
+    tag.appendChild(document.createTextNode("Step " + (i + 1) + " · " + ING[s.k]));
+    hd.appendChild(tag);
+    cd.appendChild(hd);
+    cd.appendChild(h("h3", null, s.title));
+    cd.appendChild(promptSegs(r, i + 1, i));
+    const w = h("p", "why"); w.appendChild(h("b", null, "Why it helps: ")); w.appendChild(document.createTextNode(s.why));
+    cd.appendChild(w);
+    track.appendChild(cd); deckCards.push(cd);
+  });
+  // last card
+  c = h("div", "card pcard"); c.dataset.k = "task";
+  head = h("div", "pcard-head");
+  const lt = h("span", "step-tag");
+  lt.appendChild(svgIcon(CHECK));
+  lt.appendChild(document.createTextNode("Before you send"));
+  head.appendChild(lt);
+  c.appendChild(head);
+  c.appendChild(h("h3", null, "The finished prompt, and your safety check"));
+  c.appendChild(promptSegs(r, r.steps.length, -1));
+  const ul = h("ul", "preflight");
+  r.safety.forEach((t) => {
+    const li = h("li");
+    li.appendChild(svgIcon(CHECK));
+    li.appendChild(h("span", null, t));
+    ul.appendChild(li);
+  });
+  c.appendChild(ul);
+  c.appendChild(outcome("You get", r.good));
+  track.appendChild(c); deckCards.push(c);
+
+  const pg = $("pager"); clear(pg);
+  for (let i = 0; i < total; i++) {
+    const b = h("button", null, null, { type: "button", "aria-label": "Card " + (i + 1) });
+    b.addEventListener("click", () => goTo(i, true));
+    pg.appendChild(b);
+  }
+  deckIdx = 0;
+  track.scrollLeft = 0;
+  updateDeck();
+}
+function buildRecipes() {
+  const wrap = $("recipes"); clear(wrap);
+  RECIPES.forEach((r, i) => {
+    const b = h("button", "recipe-chip", r.name, { type: "button", role: "tab" });
+    b.setAttribute("aria-selected", i === recipeIdx ? "true" : "false");
+    b.addEventListener("click", () => {
+      recipeIdx = i;
+      wrap.querySelectorAll(".recipe-chip").forEach((x, j) => x.setAttribute("aria-selected", j === i ? "true" : "false"));
+      buildDeck();
+    });
+    wrap.appendChild(b);
+  });
+  const lg = $("ing-legend");
+  ORDER.forEach((k) => { const s = h("span", "ing", ING[k]); s.dataset.k = k; lg.appendChild(s); });
+}
+function updateDeck() {
+  const n = deckCards.length;
+  $("stepno").textContent = "Card " + (deckIdx + 1) + " of " + n;
+  $("qbar").style.width = Math.max(8, (deckIdx / (n - 1)) * 100) + "%";
+  $("prev-card").disabled = deckIdx === 0;
+  $("next-card").disabled = deckIdx === n - 1;
+  $("pager").querySelectorAll("button").forEach((b, i) => {
+    if (i === deckIdx) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
+  });
+  $("swipe-hint").textContent = deckIdx === 0 ? "Swipe or drag sideways" : deckIdx === n - 1 ? "Now try the Prompt doctor below" : "Keep going";
+}
+function goTo(i, smooth) {
+  const track = $("track");
+  if (!deckCards.length) return;
+  i = Math.max(0, Math.min(deckCards.length - 1, i));
+  deckIdx = i;
+  track.scrollTo({ left: deckCards[i].offsetLeft - 2, behavior: smooth && !REDUCED ? "smooth" : "auto" });
+  updateDeck();
+}
+function nearest() {
+  const track = $("track");
+  let best = 0, bd = 1e9;
+  deckCards.forEach((c, i) => {
+    const d = Math.abs(c.offsetLeft - 2 - track.scrollLeft);
+    if (d < bd) { bd = d; best = i; }
+  });
+  return best;
+}
+function setupCarousel() {
+  const track = $("track");
+  track.style.position = "relative";
+  let raf = 0;
+  track.addEventListener("scroll", () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      const i = nearest();
+      if (i !== deckIdx) { deckIdx = i; updateDeck(); }
+    });
+  }, { passive: true });
+  let down = false, sx = 0, sl = 0;
+  track.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
+    down = true; sx = e.clientX; sl = track.scrollLeft;
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!down) return;
+    const dx = e.clientX - sx;
+    if (Math.abs(dx) > 4) track.classList.add("dragging");
+    track.scrollLeft = sl - dx;
+  });
+  window.addEventListener("pointerup", () => {
+    if (!down) return;
+    down = false;
+    if (track.classList.contains("dragging")) {
+      track.classList.remove("dragging");
+      goTo(nearest(), true);
+    }
+  });
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); goTo(deckIdx + 1, true); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); goTo(deckIdx - 1, true); }
+  });
+  $("prev-card").addEventListener("click", () => goTo(deckIdx - 1, true));
+  $("next-card").addEventListener("click", () => goTo(deckIdx + 1, true));
+}
+
+/* ---------- Prompt doctor ---------- */
+let docIdx = 0, docLocked = false;
+function renderDoctor() {
+  const d = DOCTOR[docIdx];
+  docLocked = false;
+  $("doc-count").textContent = "Case " + (docIdx + 1) + " of " + DOCTOR.length;
+  const box = $("doc-prompt"); clear(box);
+  const items = d.segs.map((s) => ({ k: s.k, t: s.t, miss: false }));
+  items.push({ k: d.miss, t: "Something is missing here", miss: true });
+  items.sort((a, b) => ORDER.indexOf(a.k) - ORDER.indexOf(b.k));
+  items.forEach((it) => {
+    if (it.miss) {
+      const s = h("div", "seg missing neutral", it.t);
+      s.id = "doc-missing";
+      box.appendChild(s);
+    } else box.appendChild(mkSeg(it.k, it.t, ING[it.k], false));
+  });
+  const opts = $("doc-opts"); clear(opts);
+  ORDER.forEach((k) => {
+    const b = h("button", "doc-opt", ING[k], { type: "button" });
+    b.dataset.k = k;
+    b.addEventListener("click", () => docPick(k, b));
+    opts.appendChild(b);
+  });
+  clear($("doc-reveal"));
+  $("doc-next").hidden = true;
+}
+function docPick(k, btn) {
+  if (docLocked) return;
+  docLocked = true;
+  const d = DOCTOR[docIdx];
+  const ok = k === d.miss;
+  document.querySelectorAll("#doc-opts .doc-opt").forEach((b) => {
+    b.disabled = true;
+    if (b.dataset.k === d.miss) b.classList.add("is-best");
+    else if (b === btn) b.classList.add("is-miss");
+  });
+  const m = $("doc-missing");
+  m.className = "seg is-new"; m.dataset.k = d.miss;
+  clear(m);
+  m.appendChild(h("span", "seg-tag", ING[d.miss]));
+  m.appendChild(document.createTextNode(d.fix));
+  const rv = h("div", "reveal " + (ok ? "ok" : "ko"));
+  rv.appendChild(h("div", "verdict", ok ? "Diagnosis correct" : "Missing ingredient: " + ING[d.miss]));
+  rv.appendChild(h("div", "why", d.why));
+  const slot = $("doc-reveal"); clear(slot); slot.appendChild(rv);
+  const nb = $("doc-next");
+  nb.textContent = docIdx === DOCTOR.length - 1 ? "Start over" : "Next case";
+  nb.hidden = false;
+}
+$("doc-next").addEventListener("click", () => { docIdx = (docIdx + 1) % DOCTOR.length; renderDoctor(); });
+
+/* ---------- Calculator ---------- */
+const hours = {};
+function buildTasks() {
+  const wrap = $("tasks");
+  TASKS.forEach((t) => {
+    hours[t.id] = t.hrs;
+    const row = h("div", "task");
+    row.appendChild(h("div", "task-name", t.name));
+    row.appendChild(h("span", "task-gain", "gain " + Math.round(t.gain * 100) + "%"));
+    const ctrl = h("div", "task-ctrl");
+    const rg = h("input", null, null, { type: "range", min: "0", max: "10", step: "0.5", "aria-label": t.name + ", hours per week" });
+    rg.value = String(t.hrs);
+    const out = h("div", "out");
+    const b = h("b"); const s = h("span");
+    out.appendChild(b); out.appendChild(s);
+    const upd = () => {
+      hours[t.id] = parseFloat(rg.value);
+      b.textContent = hours[t.id] + " h per week";
+      s.textContent = "saves " + r1(hours[t.id] * t.gain) + " h";
+      calcTotals();
+    };
+    rg.addEventListener("input", upd);
+    ctrl.appendChild(rg); ctrl.appendChild(out);
+    row.appendChild(ctrl);
+    wrap.appendChild(row);
+    b.textContent = hours[t.id] + " h per week";
+    s.textContent = "saves " + r1(hours[t.id] * t.gain) + " h";
+  });
+  calcTotals();
+}
+function savedWeek() { return TASKS.reduce((a, t) => a + hours[t.id] * t.gain, 0); }
+function calcTotals() {
+  const w = savedWeek();
+  $("t-week").textContent = r1(w) + " h";
+  $("t-month").textContent = Math.round(w * 4.3) + " h";
+  $("t-year").textContent = Math.round(w * 46) + " h";
+  $("t-days").textContent = r1((w * 46) / 8) + " working days";
+}
+$("calc-submit").addEventListener("click", async () => {
+  const tasks = {};
+  TASKS.forEach((t) => (tasks[t.id] = r1(hours[t.id] * t.gain)));
+  const btn = $("calc-submit"); btn.disabled = true;
+  const ok = await write(BASE + "/calc/" + sid, { week: r1(savedWeek()), tasks, ts: Date.now() });
+  btn.disabled = false;
+  const st = $("calc-status");
+  if (!db) { st.className = "share-status off"; st.textContent = "Not shared: results service unavailable"; }
+  else if (!ok) { st.className = "share-status off"; st.textContent = "Not shared: this link needs Contributor access"; }
+  else { st.className = "share-status"; st.textContent = "Shared anonymously, thank you"; btn.textContent = "Update my estimate"; }
+});
+
+/* ---------- Results ---------- */
+const data = { responses: [], joins: 0, calc: [], ids: { responses: [], joins: [], calc: [] } };
+let roundFilter = 0;
+function subscribe() {
+  const listen = (name, fn) => {
+    try {
+      const un = db.collection(BASE + "/" + name).limit(1000).onSnapshot((snap) => { data.ids[name] = snap.docs.map((d) => d.id); fn(snap.docs.map((d) => d.data() || {})); renderResults(); renderQuiz(); checkAuto(); }, () => {});
+      if (un) unsubs.push(un);
+    } catch (e) {}
+  };
+  listen("responses", (a) => (data.responses = a));
+  listen("joins", (a) => (data.joins = a.length));
+  listen("calc", (a) => (data.calc = a));
+}
+function tally() {
+  const t = {};
+  CASES.forEach((c) => (t[c.id] = { green: 0, amber: 0, red: 0, n: 0 }));
+  data.responses.forEach((r) => {
+    const x = t[r.case];
+    if (x && x[r.pick] != null) { x[r.pick]++; x.n++; }
+  });
+  return t;
+}
+function caseBar(c, x, withBadge) {
+  const row = h("div", "bar-row");
+  const top = h("div", "bar-top");
+  top.appendChild(h("span", "n", "#" + c.id));
+  top.appendChild(h("span", "t", c.text));
+  const acc = pct(x[c.answer], x.n);
+  top.appendChild(h("span", "p", x.n ? acc + "% right" : "no data"));
+  row.appendChild(top);
+  const st = h("div", "stack");
+  st.setAttribute("role", "img");
+  st.setAttribute("aria-label", "Paste " + x.green + ", anonymize " + x.amber + ", never " + x.red + ". Expected " + ANS[c.kind][c.answer][0]);
+  [["green", "g", "Paste"], ["amber", "a", "Anon"], ["red", "r", "Never"]].forEach((s) => {
+    if (!x[s[0]]) return;
+    const d = h("div", s[1] + (s[0] === c.answer ? " ok" : ""));
+    d.style.flex = x[s[0]] + " 1 0";
+    const share = pct(x[s[0]], x.n);
+    d.textContent = share >= 22 ? s[2] + " " + share + "%" : share >= 10 ? share + "%" : "";
+    st.appendChild(d);
+  });
+  row.appendChild(st);
+  const foot = h("div", "bar-foot");
+  foot.appendChild(h("span", null, "Expected: " + ANS[c.kind][c.answer][0]));
+  foot.appendChild(h("span", null, x.n + " answers"));
+  row.appendChild(foot);
+  return row;
+}
+function renderResults() {
+  const t = tally();
+  const total = data.responses.length;
+  const right = data.responses.filter((r) => r.correct).length;
+  $("join-count").textContent = String(data.joins);
+  $("hero-rounds").textContent = String(total);
+  $("r-joined").textContent = String(data.joins);
+  $("r-answers").textContent = String(total);
+  $("r-acc").textContent = total ? pct(right, total) + "%" : "0%";
+
+  const deb = $("debated"); clear(deb);
+  const ranked = CASES.filter((c) => t[c.id].n >= 2)
+    .map((c) => ({ c, acc: t[c.id].n ? t[c.id][c.answer] / t[c.id].n : 1 }))
+    .sort((a, b) => a.acc - b.acc).slice(0, 4);
+  if (!ranked.length) deb.appendChild(h("div", "empty", "Waiting for answers. Play a round and they appear here."));
+  ranked.forEach((x) => deb.appendChild(caseBar(x.c, t[x.c.id])));
+
+  const cb = $("case-bars"); clear(cb);
+  const list = CASES.filter((c) => !roundFilter || c.round === roundFilter);
+  if (!total) cb.appendChild(h("div", "empty", "No answers yet."));
+  else list.forEach((c) => cb.appendChild(caseBar(c, t[c.id])));
+
+  const rb = $("round-bars"); clear(rb);
+  ROUNDS.forEach((r) => {
+    const rs = data.responses.filter((x) => x.round === r.n);
+    const ok = rs.filter((x) => x.correct).length;
+    const row = h("div", "hbar round-" + r.n);
+    row.appendChild(h("span", "lab", "Round " + r.n + ": " + r.title));
+    const tr = h("div", "tr"); const i = h("i"); i.style.width = pct(ok, rs.length) + "%"; tr.appendChild(i);
+    row.appendChild(tr);
+    row.appendChild(h("span", "v", rs.length ? pct(ok, rs.length) + "%" : "n/a"));
+    rb.appendChild(row);
+  });
+
+  const n = data.calc.length;
+  const sumWeek = data.calc.reduce((a, c) => a + (c.week || 0), 0);
+  $("c-n").textContent = String(n);
+  $("c-avg").textContent = n ? r1(sumWeek / n) + " h" : "0 h";
+  $("c-total").textContent = Math.round(sumWeek * 46) + " h";
+  const cbars = $("calc-bars"); clear(cbars);
+  if (!n) cbars.appendChild(h("div", "empty", "No estimates yet."));
+  else {
+    const avgs = TASKS.map((tk) => ({ tk, v: data.calc.reduce((a, c) => a + ((c.tasks && c.tasks[tk.id]) || 0), 0) / n }));
+    const mx = Math.max.apply(null, avgs.map((a) => a.v)) || 1;
+    avgs.sort((a, b) => b.v - a.v).forEach((a) => {
+      const row = h("div", "hbar");
+      row.appendChild(h("span", "lab", a.tk.name));
+      const tr = h("div", "tr"); const i = h("i"); i.style.width = Math.round((a.v / mx) * 100) + "%"; tr.appendChild(i);
+      row.appendChild(tr);
+      row.appendChild(h("span", "v", r1(a.v) + " h"));
+      cbars.appendChild(row);
+    });
+  }
+}
+document.querySelectorAll("#round-filter button").forEach((b) => b.addEventListener("click", () => {
+  roundFilter = parseInt(b.dataset.f, 10);
+  document.querySelectorAll("#round-filter button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  renderResults();
+}));
+
+/* ---------- Boot ---------- */
+buildQR(); setupJoin(); buildTimeline(); buildLegend();
+buildRecipes(); setupCarousel(); buildDeck(); renderDoctor();
+buildTasks(); renderResults(); setupTools(); renderQuiz();
+(async function boot() {
+  try { await resolveOwner(); } catch (e) {}
+  try { applyMode(); } catch (e) { document.querySelector(".app").classList.remove("pending"); }
+  initDb();
+})();
+})();
+
+});
+</script>
+</body>
+</html>
